@@ -1,23 +1,22 @@
+<script src="../../../../../SuperServer/selfservice/selfservice/src/routes.js"></script>
 <template>
-  <div class="container" @mousedown="down" @mouseup="up">
+  <div class="container" @mousedown="mousedown" @mouseup="mouseup">
     <header-view></header-view>
     <nav>
-      <button class="btn1">返回上一级</button>
+      <button class="btn1" @click="upward">返回上一级</button>
       <button class="btn2">退出</button>
     </nav>
     <div class="content">
       <transition-group :name="menu">
         <article :key="index" v-for="(i,index) in pageList" v-if="index==page" >
-          <div class="ele" v-for="item in itemList">
-            <img src="../../static/trademenu/HandyServices.png" alt="">
-            <br>
-            <span>{{item}}</span>
+          <div @click="menuJump(item)" class="ele" v-for="item in itemList">
+            <img :src="item.iconPath" alt="">
+            <span>{{item.tradeName}}</span>
           </div>
         </article>
       </transition-group>
     </div>
-
-    <!--<footer-view></footer-view>-->
+    <footer-view></footer-view>
   </div>
 </template>
 <script>
@@ -34,6 +33,7 @@
     },
     data () {
       return {
+        tradeMenuSource:[{"tradeName":"o"}],
         tradeMenu:[{"tradeName":"o"}],
         xAxis:0,
         page:0,
@@ -43,13 +43,14 @@
       }
     },
     created(){
-      this.tradeMenu=TradeMenu;
+      this.tradeMenuSource=TradeMenu;
+      this.tradeMenu=this.tradeMenuSource;
     },
     methods:{
-      down(e){
+      mousedown(e){
         this.xAxis=e.screenX;
       },
-      up(e){
+      mouseup(e){
         if(20<this.xAxis-e.screenX){
           if(this.page<this.volume){
             this.menu='menuleft';
@@ -62,9 +63,18 @@
             this.page--;
           }
         }
-        console.log(this.volume);
-        console.log(this.page);
       },
+      menuJump(item){
+        if(item.children&&item.children.length>0){
+          this.tradeMenu=item.children;
+        }else{
+          this.$router.push(item.code);
+        }
+        console.log();
+      },
+      upward(){
+        this.tradeMenu=this.tradeMenuSource;
+      }
     },
     computed:{
       pageList(){
@@ -80,8 +90,7 @@
         for(let i=this.capacity*this.page;
             i<this.capacity*this.page+this.capacity;i++) {
           if (i < this.tradeMenu.length)
-            list.push(this.tradeMenu[i].tradeName);
-//        }
+            list.push(this.tradeMenu[i]);
         }
         return list;
       }
@@ -92,7 +101,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .content{
-    width: 1200px;
+    width: 1300px;
     margin: 0 auto;
     position: relative;
   }
@@ -120,20 +129,19 @@
     margin: 20px 0;
   }
   article{
-    width: 1200px;
+    width: 100%;
     margin: 0 auto;
   }
   .container{
     background-color: #f5f9ed;
     width: 100vw;
-    /*height: 900px;*/
-    height: 100vh;
+    height: 900px;
+    /*height: 100vh;*/
   }
 
   .ele{
     box-sizing: border-box;
     /*font-weight: bold;*/
-    padding-top: 40px;
     box-shadow: 0px 0px 13px 5px rgba(0,0,0,0.1);
     border-radius: 4px;
     width: 260px;
@@ -141,15 +149,22 @@
     background-color: white;
     margin: 0 10px 30px ;
     display: inline-block;
+    vertical-align: middle;
   }
   .ele img{
+    display: inline-block;
     width: 120px;
     height: 120px;
+    margin-top: 40px;
+    margin-bottom: 10px;
   }
   .ele span{
-    display: inline-block;
+    display: block;
     font-size: 30px;
-    margin-top: 18px;
+    margin-top: 10px;
+    height: 78px;
+    line-height: 30px;
+    vertical-align: top;
   }
   ul {
       list-style-type: none;
