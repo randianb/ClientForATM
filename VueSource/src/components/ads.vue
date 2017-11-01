@@ -11,12 +11,11 @@
   import adList from '../../static/list'
 
   export default {
-    name: 'hello',
-//    ../../resource/passbook.gif
+    name: 'ads',
     data () {
       return {
         msg: 'default',
-        mark:-1,
+        mark:0,
         loc:adList,
         boo:false,
       }
@@ -30,7 +29,6 @@
         else this.boo=true;
       },
       play(){
-
         if(this.mark>=this.loc.length)
           this.mark=0;
         let _this=this;
@@ -40,7 +38,7 @@
           },3000);
       },
       touch(){
-        this.$router.push('/he');
+        this.$router.push('/TradeMenu');
       },
       async read () {
 //      this.csharp.toVsBus('');

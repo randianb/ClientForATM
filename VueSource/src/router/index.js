@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Ads from '../components/Ads'
-import he from '../components/he'
+import TradeMenu from '../components/TradeMenu'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {path: '/', component: Ads},
-    {path: '/he', component: he},
+    {path: '/TradeMenu', component: TradeMenu},
   ]
 })

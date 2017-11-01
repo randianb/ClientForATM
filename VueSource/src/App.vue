@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition name="slide-fade">
+    <transition name="slide">
       <router-view></router-view>
     </transition>
   </div>
@@ -39,26 +39,44 @@
     margin: 0;
     padding: 0;
   }
-#app {
-  font-family: 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  overflow: hidden;
-}
-.slide-fade-enter-active {
-  transition: all .5s ease;
-}
-.slide-fade-leave-active {
-  transition: all .5s ease;
-}
-.slide-fade-enter {
-  transform: translateX(-100vw);
-  opacity: 1;
-}
-.slide-fade-leave-to {
-  transform: translateX(100vw);
-  opacity: 1;
-}
+  #app {
+    position: relative;
+    font-family: 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    overflow: hidden;
+  }
+  .slider-enter-active {
+    position: absolute;
+    top:0;
+    transition: all .5s ease;
+  }
+  .slider-leave-active {
+    position: absolute;
+    top:0;
+    transition: all .5s ease;
+  }
+  .slider-enter {
+    position: absolute;
+    top:0;
+    transform: translateX(-100vw);
+    opacity: 1;
+  }
+  .slider-enter-to {
+    position: absolute;
+    top:0;
+    left:0;
+  }
+  .slider-leave{
+    position: absolute;
+    top:0;
+  }
+  .slider-leave-to {
+    position: absolute;
+    top:0;
+    transform: translateX(100vw);
+    opacity: 1;
+  }
 </style>
