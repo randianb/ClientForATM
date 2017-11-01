@@ -25,12 +25,6 @@
       }
     }
   },
-//  mounted:{
-//    jumpAd(){
-//      alert();
-////      document.vue.$router.push('/');
-//    }
-//  }
 }
 </script>
 

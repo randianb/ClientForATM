@@ -8,6 +8,7 @@ import StepNavigator from '../components/StepNavigator'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     { path: '/', component: Ads },
     { path: '/TradeMenu', component: TradeMenu },

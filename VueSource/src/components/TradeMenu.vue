@@ -2,6 +2,7 @@
 <template>
   <div class="container" @mousedown="mousedown" @mouseup="mouseup">
     <header-view></header-view>
+
     <nav>
       <button class="btn1" @click="upward">返回上一级</button>
       <button class="btn2">退出</button>
@@ -16,6 +17,7 @@
         </article>
       </transition-group>
     </div>
+
     <footer-view></footer-view>
   </div>
 </template>
@@ -68,7 +70,7 @@
         if(item.children&&item.children.length>0){
           this.tradeMenu=item.children;
         }else{
-          this.$router.push(item.code);
+          this.$router.push('/step-navigator/'+ item.tradeName+'/'+item.code);
         }
         console.log();
       },
