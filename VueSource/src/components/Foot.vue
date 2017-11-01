@@ -23,6 +23,7 @@
     text-align: center;
     position: absolute;
     bottom: 0;
+    width: 100%;
   }
   img{
     height: 110px;

@@ -1,23 +1,23 @@
 <template>
-  <div class="container">
+  <div class="container" @mousedown="down" @mouseup="up">
     <header-view></header-view>
-    <div class="content" @mousedown="down" @mouseup="up">
-      <nav>
-        <button class="btn1">返回上一级</button>
-        <button class="btn2">退出</button>
-      </nav>
-      <article>
-<!--180 15 20-->
-        <div class="ele">
-          <img src="../../static/trademenu/HandyServices.png" alt="">
-          <br>
-          <span>账户管理</span>
-        </div>
-
-      </article>
+    <nav>
+      <button class="btn1">返回上一级</button>
+      <button class="btn2">退出</button>
+    </nav>
+    <div class="content">
+      <transition-group :name="menu">
+        <article :key="index" v-for="(i,index) in pageList" v-if="index==page" >
+          <div class="ele" v-for="item in itemList">
+            <img src="../../static/trademenu/HandyServices.png" alt="">
+            <br>
+            <span>{{item}}</span>
+          </div>
+        </article>
+      </transition-group>
     </div>
 
-    <footer-view></footer-view>
+    <!--<footer-view></footer-view>-->
   </div>
 </template>
 <script>
@@ -34,45 +34,72 @@
     },
     data () {
       return {
-        msg: 'default',
-        second:'',
-        flag:true,
-        tradeMenu:TradeMenu,
-        Xaxis:0,
+        tradeMenu:[{"tradeName":"o"}],
+        xAxis:0,
         page:0,
+        capacity:8,
+        volume:0,
+        menu:''
       }
     },
     created(){
+      this.tradeMenu=TradeMenu;
     },
     methods:{
       down(e){
-        this.Xaxis=e.screenX;
+        this.xAxis=e.screenX;
       },
       up(e){
-        if(200<this.Xaxis-e.screenX){
-          this.page++;
+        if(20<this.xAxis-e.screenX){
+          if(this.page<this.volume){
+            this.menu='menuleft';
+            this.page++;
+          }
         }
-        if(200>this.Xaxis-e.screenX){
-          this.page--;
+        if(20>this.xAxis-e.screenX){
+          if(this.page>0){
+            this.menu='menuright';
+            this.page--;
+          }
         }
+        console.log(this.volume);
+        console.log(this.page);
       },
-      async read () {
-
+    },
+    computed:{
+      pageList(){
+        let list=[];
+        for(let i=0;i<this.tradeMenu.length/this.capacity;i++){
+          list.push(i);
+          this.volume=i;
+        }
+        return list;
       },
-      b(){
-        console.log(this.tradeMenu);
-      },
-
-    }
+      itemList(){
+        let list=[];
+        for(let i=this.capacity*this.page;
+            i<this.capacity*this.page+this.capacity;i++) {
+          if (i < this.tradeMenu.length)
+            list.push(this.tradeMenu[i].tradeName);
+//        }
+        }
+        return list;
+      }
+    },
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .content{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
   button{
-    width: 85px;
-    height: 35px;
-    font-size: 18px;
+    width: 120px;
+    height: 50px;
+    font-size: 24px;
     color: white;
     background-color: #e74a41;
     border-radius: 8px;
@@ -84,42 +111,45 @@
     float: right;
   }
   .btn1{
-    width: 135px;
+    width: 180px;
     float: left;
   }
   nav{
-    height: 35px;
+    height: 50px;
     width: 100%;
     margin: 20px 0;
   }
   article{
-    width: 1000px;
+    width: 1200px;
     margin: 0 auto;
   }
   .container{
     background-color: #f5f9ed;
     width: 100vw;
+    /*height: 900px;*/
     height: 100vh;
   }
+
   .ele{
-    font-weight: bold;
-    padding-top: 20px;
+    box-sizing: border-box;
+    /*font-weight: bold;*/
+    padding-top: 40px;
     box-shadow: 0px 0px 13px 5px rgba(0,0,0,0.1);
     border-radius: 4px;
-    width: 180px;
-    height: 180px;
+    width: 260px;
+    height: 260px;
     background-color: white;
-    margin: 0 8px 20px ;
+    margin: 0 10px 30px ;
     display: inline-block;
   }
   .ele img{
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
   }
   .ele span{
     display: inline-block;
-    font-size: 20px;
-    margin-top: 12px;
+    font-size: 30px;
+    margin-top: 18px;
   }
   ul {
       list-style-type: none;
@@ -134,5 +164,37 @@
 
   a {
       color: #42b983;
+  }
+
+  .menuright-leave-active,.menuleft-enter-active {
+    position: absolute;
+    top:0px;
+    transition: all .5s ease;
+  }
+  .menuright-enter-active,.menuleft-leave-active {
+    position: absolute;
+    top:0px;
+    transition: all .5s ease;
+  }
+  .menuright-leave-to,.menuleft-enter {
+    position: absolute;
+    top:0px;
+    transform: translateX(100vw);
+    opacity: 1;
+  }
+  .menuright-leave,.menuleft-enter-to {
+    position: absolute;
+    top:0px;
+    /*left:0;*/
+  }
+  .menuright-enter-to,.menuleft-leave{
+    position: absolute;
+    top:0px;
+  }
+  .menuright-enter,.menuleft-leave-to {
+    position: absolute;
+    top:0px;
+    transform: translateX(-100vw);
+    opacity: 1;
   }
 </style>
