@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition name="slider">
-      <router-view key="app"></router-view>
+      <router-view></router-view>
     </transition>
   </div>
 </template>
@@ -21,7 +21,7 @@
         console.log(e.keyCode);
       }
       if(e.keyCode==61){//+
-        location.href=url.split('#')[0];
+        location.href='http://localhost:8088';
       }
     }
   },

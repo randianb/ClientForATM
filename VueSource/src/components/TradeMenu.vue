@@ -1,4 +1,3 @@
-<script src="../../../../../SuperServer/selfservice/selfservice/src/routes.js"></script>
 <template>
   <div class="container" @mousedown="mousedown" @mouseup="mouseup">
     <header-view></header-view>
@@ -22,13 +21,11 @@
   </div>
 </template>
 <script>
-  import t from  '../device/test'
   import TradeMenu from './TradeMenuData.json'
   import Head from './Head'
   import Foot from './Foot'
 
   export default {
-    name: 'hell',
     components:{
       'header-view':Head,
       'footer-view':Foot,
@@ -70,7 +67,7 @@
         if(item.children&&item.children.length>0){
           this.tradeMenu=item.children;
         }else{
-          this.$router.push('/step-navigator/'+ item.tradeName+'/'+item.code);
+          this.$router.push('/step-navigator/' + item.tradeName+'/'+item.code);
         }
         console.log();
       },

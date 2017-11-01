@@ -20,7 +20,7 @@
         if(this.counter==0)
           this.time=new Date().getSeconds();
         this.counter++;
-        console.log(this.time);
+//        console.log(this.time);
         if(this.counter>=4){
           this.counter=0;
           let newtime=new Date().getSeconds();
