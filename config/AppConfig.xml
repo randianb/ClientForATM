@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <!--设备配置-->
+    <device>
+        <!--启动项-->
+        <startUp>
+            <open>scanner</open>
+            <open>camera</open>
+            <open>printer</open>
+        </startUp>
+        <!--关闭项-->
+        <shutDown>
+            <close>scanner</close>
+        </shutDown>
+    </device>
+    <UI>
+        <!--窗口属性-->
+        <window>true</window>
+        <!--缩放-->
+        <zoomLevel>3</zoomLevel>
+    </UI>
+    <license>
+        <time>
+            2018-1-1 00:00:00
+        </time>
+        <keys>
+            abcdefgh
+        </keys>
+        <coded>
+            tP3CSjbPT7avrHN68NHACnLxbOAZuan+
+        </coded>
+    </license>
+</config>

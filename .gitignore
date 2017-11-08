@@ -1,5 +1,6 @@
 packages
 BankApp\bin
+WebPage
 # Editor directories and files
 .idea
 *.suo
