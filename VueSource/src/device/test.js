@@ -7,7 +7,7 @@ var export1={
     return new Promise(function(resolve, reject){
       var el=document.getElementById('cs');
       el.addEventListener('device',function () {
-        resolve(()=>{return 132});
+        resolve(()=>{return 'resolve'});
       });
     });
   }

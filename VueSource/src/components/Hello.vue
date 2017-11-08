@@ -1,8 +1,8 @@
 <template>
   <div class="hello">
     <h2 @click="read">click to call VS method</h2>
-    <h2 @click="b">show:{{msg}}</h2>
-    <h2 @device="b">show:{{msg}}</h2>
+    <!--<h2 @click="b">show:{{msg}}</h2>-->
+    <h2 @click="b">show:push</h2>
   </div>
 </template>
 
@@ -17,12 +17,13 @@
       flag:true
     }
   },
+  created(){
+
+  },
   methods:{
     async read () {
 //      this.csharp.toVsBus('');
       var a11=3;
-
-
       a11=await t.did().then((res)=>{console.log(res);})
           .catch((err)=>{console.log(err);});
 //      var c=0;
@@ -34,7 +35,7 @@
       console.log(a11);
     },
     b(){
-      alert('b');
+      this.$router.push('/he');
     },
     head1(){
       var aa=this;

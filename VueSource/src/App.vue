@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <img src="../static/passbook.gif">
-    <router-view></router-view>
+    <transition name="slide-fade">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -10,7 +11,9 @@ export default {
   name: 'app',
   created(){
     document.onkeypress=function (e) {
+      console.log(e.keyCode);
       if(e.keyCode==116){//f5
+        this.$router.push('/')
         console.log(e.keyCode);
       }
       if(e.keyCode==123){//f12
@@ -18,21 +21,33 @@ export default {
       }
     }
   },
-  methods:{
-    dd(){
-      alert('dd');
-    },
-  }
 }
 </script>
 
 <style>
+  body{
+    margin: 0;
+    padding: 0;
+  }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'Microsoft Yahei', 'Hiragino Sans GB', 'Heiti SC', 'WenQuanYi Micro Hei', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+.slide-fade-enter-active {
+  transition: all .8s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s ease;
+}
+.slide-fade-enter {
+  transform: translateX(-100vw);
+  opacity: 1;
+}
+.slide-fade-leave-to {
+  transform: translateX(100vw);
+  opacity: 1;
 }
 </style>

@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <!-- saved from url=(0014) about:internet  -->
     <title>atm</title>
-    </head>
+  </head>
+  <style type="text/css">
+    body{
+      margin: 0;
+    }
+  </style>
   <body>
-    <div id="cs">fffff</div>
+    <!--<div id="cs">return value</div>-->
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
@@ -20,10 +25,10 @@
 //        return this.value;
 //      }
 //    });
-var evt=new Event('device');
-evt.initEvent("device", false, true);
-//var el=document.getElementById('cs');
-//el.addEventListener('click',a);
+    var evt = document.createEvent('HTMLEvents');
+    evt.initEvent("device", false, true);
+var el=document.getElementById('cs');
+el.addEventListener('click',vueDevice);
 //el.addEventListener('device',function () {
 //  console.log('device1');
 //});
@@ -33,12 +38,10 @@ evt.initEvent("device", false, true);
 //}
 
 
-    function vueDevice(handler) {
-      if(handler=='fingerprints'){
-        alert('good');
-        a11=3;
-        alert("console"+a11);
-      }
+    function vueDevice() {
+      console.log('vueDevice');
+      var ele=document.getElementById('img');
+      ele.click();
     }
   </script>
 </html>
