@@ -46,7 +46,7 @@ namespace BankApp
             };
             Content = webView;
             webView.RegisterJsObject("csharp", new CallbackObjectForJs());
-            webView.Address = "file://E:/BankAppBJKT/WebPage/index.html";
+            webView.Address = "file://E:/github/ClientForATM/WebPage/index.html";
             webView.FrameLoadEnd += OnLoadEnd;
         }
 

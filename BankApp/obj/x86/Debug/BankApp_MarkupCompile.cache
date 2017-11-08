@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-E:\BankAppBJKT\BankApp\obj\x86\Debug\
+E:\github\ClientForATM\BankApp\obj\x86\Debug\
 BankApp
 none
 false
 DEBUG;TRACE
-E:\BankAppBJKT\BankApp\App.xaml
+E:\github\ClientForATM\BankApp\App.xaml
 41160983035
 
 111126081089
-161997676974
+16-14480569
 MainWindow.xaml;MaskLoading.xaml;start.xaml;WebPageViewer.xaml;
 
 False
