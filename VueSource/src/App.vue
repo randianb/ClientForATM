@@ -7,7 +7,7 @@
 </template>
 
 <script>
-export default {
+  export default {
   name: 'app',
   created(){
     var url=location.href;

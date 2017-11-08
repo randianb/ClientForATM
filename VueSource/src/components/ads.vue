@@ -1,41 +1,42 @@
 <template>
   <div class="ads">
     <transition-group name="ad">
-      <img id="f" v-for="(item,index) in loc" @click="touch" :key="index"  v-if="index==mark" :src="item" alt=""/>
+      <img v-for="(item,index) in loc" :key="index" @click="touch" v-if="index==mark" :src="item" alt=""/>
     </transition-group>
   </div>
 </template>
 
 <script>
   import t from '../device/test'
+  import adList from '../../static/list'
+
   export default {
     name: 'hello',
+//    ../../resource/passbook.gif
     data () {
       return {
         msg: 'default',
-        mark:0,
-        loc:["/../static/welcome.png","/../static/passbook.gif"],
+        mark:-1,
+        loc:adList,
         boo:false,
       }
     },
     created(){
-      this.play(0);
+      this.play();
     },
     methods:{
       toggle(){
         if(this.boo)this.boo=false;
         else this.boo=true;
       },
-      play(index){
-        if(index>=this.loc.length)
-          index=0;
-//        this.item=this.loc[index];
-//        console.log(index);
-        this.mark=index;
+      play(){
+
+        if(this.mark>=this.loc.length)
+          this.mark=0;
         let _this=this;
         setTimeout(()=>{
-          index++;
-          _this.play(index);
+          _this.mark++;
+          _this.play();
           },3000);
       },
       touch(){
