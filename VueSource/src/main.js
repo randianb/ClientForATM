@@ -15,4 +15,4 @@ new Vue({
 });
 // var csharp={a:1};
 Vue.prototype.csharp=csharp;
-Vue.prototype.csharp.jsObject=a11;
+// Vue.prototype.csharp.jsObject=a11;

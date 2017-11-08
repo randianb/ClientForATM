@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <img src="../static/passbook.gif">
     <router-view></router-view>
   </div>
 </template>
@@ -8,6 +8,21 @@
 <script>
 export default {
   name: 'app',
+  created(){
+    document.onkeypress=function (e) {
+      if(e.keyCode==116){//f5
+        console.log(e.keyCode);
+      }
+      if(e.keyCode==123){//f12
+        console.log(e.keyCode);
+      }
+    }
+  },
+  methods:{
+    dd(){
+      alert('dd');
+    },
+  }
 }
 </script>
 

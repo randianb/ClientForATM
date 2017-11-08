@@ -11,15 +11,28 @@
     <!-- built files will be auto injected -->
   </body>
   <script>
-    Object.defineProperty(window,"a11",{
-      set:function (val) {
-        this.value=val;
+//    Object.defineProperty(window,"a11",{
+//      set:function (val) {
+//        this.value=val;
+//
+//      },
+//      get:function () {
+//        return this.value;
+//      }
+//    });
+var evt=new Event('device');
+evt.initEvent("device", false, true);
+//var el=document.getElementById('cs');
+//el.addEventListener('click',a);
+//el.addEventListener('device',function () {
+//  console.log('device1');
+//});
+//function a() {
+//  console.log('dispatch');
+//  el.dispatchEvent(evt);
+//}
 
-      },
-      get:function () {
-        return this.value;
-      }
-    });
+
     function vueDevice(handler) {
       if(handler=='fingerprints'){
         alert('good');

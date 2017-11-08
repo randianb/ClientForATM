@@ -1,7 +1,7 @@
 /**
- * Created by Administrator on 2017/11/7.
+ * Created by Administrator on 2017/11/8.
  */
-var export1={
+export default {
   did:function () {
     console.log("export");
     return new Promise(function(resolve, reject){
@@ -12,4 +12,3 @@ var export1={
     });
   }
 }
-export default export1;

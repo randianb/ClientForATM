@@ -2,6 +2,7 @@
   <div class="hello">
     <h2 @click="read">click to call VS method</h2>
     <h2 @click="b">show:{{msg}}</h2>
+    <h2 @device="b">show:{{msg}}</h2>
   </div>
 </template>
 
@@ -12,15 +13,17 @@
   data () {
     return {
       msg: 'default',
-      second:''
+      second:'',
+      flag:true
     }
   },
   methods:{
     async read () {
 //      this.csharp.toVsBus('');
-      a11=3;
+      var a11=3;
 
-      await t.did().then((res)=>{console.log();})
+
+      a11=await t.did().then((res)=>{console.log(res);})
           .catch((err)=>{console.log(err);});
 //      var c=0;
 //      for (var i = 0; i < 300000; i++) {
@@ -28,11 +31,10 @@
 //      }
       console.log("in hello");
 //      console.log(this.csharp);
-//      console.log(a11);
+      console.log(a11);
     },
     b(){
-      var el=document.getElementById('cs');
-      el.device();
+      alert('b');
     },
     head1(){
       var aa=this;
