@@ -10,6 +10,7 @@
 export default {
   name: 'app',
   created(){
+    var url=location.href;
     document.onkeypress=function (e) {
       console.log(e.keyCode);
       if(e.keyCode==116){//f5
@@ -19,8 +20,17 @@ export default {
       if(e.keyCode==123){//f12
         console.log(e.keyCode);
       }
+      if(e.keyCode==61){//+
+        location.href=url.split('#')[0];
+      }
     }
   },
+//  mounted:{
+//    jumpAd(){
+//      alert();
+////      document.vue.$router.push('/');
+//    }
+//  }
 }
 </script>
 
@@ -35,12 +45,13 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  overflow: hidden;
 }
 .slide-fade-enter-active {
-  transition: all .8s ease;
+  transition: all .5s ease;
 }
 .slide-fade-leave-active {
-  transition: all .8s ease;
+  transition: all .5s ease;
 }
 .slide-fade-enter {
   transform: translateX(-100vw);
