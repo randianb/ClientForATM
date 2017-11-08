@@ -17,11 +17,15 @@
   },
   methods:{
     async read () {
-      this.csharp.toVsBus('');
+//      this.csharp.toVsBus('');
       a11=3;
 
-      t.did().then((res)=>{console.log(res);})
+      await t.did().then((res)=>{console.log();})
           .catch((err)=>{console.log(err);});
+//      var c=0;
+//      for (var i = 0; i < 300000; i++) {
+//        c++;
+//      }
       console.log("in hello");
 //      console.log(this.csharp);
 //      console.log(a11);
