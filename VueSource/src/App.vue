@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <transition name="slide">
-      <router-view></router-view>
+    <transition name="slider">
+      <router-view key="app"></router-view>
     </transition>
   </div>
 </template>
