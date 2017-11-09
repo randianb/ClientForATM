@@ -8,7 +8,7 @@
 
 <script>
   import t from '../device/test'
-  import adList from '../../static/list'
+  import adList from '../../static/list.json'
 
   export default {
     name: 'ads',

@@ -1,6 +1,8 @@
 <template>
   <header>
-    <img src="../../static/logo.jpg" @click="admin" alt="">
+    <div @click="admin">
+      <img src="../../static/logo.jpg"  alt="">
+    </div>
   </header>
 </template>
 
@@ -42,7 +44,6 @@
     height: 86px;
     text-align: left;
     vertical-align: middle;
-    margin-bottom: 70px;
   }
   img{
     display: inline-block;
