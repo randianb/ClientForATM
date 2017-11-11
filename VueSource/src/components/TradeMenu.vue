@@ -8,7 +8,7 @@
     </nav>
     <div class="content">
       <transition-group :name="menu">
-        <article :key="index" v-for="(i,index) in pageList" v-if="index==page" >
+        <article :key="index" v-for="(i,index) in pageList" v-if="index==page">
           <div @click="menuJump(item)" class="ele" v-for="item in itemList">
             <img :src="item.iconPath" alt="">
             <span>{{item.tradeName}}</span>
@@ -20,74 +20,87 @@
     <footer-view></footer-view>
   </div>
 </template>
+
 <script>
   import TradeMenu from './TradeMenuData.json'
   import Head from './Head'
   import Foot from './Foot'
 
   export default {
-    components:{
-      'header-view':Head,
-      'footer-view':Foot,
+    components: {
+      'header-view': Head,
+      'footer-view': Foot,
     },
-    data () {
+    data() {
       return {
-        tradeMenuSource:[{"tradeName":"o"}],
-        tradeMenu:[{"tradeName":"o"}],
-        xAxis:0,
-        page:0,
-        capacity:8,
-        volume:0,
-        menu:''
+        tradeMenuSource: [{"tradeName": "o"}],
+        tradeMenu: [{"tradeName": "o"}],
+        xAxis: 0,
+        page: 0,
+        capacity: 8,
+        volume: 0,
+        menu: '',
       }
     },
-    created(){
-      this.tradeMenuSource=TradeMenu;
-      this.tradeMenu=this.tradeMenuSource;
+    mounted() {
+      this.tradeMenuSource = TradeMenu;
+      this.tradeMenu = this.tradeMenuSource;
     },
-    methods:{
-      mousedown(e){
-        this.xAxis=e.screenX;
+    methods: {
+      a() {
+//        alert();
+        this.$router.push('/');
       },
-      mouseup(e){
-        if(20<this.xAxis-e.screenX){
-          if(this.page<this.volume){
-            this.menu='menuleft';
+      mousedown(e) {
+        this.xAxis = e.screenX;
+      },
+      mouseup(e) {
+        if (20 < this.xAxis - e.screenX) {
+          if (this.page < this.volume) {
+            this.menu = 'menuleft';
             this.page++;
           }
         }
-        if(20>this.xAxis-e.screenX){
-          if(this.page>0){
-            this.menu='menuright';
+        if (20 > this.xAxis - e.screenX) {
+          if (this.page > 0) {
+            this.menu = 'menuright';
             this.page--;
           }
         }
       },
-      menuJump(item){
-        if(item.children&&item.children.length>0){
-          this.tradeMenu=item.children;
-        }else{
-          this.$router.push('/step-navigator/' + item.tradeName+'/'+item.code);
+      menuJump(item) {
+        document.cookie='object='+JSON.stringify(item.flow)+';';
+        if (item.children && item.children.length > 0) {
+          this.tradeMenu = item.children;
+        } else {
+          this.$router.push({
+            name:'StepNavigator',
+            path: '/step-navigator',
+            params:{
+              code:item.code,
+              name:item.tradeName,
+            },
+          });
         }
         console.log();
       },
-      upward(){
-        this.tradeMenu=this.tradeMenuSource;
+      upward() {
+        this.tradeMenu = this.tradeMenuSource;
       }
     },
-    computed:{
-      pageList(){
-        let list=[];
-        for(let i=0;i<this.tradeMenu.length/this.capacity;i++){
+    computed: {
+      pageList() {
+        let list = [];
+        for (let i = 0; i < this.tradeMenu.length / this.capacity; i++) {
           list.push(i);
-          this.volume=i;
+          this.volume = i;
         }
         return list;
       },
-      itemList(){
-        let list=[];
-        for(let i=this.capacity*this.page;
-            i<this.capacity*this.page+this.capacity;i++) {
+      itemList() {
+        let list = [];
+        for (let i = this.capacity * this.page;
+             i < this.capacity * this.page + this.capacity; i++) {
           if (i < this.tradeMenu.length)
             list.push(this.tradeMenu[i]);
         }
@@ -99,12 +112,19 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .content{
+  .content {
     width: 1300px;
     margin: 0 auto;
     position: relative;
   }
-  button{
+
+  .container {
+    background-color: #f5f9ed;
+    width: 100vw;
+    height: 900px;
+  }
+
+  button {
     width: 120px;
     height: 50px;
     font-size: 24px;
@@ -113,51 +133,51 @@
     border-radius: 8px;
     border: 0;
     display: block;
-    margin:0 50px;
+    margin: 0 50px;
   }
-  .btn2{
+
+  .btn2 {
     float: right;
   }
-  .btn1{
+
+  .btn1 {
     width: 180px;
     float: left;
   }
-  nav{
+
+  nav {
     height: 50px;
     width: 100%;
     margin: 20px 0;
   }
-  article{
+
+  article {
     width: 100%;
     margin: 0 auto;
   }
-  .container{
-    background-color: #f5f9ed;
-    width: 100vw;
-    height: 900px;
-    /*height: 100vh;*/
-  }
 
-  .ele{
+  .ele {
     box-sizing: border-box;
     /*font-weight: bold;*/
-    box-shadow: 0px 0px 13px 5px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 13px 5px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
     width: 260px;
     height: 260px;
     background-color: white;
-    margin: 0 10px 30px ;
+    margin: 0 10px 30px;
     display: inline-block;
     vertical-align: middle;
   }
-  .ele img{
+
+  .ele img {
     display: inline-block;
     width: 120px;
     height: 120px;
     margin-top: 40px;
     margin-bottom: 10px;
   }
-  .ele span{
+
+  .ele span {
     display: block;
     font-size: 30px;
     margin-top: 10px;
@@ -165,49 +185,55 @@
     line-height: 30px;
     vertical-align: top;
   }
+
   ul {
-      list-style-type: none;
-      padding: 0;
+    list-style-type: none;
+    padding: 0;
   }
 
   li {
-      display: inline-block;
-      margin: 0 10px;
-      background-color: yellow;
+    display: inline-block;
+    margin: 0 10px;
+    background-color: yellow;
   }
 
   a {
-      color: #42b983;
+    color: #42b983;
   }
 
-  .menuright-leave-active,.menuleft-enter-active {
+  .menuright-leave-active, .menuleft-enter-active {
     position: absolute;
-    top:0px;
+    top: 0px;
     transition: all .5s ease;
   }
-  .menuright-enter-active,.menuleft-leave-active {
+
+  .menuright-enter-active, .menuleft-leave-active {
     position: absolute;
-    top:0px;
+    top: 0px;
     transition: all .5s ease;
   }
-  .menuright-leave-to,.menuleft-enter {
+
+  .menuright-leave-to, .menuleft-enter {
     position: absolute;
-    top:0px;
+    top: 0px;
     transform: translateX(100vw);
     opacity: 1;
   }
-  .menuright-leave,.menuleft-enter-to {
+
+  .menuright-leave, .menuleft-enter-to {
     position: absolute;
-    top:0px;
+    top: 0px;
     /*left:0;*/
   }
-  .menuright-enter-to,.menuleft-leave{
+
+  .menuright-enter-to, .menuleft-leave {
     position: absolute;
-    top:0px;
+    top: 0px;
   }
-  .menuright-enter,.menuleft-leave-to {
+
+  .menuright-enter, .menuleft-leave-to {
     position: absolute;
-    top:0px;
+    top: 0px;
     transform: translateX(-100vw);
     opacity: 1;
   }

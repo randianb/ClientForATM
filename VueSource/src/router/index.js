@@ -10,11 +10,10 @@ Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [
-    { path: '/', component: Ads },
-    { path: '/TradeMenu', component: TradeMenu },
-    { path: '/admin-menu', component: AdminMenu },
-    { path: '/step-navigator/:name/:code', component: StepNavigator },
+    {path: '/', component: Ads},
+    {path: '/TradeMenu', component: TradeMenu},
+    {path: '/admin-menu', component: AdminMenu},
+    {path: '/step-navigator/:name/:code', name: 'StepNavigator', component: StepNavigator},
     // { path: '/Admin-page-navigator/:name/:code', component: AdminPageNavigator }
-    // /:name/:code
   ]
 })

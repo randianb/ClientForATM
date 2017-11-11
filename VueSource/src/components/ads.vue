@@ -35,7 +35,7 @@
         setTimeout(()=>{
           _this.mark++;
           _this.play();
-          },3000);
+          },10000);
       },
       touch(){
         this.$router.push('/TradeMenu');
@@ -60,6 +60,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .ads{
+    position: relative;
     background-color: white;
     overflow: hidden;
     height: 100vh;

@@ -9,8 +9,7 @@
 <script>
   export default {
   name: 'app',
-  created(){
-    var url=location.href;
+  mounted(){
     document.onkeypress=function (e) {
       console.log(e.keyCode);
       if(e.keyCode==116){//f5
@@ -24,6 +23,7 @@
         location.href='http://localhost:8088';
       }
     }
+//    setInterval(()=>{alert()},2000);
   },
 }
 </script>
@@ -34,7 +34,6 @@
     padding: 0;
   }
   #app {
-    position: relative;
     font-family: "Microsoft Yahei", Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

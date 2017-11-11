@@ -5,23 +5,19 @@
     <div class="content">
       <aside>
         <div class="list">
-          <div class="item">
-            <span class="num">1</span>
+          <div class="item" :class="{todo:(step<index)}" v-for="(item ,index) in steps">
+            <span class="num">{{index+1}}</span>
             <span class="div"></span>
-            <span class="name">刷身份证</span>
-          </div>
-          <div class="item">
-            <span class="num">1</span>
-            <span class="div"></span>
-            <span class="name">刷身份证</span>
+            <span class="name">{{item.name}}</span>
           </div>
         </div>
-        <button><img src="../../static/trade/home.png"> &nbsp;返回</button>
+        <button @click="msg"><img src="../../static/trade/home.png"> &nbsp;返回</button>
       </aside>
       <section>
         <div class="title">{{this.$route.params.name}}</div>
-        <div class="body">
-joifwejio
+        <div class="page-body">
+          {{steps[step].modules}}
+          <component :is="steps[step].modules"></component>
         </div>
       </section>
     </div>
@@ -36,46 +32,48 @@ joifwejio
   import Foot from './Foot'
 
   export default {
+    name:'StepNavigator',
     components:{
       'header-view':Head,
       'footer-view':Foot,
     },
     data () {
       return {
-//        title:this.$router.pa
-        msg: 'default',
-        second:'',
-        flag:true
+        steps:[{name:"",modules:""}],
+        step:0,
       }
     },
-    created(){
-
+    mounted(){
+      eval("this.steps="+(/object=(.[^;]*)(;|$)/.exec(document.cookie))[1]);
     },
     methods:{
-      async read () {
-//      this.csharp.toVsBus('');
-        var a11=3;
-        a11=await t.did().then((res)=>{console.log(res);})
-          .catch((err)=>{console.log(err);});
-//      var c=0;
-//      for (var i = 0; i < 300000; i++) {
-//        c++;
-//      }
-        console.log("in hello");
-//      console.log(this.csharp);
-        console.log(a11);
+      msg(){
+        this.step++;
       },
-      b(){
-        console.log(this.$route.params)
-      },
-      head1(){
-        var aa=this;
-        setTimeout(function(){
-          aa.second= (new Date()).getMilliseconds().toString();
-          aa.head1();
-        },520);
+//      async read () {
+////      this.csharp.toVsBus('');
+//        var a11=3;
+//        a11=await t.did().then((res)=>{console.log(res);})
+//          .catch((err)=>{console.log(err);});
+////      var c=0;
+////      for (var i = 0; i < 300000; i++) {
+////        c++;
+////      }
+//        console.log("in hello");
+////      console.log(this.csharp);
+//        console.log(a11);
+//      },
+//      b(){
+//        console.log(this.$route.params)
+//      },
+//      head1(){
+//        var aa=this;
+//        setTimeout(function(){
+//          aa.second= (new Date()).getMilliseconds().toString();
+//          aa.head1();
+//        },520);
 
-      }
+//      }
     }
   }
 </script>
@@ -84,17 +82,30 @@ joifwejio
 <style scoped>
   .list > :last-child .div{
     display: none ;
-    /*border: 3px solid black !important;*/
   }
   .clearfix::after{
     content:"";
     clear: both;
   }
+  .container{
+    color: #896e6e;
+    background-color: #f5f9ed;
+    width: 100vw;
+    height: 900px;
+    /*height: 100vh;*/
+  }
+  .content{
+    height: 700px;
+    text-align: left;
+    width: 1300px;
+    margin: 0 auto;
+    position: relative;
+  }
   aside{
+    box-sizing: border-box;
     height: 100%;
     display: inline-block;
-    /*min-height: 400px;*/
-    width: 220px;
+    width: 280px;
     padding-left: 30px;
     padding-top: 60px;
     text-align: left;
@@ -103,9 +114,6 @@ joifwejio
   section{
     width: 980px;
     display: inline-block;
-    /*position: absolute;*/
-    /*top:0;*/
-    /*padding-left: 280px;*/
     height: 700px;
     vertical-align: top;
   }
@@ -114,7 +122,7 @@ joifwejio
     font-size: 24px;
     line-height: 60px;
   }
-  section .body{
+  section .page-body{
     background-color: white;
     border: 2px solid #dcd2c0;
     border-radius: 8px;
@@ -127,13 +135,13 @@ joifwejio
     position: relative;
   }
   .item span{
-    line-height: 40px;
+    line-height: 34px;
     display: inline-block;
   }
   .item .num{
-    width: 40px;
-    height: 40px;
-    border: none ;
+    width: 34px;
+    height: 34px;
+    border: 3px solid #e74a41;
     text-align: center;
     border-radius: 50%;
     background-color: #e74a41;
@@ -141,6 +149,10 @@ joifwejio
     margin-right: 10px;
   }
   .item .name{
+    position: absolute;
+    top:0;
+    color:#e74a41;
+    font-weight: bold;
   }
   .item .div{
     border: solid #e74a41;
@@ -149,18 +161,17 @@ joifwejio
     top:40px;
     left:18px;
   }
-  .container{
-    color: #896e6e;
+  .todo .num{
     background-color: #f5f9ed;
-    width: 100vw;
-    height: 900px;
+    color: #896e6e;
+    border-color: #896e6e;
   }
-  .content{
-    /*height: 100%;*/
-    text-align: left;
-    width: 1300px;
-    margin: 0 auto;
-    position: relative;
+  .todo .name{
+    font-weight: normal;
+    color: #896e6e;
+  }
+  .todo .div{
+    border-color: #896e6e;
   }
   button{
     width: 200px;

@@ -8,49 +8,95 @@
         "tradeName": "开户",
         "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
-        "flow": ["readIDCard","fingerPrints","putNote"],
+        "flow": [
+          {
+            "name": "请插入身份证",
+            "modules": "readIDCard"
+          },
+          {
+            "name": "请输入指纹",
+            "modules": "fingerPrints"
+          },
+          {
+            "name": "请放入钞票",
+            "modules": "putNote"
+          }
+        ],
         "code": 1001
       },
       {
         "tradeName": "借记卡领卡",
         "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
-        "flow": ["readIDCard","fingerPrints","putNote"],
+        "flow":[
+          {
+            "name": "请插入身份证1",
+            "modules": "readIDCard"
+          },
+          {
+            "name": "请输入指纹1",
+            "modules": "fingerPrints"
+          },
+          {
+            "name": "请放入钞票1",
+            "modules": "putNote"
+          }
+        ],
         "code": 1002
       },
       {
         "tradeName": "按证件号查询持卡人卡号",
         "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
-        "flow": ["readIDCard","fingerPrints","putNote"],
+        "flow": [
+          "readIDCard",
+          "fingerPrints",
+          "putNote"
+        ],
         "code": 1003
       },
       {
         "tradeName": "基本账户查询",
         "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
-        "flow": ["readIDCard","fingerPrints","putNote"],
+        "flow": [
+          "readIDCard",
+          "fingerPrints",
+          "putNote"
+        ],
         "code": 1004
       },
       {
         "tradeName": "借记卡密码重置",
         "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
-        "flow": ["readIDCard","fingerPrints","putNote"],
+        "flow": [
+          "readIDCard",
+          "fingerPrints",
+          "putNote"
+        ],
         "code": 1005
       },
       {
         "tradeName": "补登折",
         "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
-        "flow": ["readIDCard","fingerPrints","putNote"],
+        "flow": [
+          "readIDCard",
+          "fingerPrints",
+          "putNote"
+        ],
         "code": 1006
       },
       {
         "tradeName": "存折补磁",
         "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
-        "flow": ["readIDCard","fingerPrints","putNote"],
+        "flow": [
+          "readIDCard",
+          "fingerPrints",
+          "putNote"
+        ],
         "code": 1007
       }
     ]
@@ -64,7 +110,11 @@
         "tradeName": "  活期交易明细查询打印",
         "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
-        "flow": ["readIDCard","fingerPrints","putNote"],
+        "flow": [
+          "readIDCard",
+          "fingerPrints",
+          "putNote"
+        ],
         "code": 2001
       }
     ]
@@ -78,7 +128,11 @@
         "tradeName": "  活期交易明细查询打印",
         "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
-        "flow": ["readIDCard","fingerPrints","putNote"],
+        "flow": [
+          "readIDCard",
+          "fingerPrints",
+          "putNote"
+        ],
         "code": 2001
       }
     ]
@@ -92,7 +146,11 @@
         "tradeName": "  活期交易明细查询打印",
         "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
-        "flow": ["readIDCard","fingerPrints","putNote"],
+        "flow": [
+          "readIDCard",
+          "fingerPrints",
+          "putNote"
+        ],
         "code": 2001
       }
     ]
@@ -106,7 +164,11 @@
         "tradeName": "  活期交易明细查询打印",
         "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
-        "flow": ["readIDCard","fingerPrints","putNote"],
+        "flow": [
+          "readIDCard",
+          "fingerPrints",
+          "putNote"
+        ],
         "code": 2001
       }
     ]
@@ -120,7 +182,11 @@
         "tradeName": "  活期交易明细查询打印",
         "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
-        "flow": ["readIDCard","fingerPrints","putNote"],
+        "flow": [
+          "readIDCard",
+          "fingerPrints",
+          "putNote"
+        ],
         "code": 2001
       }
     ]
@@ -134,7 +200,11 @@
         "tradeName": "  活期交易明细查询打印",
         "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
-        "flow": ["readIDCard","fingerPrints","putNote"],
+        "flow": [
+          "readIDCard",
+          "fingerPrints",
+          "putNote"
+        ],
         "code": 2001
       }
     ]
@@ -148,7 +218,11 @@
         "tradeName": "  活期交易明细查询打印",
         "iconPath": "",
         "isEnabled": true,
-        "flow": ["readIDCard","fingerPrints","putNote"],
+        "flow": [
+          "readIDCard",
+          "fingerPrints",
+          "putNote"
+        ],
         "code": 2001
       }
     ]
@@ -162,7 +236,11 @@
         "tradeName": "  活期交易明细查询打印",
         "iconPath": "",
         "isEnabled": true,
-        "flow": ["readIDCard","fingerPrints","putNote"],
+        "flow": [
+          "readIDCard",
+          "fingerPrints",
+          "putNote"
+        ],
         "code": 2001
       }
     ]
