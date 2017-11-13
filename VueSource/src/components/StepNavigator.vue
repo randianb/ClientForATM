@@ -16,13 +16,12 @@
       <section>
         <div class="title">{{this.$route.params.name}}</div>
         <div class="page-body">
-          {{steps[step].modules}}
-          <component :is="steps[step].modules"></component>
+          <comp-body @dataHub="alert('f')" :dataContext="tradeData" :compName="steps[step].modules"></comp-body>
         </div>
       </section>
     </div>
 
-    <footer-view></footer-view>
+    <!--<footer-view></footer-view>-->
   </div>
 </template>
 
@@ -30,10 +29,12 @@
   import t from '../device/test'
   import Head from './Head'
   import Foot from './Foot'
+  import CompBody from '../modules/shared/compBody'
 
   export default {
     name:'StepNavigator',
     components:{
+      'compBody': CompBody,
       'header-view':Head,
       'footer-view':Foot,
     },
@@ -41,9 +42,15 @@
       return {
         steps:[{name:"",modules:""}],
         step:0,
+        tradeData:{a:1},
       }
     },
     mounted(){
+      var _this=this;
+      this.$root.dataHub.$on('data',(newData)=>{
+        Object.assign(_this.tradeData,newData);
+        console.log(_this.tradeData);
+      });
       eval("this.steps="+(/object=(.[^;]*)(;|$)/.exec(document.cookie))[1]);
     },
     methods:{
@@ -74,7 +81,8 @@
 //        },520);
 
 //      }
-    }
+    },
+
   }
 </script>
 
@@ -95,7 +103,7 @@
     /*height: 100vh;*/
   }
   .content{
-    height: 700px;
+    height: 640px;
     text-align: left;
     width: 1300px;
     margin: 0 auto;
@@ -114,7 +122,7 @@
   section{
     width: 980px;
     display: inline-block;
-    height: 700px;
+    height: 640px;
     vertical-align: top;
   }
   section .title{
@@ -124,7 +132,7 @@
   }
   section .page-body{
     background-color: white;
-    border: 2px solid #dcd2c0;
+    border: 1px solid #dcd2c0;
     border-radius: 8px;
 
   }
@@ -162,16 +170,16 @@
     left:18px;
   }
   .todo .num{
-    background-color: #f5f9ed;
+    background-color: #e2e2e2;
     color: #896e6e;
-    border-color: #896e6e;
+    border-color: #e2e2e2;
   }
   .todo .name{
     font-weight: normal;
     color: #896e6e;
   }
   .todo .div{
-    border-color: #896e6e;
+    border-color: #d0d0d0;
   }
   button{
     width: 200px;
@@ -184,7 +192,7 @@
     display: block;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    bottom: 0px;
   }
   button img{
     height: 24px;

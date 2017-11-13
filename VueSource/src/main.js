@@ -11,7 +11,10 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App }
+  components: { App },
+  data:{
+    dataHub:new Vue(),
+  },
 });
 // var csharp={a:1};
 Vue.prototype.csharp=csharp;

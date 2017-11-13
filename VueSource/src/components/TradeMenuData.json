@@ -19,7 +19,7 @@
           },
           {
             "name": "请放入钞票",
-            "modules": "putNote"
+            "modules": "putNotes"
           }
         ],
         "code": 1001
