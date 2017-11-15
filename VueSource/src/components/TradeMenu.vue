@@ -3,7 +3,7 @@
     <header-view></header-view>
 
     <nav>
-      <button class="btn1" @click="upward">返回上一级</button>
+      <button class="btn1" @click="upward" v-if="!(tradeMenuSource==tradeMenu)">返回上一级</button>
       <button class="btn2">退出</button>
     </nav>
     <div class="content">

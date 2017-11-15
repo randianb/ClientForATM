@@ -9,11 +9,15 @@
 <script>
   import readIDCard from './readIDCard'
   import fingerPrints from './fingerPrints'
+  import putNote from './putNote'
+  import printReceipt from './printReceipt'
 
   export default {
     components: {
-      'readIDCard':readIDCard,
-      'fingerPrints':fingerPrints,
+      readIDCard,
+      fingerPrints,
+      putNote,
+      printReceipt,
     },
     data () {
       return {
@@ -23,9 +27,6 @@
       }
     },
     props: ['compName','dataContext'],
-    created(){
-
-    },
     methods: {}
   }
 </script>
@@ -41,13 +42,17 @@
   }
   .page-enter-active {
     animation-delay: 0.1s;
-    animation-duration: 0.6s;
+    animation-duration: .7s;
     animation-fill-mode: both;
     animation-name: fadeInUp;
   }
 
   @keyframes fadeInUp {
-    from {
+    0%{
+      opacity: 0;
+      transform: translate3d(0, 100%, 0);
+    }
+    50%{
       opacity: 0;
       transform: translate3d(0, 100%, 0);
     }

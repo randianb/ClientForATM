@@ -11,7 +11,7 @@
             <span class="name">{{item.name}}</span>
           </div>
         </div>
-        <button @click="msg"><img src="../../static/trade/home.png"> &nbsp;返回</button>
+        <button @click=""><img src="../../static/trade/home.png"> &nbsp;返回</button>
       </aside>
       <section>
         <div class="title">{{this.$route.params.name}}</div>
@@ -42,47 +42,33 @@
       return {
         steps:[{name:"",modules:""}],
         step:0,
-        tradeData:{a:1},
+        tradeData:{errCode:0},
       }
     },
     mounted(){
-      var _this=this;
       this.$root.dataHub.$on('data',(newData)=>{
-        Object.assign(_this.tradeData,newData);
-        console.log(_this.tradeData);
+//      更新数据上下文
+        Object.assign(this.tradeData,newData);
+      });
+      this.$root.dataHub.$on('goNext',()=>{
+        this.goNext();
       });
       eval("this.steps="+(/object=(.[^;]*)(;|$)/.exec(document.cookie))[1]);
     },
     methods:{
-      msg(){
+      goNext(){
         this.step++;
+        console.log(this.step);
+        if(this.step>=this.steps.length){
+          this.$router.push('/TradeMenu')
+          this.step=0;
+        }
       },
-//      async read () {
-////      this.csharp.toVsBus('');
-//        var a11=3;
-//        a11=await t.did().then((res)=>{console.log(res);})
-//          .catch((err)=>{console.log(err);});
-////      var c=0;
-////      for (var i = 0; i < 300000; i++) {
-////        c++;
-////      }
-//        console.log("in hello");
-////      console.log(this.csharp);
-//        console.log(a11);
-//      },
-//      b(){
-//        console.log(this.$route.params)
-//      },
-//      head1(){
-//        var aa=this;
-//        setTimeout(function(){
-//          aa.second= (new Date()).getMilliseconds().toString();
-//          aa.head1();
-//        },520);
-
-//      }
     },
-
+    beforeDestroy(){
+      this.$root.dataHub.$off('data');
+      this.$root.dataHub.$off('goNext');
+    },
   }
 </script>
 

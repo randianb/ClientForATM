@@ -19,7 +19,10 @@
           },
           {
             "name": "请放入钞票",
-            "modules": "putNotes"
+            "modules": "putNote"
+          },{
+            "name":"打印凭条",
+            "modules":"printReceipt"
           }
         ],
         "code": 1001

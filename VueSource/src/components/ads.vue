@@ -1,7 +1,7 @@
 <template>
   <div class="ads">
     <transition-group name="ad">
-      <img v-for="(item,index) in loc" :key="index" @click="touch" v-if="index==mark" :src="item" alt=""/>
+      <img class="ad-leave" v-for="(item,index) in loc" :key="index" @click="touch" v-if="index==mark" :src="item" alt=""/>
     </transition-group>
   </div>
 </template>
@@ -35,7 +35,7 @@
         setTimeout(()=>{
           _this.mark++;
           _this.play();
-          },10000);
+          },6000);
       },
       touch(){
         this.$router.push('/TradeMenu');
@@ -62,35 +62,41 @@
   .ads{
     position: relative;
     background-color: white;
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
-    position: relative;
+    /*overflow: hidden;*/
+    /*height: 100vh;*/
+    /*width: 100vw;*/
+    height: 400px;
+    width: 800px;
+    /*margin-left: 300px;*/
   }
   img{
-    width: 100%;
-    height:100%;
+    height: 400px;
+    width: 800px;
+    margin: 0;
+    display: block;
+    /*width: 100%;*/
+    /*height:100%;*/
   }
   .ad-enter-active {
     position: absolute;
     top:0;
-    transition: all .5s ease;
+    transition: all 5.5s ease;
   }
   .ad-leave-active {
     position: absolute;
     top:0;
-    transition: all .5s ease;
+    transition: all 5.5s ease;
   }
   .ad-enter {
     position: absolute;
     top:0;
-    transform: translateX(-100vw);
+    transform: translateX(-600px);
+    /*transform: translateX(-100vw);*/
     opacity: 1;
   }
   .ad-enter-to {
     position: absolute;
     top:0;
-    left:0;
   }
   .ad-leave{
     position: absolute;
@@ -99,7 +105,8 @@
   .ad-leave-to {
     position: absolute;
     top:0;
-    transform: translateX(100vw);
+    transform: translateX(600px);
+    /*transform: translateX(100vw);*/
     opacity: 1;
   }
 </style>

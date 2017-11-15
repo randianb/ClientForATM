@@ -8,10 +8,26 @@
   <style type="text/css">
     body{
       margin: 0;
+      padding: 0;
+    }
+    #cs{
+      width: 400px;
+      height: 200px;
+      background-color: #42b983;
+      position: relative;
+    }
+    .cs{
+      position: absolute;
+      width: 400px;
+      height: 200px;
+      background-color: #896e6e;
     }
   </style>
   <body>
-    <!--<div id="cs">return value</div>-->
+    <!--<div id="cs">-->
+      <!--&lt;!&ndash;device event&ndash;&gt;-->
+      <!--<div class="cs"></div>-->
+    <!--</div>-->
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
@@ -27,21 +43,18 @@
 //    });
     var evt = document.createEvent('HTMLEvents');
     evt.initEvent("device", false, true);
+
 var el=document.getElementById('cs');
-//el.addEventListener('click',vueDevice);
-//el.addEventListener('device',function () {
-//  console.log('device1');
-//});
-//function a() {
-//  console.log('dispatch');
-//  el.dispatchEvent(evt);
-//}
+el.addEventListener('click',a);
+el.addEventListener('device',function () {
 
-
+});
     function vueDevice() {
-      console.log('vueDevice');
-      var ele=document.getElementById('img');
-      ele.click();
+
+    }
+    function a() {
+//      console.log('vueDevice');
+      el.dispatchEvent(evt);
     }
   </script>
 </html>

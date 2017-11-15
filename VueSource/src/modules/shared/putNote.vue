@@ -1,10 +1,11 @@
 <template>
   <div class="fingerPrint">
-    <div class="title">请柜员输入指纹 完成授权</div>
+    <div class="title">请放入钞票</div>
     <div class="line"></div>
     <div class="option">
       <div>
-        <img @click="goNext" :src="imgPath" alt="">
+        <img :src="imgPath" alt="">
+        <button class="buttons" @click="goNext">放钞完成</button>
       </div>
     </div>
   </div>
@@ -18,16 +19,15 @@
     },
     data () {
       return {
-        imgPath:"../../../static/trade/fingerPrints.png",
+        imgPath:"../../../static/trade/cash.png",
       }
     },
     props:['dataContext'],
     created(){
-
     },
     methods: {
       goNext(){
-        this.$root.dataHub.$emit('data',{prints:'base64'});
+        this.$root.dataHub.$emit('data',{cash:0,errCode:1});
         this.$root.dataHub.$emit('goNext');
       }
     },
@@ -41,11 +41,13 @@
     overflow: hidden;
   }
   .option >div{
-    width: 340px;
-    margin: 80px auto 0;
+    width: 640px;
+    margin: 30px auto 0;
+    position: relative;
   }
   .option div img{
     width: 100%;
+    display: block;
   }
   .title{
     font-size: 30px;
@@ -58,6 +60,11 @@
     border-top:1px solid #dcd2c0;
     width: 90%;
     margin: 30px auto 0;
+  }
+  button{
+    position: absolute;
+    right: 0;
+    margin:20px 20px 0;
   }
   h1, h2 {
     font-weight: normal;

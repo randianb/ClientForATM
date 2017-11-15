@@ -29,7 +29,17 @@
 </script>
 
 <style>
-
+  button{
+    width: 170px;
+    height: 50px;
+    font-size: 24px;
+    color: white;
+    background-color: #e74a41;
+    border-radius: 8px;
+    border: 2px solid #e74a41;
+    display: inline-block;
+    margin: 0 50px 0;
+  }
   .clearfix::after{
     content: '';
     clear: both;

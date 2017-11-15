@@ -4,7 +4,7 @@
       <div class="title">请插入您的二代居民身份证，直至读取完成</div>
       <div class="line"></div>
       <div class="option">
-        <div @click="cha" class="insertIDcard" :style="{ 'background-image': `url(${imgPath})` }">
+        <div @click="onn" :style="{ 'background-image': `url(${imgPath})` }">
         </div>
       </div>
     </div>
@@ -41,8 +41,8 @@
         </div>
       </div>
       <div class="buttons">
-        <button @click='onNavigated'>重新读取</button>
-        <button @click='goNext'>下一步</button>
+        <button class="buttonL" @click='reload'>重新读取</button>
+        <button class="buttonR" @click='goNext'>下一步</button>
       </div>
 
     </div>
@@ -57,7 +57,7 @@
     },
     data () {
       return {
-        show:false,
+        show:true,
         imgPath:'../../../static/trade/insertIDCard.gif',
         frontImage:"../../../static/trade/id1.jpg",
         backImage:"../../../static/trade/id2.jpg",
@@ -67,14 +67,16 @@
     created(){
     },
     methods: {
-      cha(){
-        this.show=!this.show;
+      reload(){
+        this.show=true;
       },
-      b(){
-        let a='131';
-        this.$root.dataHub.$emit('data',{idcode:a});
+      goNext(){
+        this.$root.dataHub.$emit('goNext');
+        this.$root.dataHub.$emit('data',{code:1311311313131313131});
       },
-
+      onn(){
+        this.show=false;
+      },
     },
   }
 </script>
@@ -86,10 +88,11 @@
     margin: 20px auto 0;
     position: relative;
     display: block;
+    position: relative;
   }
   .photos .IDPhoto{
     float: left;
-    width: 49%;
+    width: 49.7%;
   }
   .IDPhoto img{
     height:160px;
@@ -134,17 +137,16 @@
     width: 90%;
     margin: 30px auto 0;
   }
-  button{
-    width: 170px;
-    height: 50px;
-    font-size: 24px;
-    color: white;
-    background-color: #e74a41;
-    border-radius: 8px;
-    border: 0;
-    display: inline-block;
+  .buttonL{
+    color: #e74a41;
+    background-color: white;
+    border-color: #e74a41;
+    font-weight: bold;
   }
-
+  .buttonR{
+    position: absolute;
+    right: 0;
+  }
   h1, h2 {
     font-weight: normal;
     cursor: pointer;
