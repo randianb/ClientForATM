@@ -29,6 +29,12 @@
 </script>
 
 <style>
+
+  .clearfix::after{
+    content: '';
+    clear: both;
+    display: block;
+  }
   body{
     margin: 0;
     padding: 0;

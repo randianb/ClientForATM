@@ -26,60 +26,14 @@
     created(){
 
     },
-    methods: {
-      da(){
-        console.log(this.dataContext1);
-      },
-      async read () {
-//      this.csharp.toVsBus('');
-        var a11 = 3;
-        a11 = await t.did().then((res) => {
-          console.log(res);
-        })
-          .catch((err) => {
-            console.log(err);
-          });
-//      var c=0;
-//      for (var i = 0; i < 300000; i++) {
-//        c++;
-//      }
-        console.log("in hello");
-//      console.log(this.csharp);
-        console.log(a11);
-      },
-      b(){
-      },
-      head1(){
-        var aa = this;
-        setTimeout(function () {
-          aa.second = (new Date()).getMilliseconds().toString();
-          aa.head1();
-        }, 520);
-
-      }
-    }
+    methods: {}
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .body{
-    height: 580px;
-  }
-  h1, h2 {
-    font-weight: normal;
-    cursor: pointer;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-    background-color: yellow;
+    height: 100%;
   }
 
   a {

@@ -4,51 +4,45 @@
       <div class="title">请插入您的二代居民身份证，直至读取完成</div>
       <div class="line"></div>
       <div class="option">
-        <div class="insertIDcard" :style="{ 'background-image': `url(${bgImg})` }">
+        <div @click="cha" class="insertIDcard" :style="{ 'background-image': `url(${imgPath})` }">
         </div>
       </div>
     </div>
 
-    <div class="showIDInfo" v-else-if="!show">
+    <div class="showIDInfo" v-if="!show">
       <div class='title'>请确认信息是否无误并取走身份证</div>
       <div class='line'></div>
-      <aui-row>
-        <aui-col justify="left">
-          <div class='detail' style='margin-left: 20%;'>
-            <aui-row>
-              <aui-col class="detailFont" justify="left">姓&nbsp;&nbsp;&nbsp;&nbsp;名：{{this.session.Customer.Name}}</aui-col>
-            </aui-row>
-            <aui-row>
-              <aui-col class="detailFont" justify="left">身份证号：{{this.session.Customer.CtfNum}}</aui-col>
-            </aui-row>
-            <aui-row>
-              <aui-col class="detailFont2" justify="left">性&nbsp;&nbsp;&nbsp;&nbsp;别：{{dm.Gnd}}</aui-col>
-              <aui-col class="detailFont2" justify="left">民族：{{dm.EthcGrp}}</aui-col>
-            </aui-row>
-            <aui-row>
-              <aui-col class="detailFont" justify="left">出生日期：{{dm.IdBirthday}}</aui-col>
-            </aui-row>
-            <aui-row>
-              <aui-col class="detailFont" justify="left" span='20'>住&nbsp;&nbsp;&nbsp;&nbsp;址：{{this.session.Customer.IdAddress}}</aui-col>
-            </aui-row>
-          </div>
-        </aui-col>
-      </aui-row>
-      <div style="margin-top: 20px;">
-        <div class='IDPhoto' style="margin-left: 20%;">
-          <img :src="dm.IDCardFrontImage" alt="身份证正面照片" height='160px' width='260px' style='border-radius: 8px;'>
+      <div class='detail'>
+        <tr>
+          <th class="detailFont" justify="left">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：动 林</th>
+        </tr>
+        <tr>
+          <th class="detailFont" justify="left">身份证号：131131131313131313</th>
+        </tr>
+        <tr>
+          <th class="detailFont2" justify="left">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：男</th>
+          <th class="detailFont2" justify="left">民&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;族：汉</th>
+        </tr>
+        <tr>
+          <th class="detailFont" justify="left">出生日期：1989.1.1</th>
+        </tr>
+        <tr>
+          <th class="detailFont" justify="left" span='20'>住&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;址：星海东街32号</th>
+        </tr>
+      </div>
+      <div class="photos clearfix">
+        <div class='IDPhoto'>
+          <img :src="frontImage" alt="身份证正面照片">
+          <div class="description">身份证正面</div>
         </div>
-        <div class='IDPhoto' style="margin-left: 5%;">
-          <img :src="dm.IDCardBackImage" alt="身份证背面照片" height='160px' width='260px' style='border-radius: 8px;'>
+        <div class='IDPhoto'>
+          <img :src="backImage" alt="身份证背面照片">
+          <div class="description">身份证反面</div>
         </div>
       </div>
-      <aui-row>
-        <aui-col class="detailFont2" style='margin-left: 23%;'>身份证正面</aui-col>
-        <aui-col class="detailFont2" style='margin-left: 14%;'>身份证反面</aui-col>
-      </aui-row>
-      <div style='position: absolute; bottom:40px; right: 20%;'>
-        <aui-button @click='onNavigated' style="margin-right: 200px">重新读取</aui-button>
-        <aui-button :fill="true" @click='goNext'>下一步</aui-button>
+      <div class="buttons">
+        <button @click='onNavigated'>重新读取</button>
+        <button @click='goNext'>下一步</button>
       </div>
 
     </div>
@@ -63,13 +57,19 @@
     },
     data () {
       return {
-        show:true,
+        show:false,
+        imgPath:'../../../static/trade/insertIDCard.gif',
+        frontImage:"../../../static/trade/id1.jpg",
+        backImage:"../../../static/trade/id2.jpg",
       }
     },
     props:['dataContext'],
     created(){
     },
     methods: {
+      cha(){
+        this.show=!this.show;
+      },
       b(){
         let a='131';
         this.$root.dataHub.$emit('data',{idcode:a});
@@ -81,6 +81,70 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .buttons,.photos{
+    width: 60%;
+    margin: 20px auto 0;
+    position: relative;
+    display: block;
+  }
+  .photos .IDPhoto{
+    float: left;
+    width: 49%;
+  }
+  .IDPhoto img{
+    height:160px;
+    width:260px;
+    border-radius: 8px;
+    margin: 0 auto;
+    display: block;
+  }
+  .IDPhoto div{
+    text-align: center;
+    margin-top: 10px;
+  }
+  .detail{
+    width: 60%;
+    margin: 30px auto 0;
+    font-size: 24px;
+  }
+  .detail th{
+    font-weight: 100;
+    padding: 0 30px 0 0;
+  }
+  .option{
+    height: 560px;
+    overflow: hidden;
+  }
+  .option >div{
+    height: 400px;
+    width: 340px;
+    background-repeat: no-repeat;
+    margin: 130px auto 0;
+
+  }
+  .title{
+    font-size: 30px;
+    height: 40px;
+    padding-top: 40px;
+    text-align: center;
+  }
+  .line{
+    height: 0px;
+    border-top:1px solid #dcd2c0;
+    width: 90%;
+    margin: 30px auto 0;
+  }
+  button{
+    width: 170px;
+    height: 50px;
+    font-size: 24px;
+    color: white;
+    background-color: #e74a41;
+    border-radius: 8px;
+    border: 0;
+    display: inline-block;
+  }
+
   h1, h2 {
     font-weight: normal;
     cursor: pointer;

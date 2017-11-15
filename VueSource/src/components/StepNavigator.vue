@@ -103,7 +103,7 @@
     /*height: 100vh;*/
   }
   .content{
-    height: 640px;
+    height: 700px;
     text-align: left;
     width: 1300px;
     margin: 0 auto;
@@ -122,7 +122,7 @@
   section{
     width: 980px;
     display: inline-block;
-    height: 640px;
+    height: 700px;
     vertical-align: top;
   }
   section .title{
@@ -134,7 +134,7 @@
     background-color: white;
     border: 1px solid #dcd2c0;
     border-radius: 8px;
-
+    height: 640px;
   }
 
   .item{
