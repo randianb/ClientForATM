@@ -4,7 +4,7 @@
       <div class="title">请插入您的二代居民身份证，直至读取完成</div>
       <div class="line"></div>
       <div class="option">
-        <div @click="onn" :style="{ 'background-image': `url(${imgPath})` }">
+        <div :style="{ 'background-image': `url(${imgPath})` }">
         </div>
       </div>
     </div>
@@ -50,7 +50,7 @@
 </template>
 
 <script>
-  //  import t from '../device/test'
+  import IDCardReader from '../../device/IDCardReader'
 
   export default {
     components: {
@@ -64,17 +64,21 @@
       }
     },
     props:['dataContext'],
-    created(){
+    mounted(){
+      this.read();
     },
     methods: {
       reload(){
         this.show=true;
+        this.read();
       },
       goNext(){
         this.$root.dataHub.$emit('goNext');
-        this.$root.dataHub.$emit('data',{code:1311311313131313131});
       },
-      onn(){
+      async read(){
+        let a=await IDCardReader.readData(this).catch(()=>{
+          console.log('id card： error');
+        });
         this.show=false;
       },
     },

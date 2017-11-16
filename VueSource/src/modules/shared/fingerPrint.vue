@@ -20,7 +20,7 @@
       }
     },
     props: ['dataContext'],
-    async created(){
+    async mounted(){
       let a = await fingerPrint.readData(this).catch(() => {
         console.log('指纹： error');
       });
