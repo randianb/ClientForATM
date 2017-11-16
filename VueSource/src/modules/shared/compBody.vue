@@ -7,15 +7,16 @@
 </template>
 
 <script>
+  //  组件错误请同时检查tradeMenuData
   import readIDCard from './readIDCard'
-  import fingerPrints from './fingerPrints'
+  import fingerPrint from './fingerPrint'
   import putNote from './putNote'
   import printReceipt from './printReceipt'
 
   export default {
     components: {
       readIDCard,
-      fingerPrints,
+      fingerPrint,
       putNote,
       printReceipt,
     },
@@ -26,20 +27,21 @@
         flag: true
       }
     },
-    props: ['compName','dataContext'],
+    props: ['compName', 'dataContext'],
     methods: {}
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .body{
+  .body {
     height: 100%;
   }
 
   a {
     color: #42b983;
   }
+
   .page-enter-active {
     animation-delay: 0.1s;
     animation-duration: .7s;
@@ -48,11 +50,11 @@
   }
 
   @keyframes fadeInUp {
-    0%{
+    0% {
       opacity: 0;
       transform: translate3d(0, 100%, 0);
     }
-    50%{
+    50% {
       opacity: 0;
       transform: translate3d(0, 100%, 0);
     }

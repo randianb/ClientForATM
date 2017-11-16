@@ -15,7 +15,7 @@
           },
           {
             "name": "请输入指纹",
-            "modules": "fingerPrints"
+            "modules": "fingerPrint"
           },
           {
             "name": "请放入钞票",

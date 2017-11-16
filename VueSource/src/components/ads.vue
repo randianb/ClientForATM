@@ -7,7 +7,6 @@
 </template>
 
 <script>
-  import t from '../device/test'
   import adList from '../../static/list.json'
 
   export default {
@@ -62,36 +61,36 @@
   .ads{
     position: relative;
     background-color: white;
-    /*overflow: hidden;*/
-    /*height: 100vh;*/
-    /*width: 100vw;*/
-    height: 400px;
-    width: 800px;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    /*height: 400px;*/
+    /*width: 800px;*/
     /*margin-left: 300px;*/
   }
   img{
-    height: 400px;
-    width: 800px;
+    /*height: 400px;*/
+    /*width: 800px;*/
     margin: 0;
     display: block;
-    /*width: 100%;*/
-    /*height:100%;*/
+    width: 100%;
+    height:100%;
   }
   .ad-enter-active {
     position: absolute;
     top:0;
-    transition: all 5.5s ease;
+    transition: all .5s ease;
   }
   .ad-leave-active {
     position: absolute;
     top:0;
-    transition: all 5.5s ease;
+    transition: all .5s ease;
   }
   .ad-enter {
     position: absolute;
     top:0;
-    transform: translateX(-600px);
-    /*transform: translateX(-100vw);*/
+    /*transform: translateX(-800px);*/
+    transform: translateX(-100vw);
     opacity: 1;
   }
   .ad-enter-to {
@@ -105,8 +104,8 @@
   .ad-leave-to {
     position: absolute;
     top:0;
-    transform: translateX(600px);
-    /*transform: translateX(100vw);*/
+    /*transform: translateX(800px);*/
+    transform: translateX(100vw);
     opacity: 1;
   }
 </style>

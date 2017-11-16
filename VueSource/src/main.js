@@ -11,11 +11,10 @@ new Vue({
   el: '#app',
   router,
   template: '<App/>',
-  components: { App },
-  data:{
-    dataHub:new Vue(),
+  components: {App},
+  data: {
+    dataHub: new Vue(),
   },
 });
 // var csharp={a:1};
-Vue.prototype.csharp=csharp;
-// Vue.prototype.csharp.jsObject=a11;
+Vue.prototype.csharp = csharp;

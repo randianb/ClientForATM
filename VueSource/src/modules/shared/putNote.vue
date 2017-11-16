@@ -27,7 +27,7 @@
     },
     methods: {
       goNext(){
-        this.$root.dataHub.$emit('data',{cash:0,errCode:1});
+        this.$root.dataHub.$emit('data',{cash:0,errCode:0});
         this.$root.dataHub.$emit('goNext');
       }
     },

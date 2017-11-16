@@ -4,30 +4,31 @@
     <div class="line"></div>
     <div class="option">
       <div>
-        <img @click="goNext" :src="imgPath" alt="">
+        <img :src="imgPath" alt="">
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  //  import t from '../device/test'
+  import fingerPrint from '../../device/fingerprint'
 
   export default {
-    components: {
-    },
     data () {
       return {
-        imgPath:"../../../static/trade/fingerPrints.png",
+        imgPath: "../../../static/trade/fingerPrints.png",
       }
     },
-    props:['dataContext'],
-    created(){
-
+    props: ['dataContext'],
+    async created(){
+      let a = await fingerPrint.readData(this).catch(() => {
+        console.log('指纹： error');
+      });
+      this.goNext();
     },
     methods: {
       goNext(){
-        this.$root.dataHub.$emit('data',{prints:'base64'});
+        console.log(this.dataContext);
         this.$root.dataHub.$emit('goNext');
       }
     },
@@ -36,29 +37,34 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .option{
+  .option {
     height: 560px;
     overflow: hidden;
   }
-  .option >div{
+
+  .option > div {
     width: 340px;
     margin: 80px auto 0;
   }
-  .option div img{
+
+  .option div img {
     width: 100%;
   }
-  .title{
+
+  .title {
     font-size: 30px;
     height: 40px;
     padding-top: 40px;
     text-align: center;
   }
-  .line{
+
+  .line {
     height: 0px;
-    border-top:1px solid #dcd2c0;
+    border-top: 1px solid #dcd2c0;
     width: 90%;
     margin: 30px auto 0;
   }
+
   h1, h2 {
     font-weight: normal;
     cursor: pointer;

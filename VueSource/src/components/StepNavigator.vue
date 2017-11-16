@@ -11,12 +11,12 @@
             <span class="name">{{item.name}}</span>
           </div>
         </div>
-        <button @click=""><img src="../../static/trade/home.png"> &nbsp;返回</button>
+        <button @click="ret"><img src="../../static/trade/home.png"> &nbsp;返回</button>
       </aside>
       <section>
         <div class="title">{{this.$route.params.name}}</div>
         <div class="page-body">
-          <comp-body @dataHub="alert('f')" :dataContext="tradeData" :compName="steps[step].modules"></comp-body>
+          <comp-body :dataContext="dataContext" :compName="steps[step].modules"></comp-body>
         </div>
       </section>
     </div>
@@ -26,7 +26,6 @@
 </template>
 
 <script>
-  import t from '../device/test'
   import Head from './Head'
   import Foot from './Foot'
   import CompBody from '../modules/shared/compBody'
@@ -42,13 +41,13 @@
       return {
         steps:[{name:"",modules:""}],
         step:0,
-        tradeData:{errCode:0},
+        dataContext:{},
       }
     },
     mounted(){
       this.$root.dataHub.$on('data',(newData)=>{
 //      更新数据上下文
-        Object.assign(this.tradeData,newData);
+        Object.assign(this.dataContext,newData);
       });
       this.$root.dataHub.$on('goNext',()=>{
         this.goNext();
@@ -56,6 +55,9 @@
       eval("this.steps="+(/object=(.[^;]*)(;|$)/.exec(document.cookie))[1]);
     },
     methods:{
+      ret(){
+        this.$router.push('/TradeMenu');
+      },
       goNext(){
         this.step++;
         console.log(this.step);

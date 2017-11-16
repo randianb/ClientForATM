@@ -1,60 +1,89 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="utf-8">
-    <!-- saved from url=(0014) about:internet  -->
-    <title>atm</title>
-  </head>
-  <style type="text/css">
-    body{
-      margin: 0;
-      padding: 0;
-    }
-    #cs{
-      width: 400px;
-      height: 200px;
-      background-color: #42b983;
-      position: relative;
-    }
-    .cs{
-      position: absolute;
-      width: 400px;
-      height: 200px;
-      background-color: #896e6e;
-    }
-  </style>
-  <body>
-    <!--<div id="cs">-->
-      <!--&lt;!&ndash;device event&ndash;&gt;-->
-      <!--<div class="cs"></div>-->
-    <!--</div>-->
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
-  <script>
-//    Object.defineProperty(window,"a11",{
-//      set:function (val) {
-//        this.value=val;
-//
-//      },
-//      get:function () {
-//        return this.value;
-//      }
-//    });
-    var evt = document.createEvent('HTMLEvents');
-    evt.initEvent("device", false, true);
+<head>
+  <meta charset="utf-8">
+  <!-- saved from url=(0014) about:internet  -->
+  <title>atm</title>
+</head>
+<style type="text/css">
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .fp{display: inline-block;}
+</style>
+<body>
+<div class="fp">
+  设备响应<br>指纹
+</div>
+<div class="fp">
+  设备响应<br>身份证
+</div>
+<div class="fp">
+  设备响应<br>现金
+</div>
+<div id="app"></div>
+<!-- built files will be auto injected -->
+</body>
 
-var el=document.getElementById('cs');
-el.addEventListener('click',a);
-el.addEventListener('device',function () {
+<script>
+  function VD() {
+    let _this = this;
+    this.req = function (name, ...params) {
+      let str = '<root><devicename>';
+      str += name;
+      str = str + '</devicename>';
+      if (params.length == 0) {
+      }
+      str = str + '</root>';
+      console.log('下发数据');
+      console.log(str);
+    };
+    this.exec = function (suc, err) {
+      _this.suc = suc;
+      _this.err = err;
+    };
 
-});
-    function vueDevice() {
+    /*
+     * 响应数据结构
+     * errCode 错误均为负，0 正常，正数其他状态
+     * 错误时 example={errCode:-1,data:{msg:'error-message'}}
+     * 正确时 example={errCode:0,data:{idcode:131313,gender:'male'}}（身份证）
+     * 正确时 example={errCode:0,data:{pic:'FIOWU3273RYHUIFDJ384272HJIWE39'}}（指纹base64）
+     */
+    this.res = function (resStr) {
+//      resStr = "{errCode:-1,data:{msg:'error-message'}}";
+      let res={errCode:1};
+      resStr = "{errCode:1,data:{pic:'FIOWU3273RYHUIFDJ384272HJIWE3',msg:''},}";
+      eval('res=' + resStr);
+      if (res.errCode == 0) {
+        if (typeof _this.suc === "function") {
+          _this.suc(res.data);
+          return;
+        }
+      }
+      if (res.errCode > 0) {
+        if (typeof _this.suc === "function") {
+          _this.suc(res.data);
+          return;
+        }
+      }
+      if (typeof _this.err === "function") {
+        _this.err(res.data);
+        return;
+      }
+    }
+  }
+  const vueDevice = new VD();
 
-    }
-    function a() {
-//      console.log('vueDevice');
-      el.dispatchEvent(evt);
-    }
-  </script>
+  //    -------------------------------
+  //    硬件事件仿真
+  var el = document.getElementsByClassName('fp');
+  el[0].addEventListener('click', a);
+  el[1].addEventListener('click', a);
+  el[2].addEventListener('click', a);
+  function a() {
+    vueDevice.res('f');
+  }
+</script>
 </html>

@@ -4,7 +4,7 @@
 
     <nav>
       <button class="btn1" @click="upward" v-if="!(tradeMenuSource==tradeMenu)">返回上一级</button>
-      <button class="btn2">退出</button>
+      <button class="btn2" @click="d">退出</button>
     </nav>
     <div class="content">
       <transition-group :name="menu">
@@ -47,9 +47,23 @@
       this.tradeMenu = this.tradeMenuSource;
     },
     methods: {
-      a() {
-//        alert();
-        this.$router.push('/');
+      p(){
+        return new Promise((resolve, reject) => {
+          vueDevice.req('cardReader');
+          vueDevice.load(function (success) {
+            resolve(success);
+          }, function (error) {
+            resolve(error);
+          });
+//          resolve('promise resolve');
+//          setTimeout(reject('promise reject'),2000);
+        });
+      },
+      async d(){
+        var s = await this.p().catch((a) => {
+          console.log(a);
+        });
+        console.log('d:' + s);
       },
       mousedown(e) {
         this.xAxis = e.screenX;
@@ -69,16 +83,16 @@
         }
       },
       menuJump(item) {
-        document.cookie='object='+JSON.stringify(item.flow)+';';
+        document.cookie = 'object=' + JSON.stringify(item.flow) + ';';
         if (item.children && item.children.length > 0) {
           this.tradeMenu = item.children;
         } else {
           this.$router.push({
-            name:'StepNavigator',
+            name: 'StepNavigator',
             path: '/step-navigator',
-            params:{
-              code:item.code,
-              name:item.tradeName,
+            params: {
+              code: item.code,
+              name: item.tradeName,
             },
           });
         }
