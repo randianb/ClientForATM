@@ -96,7 +96,7 @@ namespace BankApp
             private void resolvejs(string xml)
             {
                 XmlDocument xd = new XmlDocument();
-                xd.Load(xml);
+                xd.LoadXml(xml);
                 XmlNode nd = xd.SelectSingleNode("/root/device");
                 string type = nd.InnerText;
                 Action<bool> t = new Action<bool>(fingerprints);
