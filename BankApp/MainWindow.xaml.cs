@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using cef;
 using CefSharp;
+using CefSharp.Wpf;
 
 namespace BankApp
 {
@@ -42,12 +43,39 @@ namespace BankApp
                     {
                         DefaultEncoding = "UTF-8"
                     },
-                JsDialogHandler = new BrowserDialog()
+                JsDialogHandler = new BrowserDialog(),
             };
-            Content = webView;
+            webView.PreviewTextInput += (obj, args) =>
+            {
+                foreach (var character in args.Text)
+                {
+                    // 把每个字符向浏览器组件发送一遍
+                    webView.GetBrowser().GetHost().SendKeyEvent((int)WM.CHAR, (int)character, 0);
+                }
+
+                // 不让cef自己处理
+                args.Handled = true;
+            };
+            webView.PreviewKeyDown += (obj, args) =>
+            {
+                if (args.Key.ToString() == "F5")
+                {
+                    webView.Address = "localhost";
+                }
+                if (args.Key.ToString() == "F12")
+                {
+                    webView.ShowDevTools();
+                }
+                if (args.Key.ToString() == "Back")
+                {
+                    webView.Back();
+                }
+            };
+
             webView.RegisterJsObject("csharp", new CallbackObjectForJs());
-            webView.Address = "file://E:/github/ClientForATM/WebPage/index.html";
+            webView.Address = "localhost";
             webView.FrameLoadEnd += OnLoadEnd;
+            Content = webView;
         }
 
         public void OnLoadEnd(object sender, FrameLoadEndEventArgs e)
@@ -61,8 +89,6 @@ namespace BankApp
         {
             public void toVsBus(string xml)
             {
-                webView.ShowDevTools();
-                //WebPageViewer._view.ShowDevTools();
                 resolvejs(xml);
                 //while (true) { }
             }
@@ -82,7 +108,7 @@ namespace BankApp
             public void fingerprints(bool status)
             {
                 Thread.Sleep(2000);
-                webView.ExecuteScriptAsync("vueDevice('fingerprints')");
+                webView.ExecuteScriptAsync("vueDevice.res('fingerprints')");
             }
         }
 

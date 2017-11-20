@@ -23,7 +23,7 @@ namespace BankApp
     /// </summary>
     public partial class start : UserControl
     {
-        simulation sml = new simulation();
+        Simulator sml = new Simulator();
         private ArrayList openDevice = new ArrayList();
         private ArrayList closeDevice = new ArrayList();
 
@@ -38,7 +38,7 @@ namespace BankApp
             Task t = new Task(()=> {
                 Thread.Sleep(1000);
                 ReadConfig();
-                LoadingDev();
+                LoadDev();
             });
             t.Start();
             Log.open();
@@ -48,38 +48,45 @@ namespace BankApp
         private void ReadConfig()
         {
             XmlDocument xd = new XmlDocument();
-            xd.Load(@"E:\BankAppBJKT\config\AppConfig.xml");
-            XmlNodeList opendev = xd.SelectNodes("/config/device/startUp/open");
-            foreach(XmlNode xn in opendev)
+            try
             {
-                openDevice.Add(xn.InnerText.Trim());
-            }
-            XmlNodeList closedev = xd.SelectNodes("/config/device/shutDown/close");
-            foreach (XmlNode xn in opendev)
-            {
-                closeDevice.Add(xn.InnerText.Trim());
-            }
-            zoomL= Convert.ToInt32(xd.SelectSingleNode("/config/UI/zoomLevel").InnerText.Trim());
-            //授权校验
-            string result = EncryptDES(
-                xd.SelectSingleNode("/config/license/time").InnerText.Trim(),
-                xd.SelectSingleNode("/config/license/keys").InnerText.Trim());
-            if (result != xd.SelectSingleNode("/config/license/coded").InnerText.Trim())
-            {
-                Exit("软件未授权");
-            }
-            else
-            {
-                DateTime dR = Convert.ToDateTime(xd.SelectSingleNode("/config/license/time").InnerText.Trim());
-                TimeSpan ts = DateTime.Now - dR;
-                if (ts.TotalDays > 0)
+                xd.Load(@"E:\github\ClientForATM\config\AppConfig.xml");
+                XmlNodeList opendev = xd.SelectNodes("/config/device/startUp/open");
+                foreach (XmlNode xn in opendev)
                 {
-                    Exit("授权已过期");
+                    openDevice.Add(xn.InnerText.Trim());
                 }
+                XmlNodeList closedev = xd.SelectNodes("/config/device/shutDown/close");
+                foreach (XmlNode xn in opendev)
+                {
+                    closeDevice.Add(xn.InnerText.Trim());
+                }
+                zoomL = Convert.ToInt32(xd.SelectSingleNode("/config/UI/zoomLevel").InnerText.Trim());
+                //授权校验
+                string result = EncryptDES(
+                    xd.SelectSingleNode("/config/license/time").InnerText.Trim(),
+                    xd.SelectSingleNode("/config/license/keys").InnerText.Trim());
+                if (result != xd.SelectSingleNode("/config/license/coded").InnerText.Trim())
+                {
+                    Exit("软件未授权");
+                }
+                else
+                {
+                    DateTime dR = Convert.ToDateTime(xd.SelectSingleNode("/config/license/time").InnerText.Trim());
+                    TimeSpan ts = DateTime.Now - dR;
+                    if (ts.TotalDays > 0)
+                    {
+                        Exit("授权已过期");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
             }
         }
 
-        private void LoadingDev()
+        private void LoadDev()
         {
             foreach (string name in openDevice)
             {

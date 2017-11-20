@@ -10,20 +10,6 @@
   export default {
   name: 'app',
   mounted(){
-    document.onkeypress=function (e) {
-      console.log(e.keyCode);
-      if(e.keyCode==116){//f5
-        this.$router.push('/')
-        console.log(e.keyCode);
-      }
-      if(e.keyCode==123){//f12
-        console.log(e.keyCode);
-      }
-      if(e.keyCode==61){//+
-        location.href='http://localhost:8088';
-      }
-    }
-//    setInterval(()=>{alert()},2000);
   },
 }
 </script>

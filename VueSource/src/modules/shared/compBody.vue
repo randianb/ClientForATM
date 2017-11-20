@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <transition mode="out-in" name="page">
-      <component :dataContext="dataContext" :is="compName"></component>
+      <component :is="compName"></component>
     </transition>
   </div>
 </template>
@@ -27,7 +27,7 @@
         flag: true
       }
     },
-    props: ['compName', 'dataContext'],
+    props: ['compName'],
     methods: {}
   }
 </script>

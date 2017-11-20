@@ -17,7 +17,7 @@
         <!--窗口属性-->
         <window>true</window>
         <!--缩放-->
-        <zoomLevel>3</zoomLevel>
+        <zoomLevel>-2</zoomLevel>
     </UI>
     <license>
         <time>

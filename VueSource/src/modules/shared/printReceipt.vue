@@ -7,7 +7,7 @@
       <img :src="imgPath" alt="成功">
       <div class="title2">{{msg}}</div>
       <div class="buttons">
-        <button v-if="dataContext.errCode==0" class="buttonL" @click="print">打印</button>
+        <button v-if="$root.dataContext.errCode==0" class="buttonL" @click="print">打印</button>
         <button class="buttonR" @click="goNext">确定</button>
       </div>
     </div>
@@ -26,9 +26,9 @@
         msg:"恭喜您，存款完成！",
       }
     },
-    props:['dataContext'],
     created(){
-      if(this.dataContext.errCode!=0){
+//      console.log(this.$root.dataContext);
+      if(this.$root.dataContext.errCode!=0){
         this.imgPath="../../../static/trade/AuthorizationFailer.png";
         this.msg="操作失败，请返回"
       }

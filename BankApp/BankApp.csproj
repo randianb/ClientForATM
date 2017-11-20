@@ -115,6 +115,7 @@
       <DependentUpon>MaskLoading.xaml</DependentUpon>
     </Compile>
     <Compile Include="simulation.cs" />
+    <Compile Include="Simulator.cs" />
     <Compile Include="start.xaml.cs">
       <DependentUpon>start.xaml</DependentUpon>
     </Compile>

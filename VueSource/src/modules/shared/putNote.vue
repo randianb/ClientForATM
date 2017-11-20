@@ -5,29 +5,32 @@
     <div class="option">
       <div>
         <img :src="imgPath" alt="">
-        <button class="buttons" @click="goNext">放钞完成</button>
+        <button class="buttons" @click="cashIn">放钞完成</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  //  import t from '../device/test'
+  import putNote from '../../device/putNote'
 
   export default {
-    components: {
-    },
+    components: {},
     data () {
       return {
-        imgPath:"../../../static/trade/cash.png",
+        imgPath: "../../../static/trade/cash.png",
       }
     },
-    props:['dataContext'],
-    created(){
-    },
     methods: {
+      async cashIn(){
+        let a = await putNote.depositCash(this).then(() => {
+            this.goNext();
+          }
+        ).catch(() => {
+          console.log('现金： error');
+        });
+      },
       goNext(){
-        this.$root.dataHub.$emit('data',{cash:0,errCode:0});
         this.$root.dataHub.$emit('goNext');
       }
     },
@@ -36,36 +39,42 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .option{
+  .option {
     height: 560px;
     overflow: hidden;
   }
-  .option >div{
+
+  .option > div {
     width: 640px;
     margin: 30px auto 0;
     position: relative;
   }
-  .option div img{
+
+  .option div img {
     width: 100%;
     display: block;
   }
-  .title{
+
+  .title {
     font-size: 30px;
     height: 40px;
     padding-top: 40px;
     text-align: center;
   }
-  .line{
+
+  .line {
     height: 0px;
-    border-top:1px solid #dcd2c0;
+    border-top: 1px solid #dcd2c0;
     width: 90%;
     margin: 30px auto 0;
   }
-  button{
+
+  button {
     position: absolute;
     right: 0;
-    margin:20px 20px 0;
+    margin: 20px 20px 0;
   }
+
   h1, h2 {
     font-weight: normal;
     cursor: pointer;

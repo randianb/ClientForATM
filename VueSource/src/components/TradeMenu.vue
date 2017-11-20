@@ -4,7 +4,7 @@
 
     <nav>
       <button class="btn1" @click="upward" v-if="!(tradeMenuSource==tradeMenu)">返回上一级</button>
-      <button class="btn2" @click="">退出</button>
+      <button class="btn2" @click="exit">退出</button>
     </nav>
     <div class="content">
       <transition-group :name="menu">
@@ -47,6 +47,9 @@
       this.tradeMenu = this.tradeMenuSource;
     },
     methods: {
+      exit(){
+        this.$router.push('/');
+      },
       mousedown(e) {
         this.xAxis = e.screenX;
       },

@@ -12,7 +12,8 @@
   }
 
   .fp {
-    display: inline-block;
+    /*display: inline-block;*/
+    display: none;
   }
 </style>
 <body>
@@ -33,6 +34,7 @@
 </body>
 
 <script>
+  var csharp;
   function VD() {
     let _this = this;
     this.req = function (name, ...params) {
@@ -42,6 +44,7 @@
       if (params.length == 0) {
       }
       str = str + '</root>';
+      csharp.toVsBus(str);
       console.log('下发数据');
       console.log(str);
     };
@@ -62,21 +65,21 @@
       eval('res=' + resStr);
       if (res.errCode == 0) {
         if (typeof _this.suc === "function") {
-          _this.suc(res.data);
+          _this.suc(res);
         }
       }
       if (res.errCode > 0) {
         if (typeof _this.suc === "function") {
-          _this.suc(res.data);
+          _this.suc(res);
         }
       }
       if (res.errCode < 0) {
         if (typeof _this.err === "function") {
-          _this.err(res.data.msg);
+          _this.err(res.msg);
         }
       }
-      _this.suc = null;
-      _this.err = null;
+//      _this.suc = null;
+//      _this.err = null;
     }
   }
   const vueDevice = new VD();
@@ -85,16 +88,16 @@
   //    硬件事件仿真
   var el = document.getElementsByClassName('fp');
   function a() {
-    vueDevice.res("{errCode:1,data:{pic:'FIOWU3273RYHUIFDJ384272HJIWE3',msg:'error fp'},}");
+    vueDevice.res("{fingerprints:{pic:'FIOWU3273RYHUIFDJ384272HJIWE3'},errCode:0,msg:'error fp'}");
   }
   function b() {
-    vueDevice.res("{errCode:1,data:{idcode:131313,gender:'male',msg:'kk'}}");
+    vueDevice.res("{idcard:{idcode:131313,gender:'male'},errCode:1,msg:'kk'}");
   }
   function c() {
-    vueDevice.res("{errCode:0,data:{cash:10000}}");
+    vueDevice.res("{cash:{amount:10000},errCode:0}");
   }
   function d() {
-    vueDevice.res("{errCode:0,data:{content:'recepter'}}");
+    vueDevice.res("{receipt:{content:'recepter'},errCode:0}");
   }
   el[0].addEventListener('click', a);
   el[1].addEventListener('click', b);

@@ -16,7 +16,7 @@
       <section>
         <div class="title">{{this.$route.params.name}}</div>
         <div class="page-body">
-          <comp-body :dataContext="dataContext" :compName="steps[step].modules"></comp-body>
+          <comp-body :compName="steps[step].modules"></comp-body>
         </div>
       </section>
     </div>
@@ -41,14 +41,10 @@
       return {
         steps:[{name:"",modules:""}],
         step:0,
-        dataContext:{},
       }
     },
     mounted(){
-      this.$root.dataHub.$on('data',(newData)=>{
-//      更新数据上下文
-        Object.assign(this.dataContext,newData);
-      });
+      console.log(this.$root.dataContext);
       this.$root.dataHub.$on('goNext',()=>{
         this.goNext();
       });

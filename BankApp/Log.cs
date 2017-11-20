@@ -12,7 +12,7 @@ namespace BankApp
         private static StreamWriter s;
         public static void open()
         {
-            string path = "E:\\BankAppBJKT\\Log\\" +
+            string path = "E:\\github\\ClientForATM\\Log\\" +
                 DateTime.Now.ToString("yyyyMMdd") +
                 ".txt";
             fs = new FileStream(path, FileMode.Append);

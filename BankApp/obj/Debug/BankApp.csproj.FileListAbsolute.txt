@@ -33,3 +33,5 @@ E:\BankAppBJKT\BankApp\obj\Debug\BankApp.Properties.Resources.resources
 E:\BankAppBJKT\BankApp\obj\Debug\BankApp.csproj.GenerateResource.Cache
 E:\BankAppBJKT\BankApp\obj\Debug\BankApp.exe
 E:\BankAppBJKT\BankApp\obj\Debug\BankApp.pdb
+E:\github\ClientForATM\BankApp\obj\Debug\BankApp.exe
+E:\github\ClientForATM\BankApp\obj\Debug\BankApp.pdb

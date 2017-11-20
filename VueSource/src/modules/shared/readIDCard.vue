@@ -53,33 +53,33 @@
   import IDCardReader from '../../device/IDCardReader'
 
   export default {
-    components: {
-    },
+    components: {},
     data () {
       return {
-        show:true,
-        imgPath:'../../../static/trade/insertIDCard.gif',
-        frontImage:"../../../static/trade/id1.jpg",
-        backImage:"../../../static/trade/id2.jpg",
+        show: true,
+        imgPath: '../../../static/trade/insertIDCard.gif',
+        frontImage: "../../../static/trade/id1.jpg",
+        backImage: "../../../static/trade/id2.jpg",
       }
     },
-    props:['dataContext'],
     mounted(){
       this.read();
     },
     methods: {
       reload(){
-        this.show=true;
+        this.show = true;
         this.read();
       },
       goNext(){
         this.$root.dataHub.$emit('goNext');
       },
       async read(){
-        let a=await IDCardReader.readData(this).catch(()=>{
+        let a = await IDCardReader.readData(this).then(() => {
+            this.show = false;
+          }
+        ).catch(() => {
           console.log('id card： error');
         });
-        this.show=false;
       },
     },
   }
@@ -87,70 +87,82 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .buttons,.photos{
+  .buttons, .photos {
     width: 60%;
     margin: 20px auto 0;
     position: relative;
     display: block;
     position: relative;
   }
-  .photos .IDPhoto{
+
+  .photos .IDPhoto {
     float: left;
     width: 49.7%;
   }
-  .IDPhoto img{
-    height:160px;
-    width:260px;
+
+  .IDPhoto img {
+    height: 160px;
+    width: 260px;
     border-radius: 8px;
     margin: 0 auto;
     display: block;
   }
-  .IDPhoto div{
+
+  .IDPhoto div {
     text-align: center;
     margin-top: 10px;
   }
-  .detail{
+
+  .detail {
     width: 60%;
     margin: 30px auto 0;
     font-size: 24px;
   }
-  .detail th{
+
+  .detail th {
     font-weight: 100;
     padding: 0 30px 0 0;
   }
-  .option{
+
+  .option {
     height: 560px;
     overflow: hidden;
   }
-  .option >div{
+
+  .option > div {
     height: 400px;
     width: 340px;
     background-repeat: no-repeat;
     margin: 130px auto 0;
 
   }
-  .title{
+
+  .title {
     font-size: 30px;
     height: 40px;
     padding-top: 40px;
     text-align: center;
   }
-  .line{
+
+  .line {
     height: 0px;
-    border-top:1px solid #dcd2c0;
+    border-top: 1px solid #dcd2c0;
     width: 90%;
     margin: 30px auto 0;
   }
-  .buttonL{
+
+  .buttonL {
     color: #e74a41;
     background-color: white;
     border-color: #e74a41;
     font-weight: bold;
   }
-  .buttonR{
+
+  .buttonR {
     position: absolute;
     right: 0;
   }
+
   h1, h2 {
     font-weight: normal;
     cursor: pointer;

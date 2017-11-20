@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import fingerPrint from '../../device/fingerprint'
+  import fingerPrint from '../../device/fingerPrint'
 
   export default {
     data () {
@@ -19,16 +19,17 @@
         imgPath: "../../../static/trade/fingerPrints.png",
       }
     },
-    props: ['dataContext'],
+    props: [],
     async mounted(){
-      let a = await fingerPrint.readData(this).catch(() => {
+      let a = await fingerPrint.readData(this).then(() => {
+          this.goNext();
+        }
+      ).catch(() => {
         console.log('指纹： error');
       });
-      this.goNext();
     },
     methods: {
       goNext(){
-        console.log(this.dataContext);
         this.$root.dataHub.$emit('goNext');
       }
     },

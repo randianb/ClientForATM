@@ -17,6 +17,6 @@ export default {
   },
   // 更新数据上下文
   refreshData(data,v){
-    v.$root.dataHub.$emit('data', {fingerPrint: data.pic});
+    v.$root.updateData(data);
   }
 }

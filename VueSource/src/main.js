@@ -13,8 +13,12 @@ new Vue({
   template: '<App/>',
   components: {App},
   data: {
-    dataHub: new Vue(),
+    dataHub: new Vue,
+    dataContext: {errCode: 0},
+    updateData: function (newData) {
+      Object.assign(this.dataContext, newData);
+      console.log(this.dataContext);
+    }
   },
 });
-// var csharp={a:1};
-Vue.prototype.csharp = csharp;
+
