@@ -38,9 +38,9 @@
   function VD() {
     let _this = this;
     this.req = function (name, ...params) {
-      let str = '<root><devicename>';
+      let str = '<?xml version="1.0" encoding="utf-8"?><root><device>';
       str += name;
-      str = str + '</devicename>';
+      str = str + '</device>';
       if (params.length == 0) {
       }
       str = str + '</root>';

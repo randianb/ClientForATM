@@ -7,6 +7,7 @@ using System.Windows;
 using cef;
 using CefSharp;
 using CefSharp.Wpf;
+using System.Xml;
 
 namespace BankApp
 {
@@ -90,12 +91,14 @@ namespace BankApp
             public void toVsBus(string xml)
             {
                 resolvejs(xml);
-                //while (true) { }
             }
 
             private void resolvejs(string xml)
             {
-                string type = xml;
+                XmlDocument xd = new XmlDocument();
+                xd.Load(xml);
+                XmlNode nd = xd.SelectSingleNode("/root/device");
+                string type = nd.InnerText;
                 Action<bool> t = new Action<bool>(fingerprints);
                 if (type == "fingerprints")
                 {

@@ -1,5 +1,5 @@
 packages
-BankApp\bin
+BankApp/bin
 WebPage
 # Editor directories and files
 .idea
