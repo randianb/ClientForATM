@@ -16,8 +16,8 @@ namespace BankApp
     /// </summary>
     public partial class PreLoad : Window
     {
-        Simulator smlt = new Simulator();
         MainWindow mw;
+
         private ArrayList openDevice = new ArrayList();
         private ArrayList closeDevice = new ArrayList();
 
