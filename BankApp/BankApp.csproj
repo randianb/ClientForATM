@@ -114,11 +114,10 @@
     <Compile Include="MaskLoading.xaml.cs">
       <DependentUpon>MaskLoading.xaml</DependentUpon>
     </Compile>
-    <Compile Include="simulation.cs" />
-    <Compile Include="Simulator.cs" />
-    <Compile Include="start.xaml.cs">
-      <DependentUpon>start.xaml</DependentUpon>
+    <Compile Include="PreLoad.xaml.cs">
+      <DependentUpon>PreLoad.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Simulator.cs" />
     <Compile Include="WebPageViewer.xaml.cs">
       <DependentUpon>WebPageViewer.xaml</DependentUpon>
     </Compile>
@@ -138,7 +137,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="start.xaml">
+    <Page Include="PreLoad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

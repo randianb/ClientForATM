@@ -22,7 +22,7 @@ namespace BankApp
     class Simulator
     {
         public delegate void Error(string err);
-        public Error err;
+        public Error err;//需要退出的错误
 
         public void startUp1()
         {

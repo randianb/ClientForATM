@@ -28,11 +28,11 @@ string originUrl, CefSharp.CefJsDialogType dialogType, string messageText, strin
             switch (dialogType)
             {
                 case CefSharp.CefJsDialogType.Alert:
-                    MessageBox.Show(messageText, "JavaScript");
+                    MessageBox.Show(messageText, "JavaScript", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.DefaultDesktopOnly);
                     suppressMessage = true;
                     return false;
                 case CefSharp.CefJsDialogType.Confirm:
-                    var dr = MessageBox.Show(messageText, "JavaScript", MessageBoxButton.YesNo);
+                    var dr = MessageBox.Show(messageText, "JavaScript");
                     if (dr == MessageBoxResult.Yes)
                     {
                         callback.Continue(true, string.Empty);

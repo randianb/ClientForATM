@@ -1,20 +1,28 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
 using System.Xml;
 
 namespace BankApp
 {
     /// <summary>
-    /// start.xaml 的交互逻辑
+    /// PreLoad.xaml 的交互逻辑
     /// </summary>
-    public partial class start : UserControl
+    public partial class PreLoad : Window
     {
         Simulator sml = new Simulator();
         private ArrayList openDevice = new ArrayList();
@@ -24,12 +32,12 @@ namespace BankApp
         public delegate void GoMain();
         public GoMain goMain;
 
-        public start()
+        public PreLoad()
         {
             InitializeComponent();
             sml.err += Exit;
-            Task t = new Task(()=> {
-                Thread.Sleep(1000);
+            Task t = new Task(() => {
+                //Thread.Sleep(1000);
                 ReadConfig();
                 LoadDev();
             });
@@ -88,21 +96,66 @@ namespace BankApp
                     case "camera":
                         Dispatcher.Invoke(() => {
                             pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
-                            label1.Content = "正在清理cef···";
+                            //label1.Content = "正在清理cef···";
                         });
                         sml.startUp1();
                         break;
                     case "scanner":
                         Dispatcher.Invoke(() => {
                             pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
-                            label1.Content = "正在启动扫码器···";
+                            //label1.Content = "正在启动扫码器···";
                         });
                         sml.startUp1();
                         break;
                     case "printer":
                         Dispatcher.Invoke(() => {
                             pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
-                            label1.Content = "正在加载数据字典···";
+                            //label1.Content = "正在加载数据字典···";
+                        });
+                        sml.startUp2();
+                        break;
+                    default:
+                        Exit("未知的启动项");
+                        break;
+                }
+            }
+            Dispatcher.Invoke(() => {
+                goMain();
+            });
+        }
+
+        public void UnLoadDev()
+        {
+            Task t = new Task(() => {
+                UnLoadDevice();
+            });
+            t.Start();
+        }
+
+        private void UnLoadDevice()
+        {
+            foreach (string name in openDevice)
+            {
+                switch (name)
+                {
+                    case "camera":
+                        Dispatcher.Invoke(() => {
+                            pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
+                            //label1.Content = "正在清理cef···";
+                        });
+                        sml.startUp1();
+                        break;
+                    case "scanner":
+                        Dispatcher.Invoke(() => {
+                            pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
+                            //label1.Content = "正在启动扫码器···";
+                        });
+                        sml.startUp1();
+                        break;
+                    case "printer":
+                        Dispatcher.Invoke(() => {
+                            pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
+                            //label1.Content = "正在加载数据字典···";
                         });
                         sml.startUp2();
                         break;
@@ -118,7 +171,7 @@ namespace BankApp
 
         public static void Exit(string err)
         {
-            if(MessageBoxResult.OK == MessageBox.Show(err))
+            if (MessageBoxResult.OK == MessageBox.Show(err))
             {
                 MainWindow.Exit(err);
             }
@@ -126,7 +179,7 @@ namespace BankApp
 
         public static string EncryptDES(string encryptString, string encryptKey)
         {
-            byte[] Keys = { 0x12, 0x34, 0x56, 0x78, 0x90, 0xAB, 0xCD, 0xEF }; 
+            byte[] Keys = { 0x12, 0x34, 0x56, 0x78, 0x90, 0xAB, 0xCD, 0xEF };
             try
             {
                 byte[] rgbKey = Encoding.UTF8.GetBytes(encryptKey.Substring(0, 8));
@@ -144,5 +197,6 @@ namespace BankApp
                 return encryptString;
             }
         }
+
     }
 }

@@ -19,19 +19,22 @@ namespace BankApp
     {
         //public delegate void conf();
         //public static conf d;
-        start s = new start();
+        public static PreLoad pl = new PreLoad();
         public static CefSharp.Wpf.ChromiumWebBrowser webView;
 
         public MainWindow()
         {
             InitializeComponent();
-            s.goMain += LoadBrowser;
-            LoadStart();
+            pl.goMain += showMain;
+            Hide();
+            pl.Show();
+            LoadBrowser();
         }
 
-        private void LoadStart()
+        private void showMain()
         {
-            MainGrid.Children.Insert(0, s);
+            Show();
+            pl.Hide();
         }
 
         private void LoadBrowser()
@@ -82,7 +85,7 @@ namespace BankApp
         public void OnLoadEnd(object sender, FrameLoadEndEventArgs e)
         {
             Dispatcher.Invoke(()=> {
-                webView.ZoomLevel = start.zoomL;
+                webView.ZoomLevel = PreLoad.zoomL;
             });
         }
 
@@ -122,6 +125,7 @@ namespace BankApp
 
         public static void Exit(string err)
         {
+            pl.UnLoadDev();
             Log.log("系统退出 " + err);
             Log.close();
             Environment.Exit(0);
