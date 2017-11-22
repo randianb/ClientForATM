@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -8,13 +7,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Xml;
 
 namespace BankApp
@@ -24,7 +16,8 @@ namespace BankApp
     /// </summary>
     public partial class PreLoad : Window
     {
-        Simulator sml = new Simulator();
+        Simulator smlt = new Simulator();
+        MainWindow mw;
         private ArrayList openDevice = new ArrayList();
         private ArrayList closeDevice = new ArrayList();
 
@@ -35,7 +28,7 @@ namespace BankApp
         public PreLoad()
         {
             InitializeComponent();
-            sml.err += Exit;
+            smlt.err += Exit;
             Task t = new Task(() => {
                 //Thread.Sleep(1000);
                 ReadConfig();
@@ -98,34 +91,40 @@ namespace BankApp
                             pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
                             //label1.Content = "正在清理cef···";
                         });
-                        sml.startUp1();
+                        smlt.startUp1();
                         break;
                     case "scanner":
                         Dispatcher.Invoke(() => {
                             pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
                             //label1.Content = "正在启动扫码器···";
                         });
-                        sml.startUp1();
+                        smlt.startUp1();
                         break;
                     case "printer":
                         Dispatcher.Invoke(() => {
                             pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
                             //label1.Content = "正在加载数据字典···";
                         });
-                        sml.startUp2();
+                        smlt.startUp2();
+                        //DevExit("end");
                         break;
                     default:
                         Exit("未知的启动项");
                         break;
                 }
             }
-            Dispatcher.Invoke(() => {
-                goMain();
+            Dispatcher.Invoke(() =>
+            {
+                mw = new MainWindow();
+                mw.Show();
+                Hide();
+                mw.exit += UnLoadDev;
             });
         }
 
         public void UnLoadDev()
         {
+            Show();
             Task t = new Task(() => {
                 UnLoadDevice();
             });
@@ -134,7 +133,7 @@ namespace BankApp
 
         private void UnLoadDevice()
         {
-            foreach (string name in openDevice)
+            foreach (string name in closeDevice)
             {
                 switch (name)
                 {
@@ -143,38 +142,46 @@ namespace BankApp
                             pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
                             //label1.Content = "正在清理cef···";
                         });
-                        sml.startUp1();
+                        smlt.startUp1();
                         break;
                     case "scanner":
                         Dispatcher.Invoke(() => {
                             pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
                             //label1.Content = "正在启动扫码器···";
                         });
-                        sml.startUp1();
+                        smlt.startUp1();
                         break;
                     case "printer":
                         Dispatcher.Invoke(() => {
                             pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
                             //label1.Content = "正在加载数据字典···";
                         });
-                        sml.startUp2();
+                        smlt.startUp2();
                         break;
                     default:
-                        Exit("未知的启动项");
+                        DevExit("未知的启动项");
                         break;
                 }
             }
-            Dispatcher.Invoke(() => {
-                goMain();
-            });
+            Exit("");
         }
 
-        public static void Exit(string err)
+        public void DevExit(string err="")
         {
-            if (MessageBoxResult.OK == MessageBox.Show(err))
+            if (MessageBoxResult.OK == MessageBox.Show(err, "", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification))
             {
-                MainWindow.Exit(err);
+                Exit(err);
             }
+        }
+
+        public void Exit(string err="")
+        {
+            Log.log("系统退出 " + err);
+            Log.close();
+            Dispatcher.Invoke(()=> {
+                Application.Current.Shutdown();
+            });
+       
         }
 
         public static string EncryptDES(string encryptString, string encryptKey)

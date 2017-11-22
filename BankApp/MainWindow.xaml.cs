@@ -17,24 +17,15 @@ namespace BankApp
 
     public partial class MainWindow : Window
     {
-        //public delegate void conf();
-        //public static conf d;
-        public static PreLoad pl = new PreLoad();
+        public delegate void Exit();
+        public Exit exit;
+
         public static CefSharp.Wpf.ChromiumWebBrowser webView;
 
         public MainWindow()
         {
             InitializeComponent();
-            pl.goMain += showMain;
-            Hide();
-            pl.Show();
             LoadBrowser();
-        }
-
-        private void showMain()
-        {
-            Show();
-            pl.Hide();
         }
 
         private void LoadBrowser()
@@ -105,10 +96,8 @@ namespace BankApp
                 Action<bool> t = new Action<bool>(fingerprints);
                 if (type == "fingerprints")
                 {
-                    t = new Action<bool>(fingerprints);
                     t(true);
                 }
-                t(false);
             }
 
             public void fingerprints(bool status)
@@ -120,15 +109,7 @@ namespace BankApp
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Exit("");
+            exit();
         }
-
-        public static void Exit(string err)
-        {
-            pl.UnLoadDev();
-            Log.log("系统退出 " + err);
-            Log.close();
-            Environment.Exit(0);
-        } 
     }
 }
