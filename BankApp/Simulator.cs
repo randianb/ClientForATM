@@ -24,10 +24,15 @@ namespace BankApp
         public delegate void Error(string err);
         public Error err;//需要退出的错误
 
-        public void startUp1()
+        public static void IDCardStartUp()
         {
             Thread.Sleep(300);
             //err("startup error");
+        }
+
+        public static void IDCardOpen()
+        {
+            Thread.Sleep(300);
         }
 
         public void startUp2()

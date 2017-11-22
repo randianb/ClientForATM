@@ -45,16 +45,12 @@ namespace BankApp
             try
             {
                 xd.Load(@"E:\github\ClientForATM\config\AppConfig.xml");
-                XmlNodeList opendev = xd.SelectNodes("/config/device/startUp/open");
+                XmlNodeList opendev = xd.SelectNodes("/config/device/open");
                 foreach (XmlNode xn in opendev)
                 {
                     openDevice.Add(xn.InnerText.Trim());
                 }
-                XmlNodeList closedev = xd.SelectNodes("/config/device/shutDown/close");
-                foreach (XmlNode xn in opendev)
-                {
-                    closeDevice.Add(xn.InnerText.Trim());
-                }
+
                 zoomL = Convert.ToInt32(xd.SelectSingleNode("/config/UI/zoomLevel").InnerText.Trim());
                 //授权校验
                 string result = EncryptDES(
@@ -89,24 +85,27 @@ namespace BankApp
                     case "camera":
                         Dispatcher.Invoke(() => {
                             pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
-                            //label1.Content = "正在清理cef···";
+                            label1.Content = "正在清理cef···";
                         });
+
+                        closeDevice.Add(name);
                         smlt.startUp1();
                         break;
                     case "scanner":
                         Dispatcher.Invoke(() => {
                             pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
-                            //label1.Content = "正在启动扫码器···";
+                            label1.Content = "正在启动扫码器···";
                         });
+                        closeDevice.Add(name);
                         smlt.startUp1();
                         break;
                     case "printer":
                         Dispatcher.Invoke(() => {
                             pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
-                            //label1.Content = "正在加载数据字典···";
+                            label1.Content = "正在加载数据字典···";
                         });
+                        closeDevice.Add(name);
                         smlt.startUp2();
-                        //DevExit("end");
                         break;
                     default:
                         Exit("未知的启动项");
@@ -143,6 +142,7 @@ namespace BankApp
                             //label1.Content = "正在清理cef···";
                         });
                         smlt.startUp1();
+                        DevExit("wrong");
                         break;
                     case "scanner":
                         Dispatcher.Invoke(() => {
@@ -181,7 +181,6 @@ namespace BankApp
             Dispatcher.Invoke(()=> {
                 Application.Current.Shutdown();
             });
-       
         }
 
         public static string EncryptDES(string encryptString, string encryptKey)

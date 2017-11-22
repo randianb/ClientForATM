@@ -3,15 +3,9 @@
     <!--设备配置-->
     <device>
         <!--启动项-->
-        <startUp>
-            <open>scanner</open>
-            <open>camera</open>
-            <open>printer</open>
-        </startUp>
-        <!--关闭项-->
-        <shutDown>
-            <close>scanner</close>
-        </shutDown>
+        <open>scanner</open>
+        <open>camera</open>
+        <open>printer</open>
     </device>
     <UI>
         <!--窗口属性-->
