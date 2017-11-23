@@ -19,7 +19,7 @@
           },
           {
             "name": "请放入钞票",
-            "modules": "putNote"
+            "modules": "inputNote"
           },{
             "name":"打印凭条",
             "modules":"printReceipt"

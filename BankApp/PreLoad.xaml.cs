@@ -2,12 +2,12 @@
 using System.Collections;
 using System.IO;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Xml;
+using System.Security.Cryptography;
 
 namespace BankApp
 {
@@ -21,6 +21,7 @@ namespace BankApp
         private ArrayList openDevice = new ArrayList();
         private ArrayList closeDevice = new ArrayList();
 
+        public static Simulator Device=new Simulator();
         public static int zoomL;
         public delegate void GoMain();
         public GoMain goMain;
@@ -28,7 +29,7 @@ namespace BankApp
         public PreLoad()
         {
             InitializeComponent();
-            smlt.err += Exit;
+            Device.err += Exit;
             Task t = new Task(() => {
                 //Thread.Sleep(1000);
                 ReadConfig();
@@ -78,50 +79,82 @@ namespace BankApp
 
         private void LoadDev()
         {
-            foreach (string name in openDevice)
+            try
             {
-                switch (name)
+                foreach (string name in openDevice)
                 {
-                    case "camera":
-                        Dispatcher.Invoke(() => {
-                            pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
-                            label1.Content = "正在清理cef···";
-                        });
+                    switch (name)
+                    {
+                        case "FingerPrint":
+                            //界面显示
+                            Dispatcher.Invoke(() =>
+                            {
+                                pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
+                                label1.Content = "正在启动指纹仪";
+                            });
 
-                        closeDevice.Add(name);
-                        smlt.startUp1();
-                        break;
-                    case "scanner":
-                        Dispatcher.Invoke(() => {
-                            pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
-                            label1.Content = "正在启动扫码器···";
-                        });
-                        closeDevice.Add(name);
-                        smlt.startUp1();
-                        break;
-                    case "printer":
-                        Dispatcher.Invoke(() => {
-                            pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
-                            label1.Content = "正在加载数据字典···";
-                        });
-                        closeDevice.Add(name);
-                        smlt.startUp2();
-                        break;
-                    default:
-                        Exit("未知的启动项");
-                        break;
+                            //打开wosa
+                            Device.FingerPrintStartUp();
+                            Device.FingerPrintOpen();
+                            Device.FingerPrintRegister();
+
+                            //添加到关闭设备列表
+                            closeDevice.Add(name);
+
+                            break;
+                        case "IDCardReader":
+                            //界面显示
+                            Dispatcher.Invoke(() =>
+                            {
+                                pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
+                                label1.Content = "正在启动身份证阅读器";
+                            });
+
+                            //打开wosa
+                            Device.IDCardStartUp();
+                            Device.IDCardOpen();
+                            Device.IDCardRegister();
+
+                            //添加到关闭设备列表
+                            closeDevice.Add(name);
+
+                            break;
+                        case "CashDeposit":
+                            //界面显示
+                            Dispatcher.Invoke(() =>
+                            {
+                                pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
+                                label1.Content = "正在启动现金存储模块";
+                            });
+
+                            //打开wosa
+                            Device.CashDepositStartUp();
+                            Device.CashDepositOpen();
+                            Device.CashDepositRegister();
+
+                            //添加到关闭设备列表
+                            closeDevice.Add(name);
+
+                            break;
+                        default:
+                            throw new Exception("未知的启动项");
+                    }
                 }
+                Dispatcher.Invoke(() =>
+                {
+                    mw = new MainWindow();
+                    mw.Show();
+                    Hide();
+                    mw.exit += UnLoadDev;
+                });
             }
-            Dispatcher.Invoke(() =>
+            catch (Exception e)
             {
-                mw = new MainWindow();
-                mw.Show();
-                Hide();
-                mw.exit += UnLoadDev;
-            });
+                DevExit(e.Message.ToString());
+            }
         }
 
-        public void UnLoadDev()
+        private void UnLoadDev()
         {
             Show();
             Task t = new Task(() => {
@@ -132,41 +165,60 @@ namespace BankApp
 
         private void UnLoadDevice()
         {
-            foreach (string name in closeDevice)
+            try
             {
-                switch (name)
+                foreach (string name in closeDevice)
                 {
-                    case "camera":
-                        Dispatcher.Invoke(() => {
-                            pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
-                            //label1.Content = "正在清理cef···";
-                        });
-                        smlt.startUp1();
-                        DevExit("wrong");
-                        break;
-                    case "scanner":
-                        Dispatcher.Invoke(() => {
-                            pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
-                            //label1.Content = "正在启动扫码器···";
-                        });
-                        smlt.startUp1();
-                        break;
-                    case "printer":
-                        Dispatcher.Invoke(() => {
-                            pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
-                            //label1.Content = "正在加载数据字典···";
-                        });
-                        smlt.startUp2();
-                        break;
-                    default:
-                        DevExit("未知的启动项");
-                        break;
+                    switch (name)
+                    {
+                        case "FingerPrint":
+                            Dispatcher.Invoke(() => {
+                                pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
+                                label1.Content = "正在关闭指纹仪···";
+                            });
+                            Device.FingerPrintDeregister();
+                            Device.FingerPrintClose();
+                            Device.FingerPrintCleanup();
+                            break;
+                        case "IDCardReader":
+                            //界面显示
+                            Dispatcher.Invoke(() =>
+                            {
+                                pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
+                                label1.Content = "正在关闭身份证读卡器···";
+                            });
+
+                            //关闭wosa
+                            Device.IDCardDeregister();
+                            Device.IDCardClose();
+                            Device.IDCardCleanup();
+                            break;
+                        case "CashDeposit":
+                            //界面显示
+                            Dispatcher.Invoke(() =>
+                            {
+                                pg.Value = 100 * openDevice.IndexOf(name) / openDevice.Count;
+                                label1.Content = "正在关闭现金存储模块";
+                            });
+
+                            //打开wosa
+                            Device.CashDepositDeregister();
+                            Device.CashDepositClose();
+                            Device.CashDepositCleanup();
+                            break;
+                        default:
+                            throw new Exception("未知的停止项");
+                    }
                 }
+                Exit("");
             }
-            Exit("");
+            catch(Exception e)
+            {
+                DevExit(e.ToString());
+            }
         }
 
-        public void DevExit(string err="")
+        private void DevExit(string err)
         {
             if (MessageBoxResult.OK == MessageBox.Show(err, "", MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.OK, MessageBoxOptions.ServiceNotification))
             {
@@ -174,7 +226,7 @@ namespace BankApp
             }
         }
 
-        public void Exit(string err="")
+        private void Exit(string err)
         {
             Log.log("系统退出 " + err);
             Log.close();
@@ -183,7 +235,7 @@ namespace BankApp
             });
         }
 
-        public static string EncryptDES(string encryptString, string encryptKey)
+        private static string EncryptDES(string encryptString, string encryptKey)
         {
             byte[] Keys = { 0x12, 0x34, 0x56, 0x78, 0x90, 0xAB, 0xCD, 0xEF };
             try

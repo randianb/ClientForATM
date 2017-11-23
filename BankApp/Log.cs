@@ -23,7 +23,7 @@ namespace BankApp
         {
             lock(s)
             {
-                con = "[" + DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss") +
+                con = "[" + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss") +
                     "] " + con;
                 s.WriteLine(con);
             }

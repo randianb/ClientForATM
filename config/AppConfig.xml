@@ -3,9 +3,9 @@
     <!--设备配置-->
     <device>
         <!--启动项-->
-        <open>scanner</open>
-        <open>camera</open>
-        <open>printer</open>
+        <open>FingerPrint</open>
+        <open>IDCardReader</open>
+        <open>CashDeposit</open>
     </device>
     <UI>
         <!--窗口属性-->

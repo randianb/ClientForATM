@@ -84,25 +84,22 @@ namespace BankApp
         {
             public void toVsBus(string xml)
             {
-                resolvejs(xml);
+                ResolveJs(xml);
             }
 
-            private void resolvejs(string xml)
+            private void ResolveJs(string xml)
             {
                 XmlDocument xd = new XmlDocument();
                 xd.LoadXml(xml);
                 XmlNode nd = xd.SelectSingleNode("/root/device");
                 string type = nd.InnerText;
-                Action<bool> t = new Action<bool>(fingerprints);
-                if (type == "fingerprints")
-                {
-                    t(true);
-                }
+                Action<string> t = CallBack;
+                t("aa");
             }
 
-            public void fingerprints(bool status)
+            public void CallBack(string a)
             {
-                Thread.Sleep(2000);
+                Console.WriteLine(a);
                 webView.ExecuteScriptAsync("vueDevice.res('fingerprints')");
             }
         }

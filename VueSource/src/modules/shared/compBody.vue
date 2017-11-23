@@ -10,14 +10,14 @@
   //  组件错误请同时检查tradeMenuData
   import readIDCard from './readIDCard'
   import fingerPrint from './fingerPrint'
-  import putNote from './putNote'
+  import inputNote from './inputNote'
   import printReceipt from './printReceipt'
 
   export default {
     components: {
       readIDCard,
       fingerPrint,
-      putNote,
+      inputNote,
       printReceipt,
     },
     data () {

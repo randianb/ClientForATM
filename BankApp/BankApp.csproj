@@ -111,16 +111,10 @@
     </ApplicationDefinition>
     <Compile Include="BrowserDialog.cs" />
     <Compile Include="Log.cs" />
-    <Compile Include="MaskLoading.xaml.cs">
-      <DependentUpon>MaskLoading.xaml</DependentUpon>
-    </Compile>
     <Compile Include="PreLoad.xaml.cs">
       <DependentUpon>PreLoad.xaml</DependentUpon>
     </Compile>
     <Compile Include="Simulator.cs" />
-    <Compile Include="WebPageViewer.xaml.cs">
-      <DependentUpon>WebPageViewer.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -133,15 +127,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MaskLoading.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="PreLoad.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="WebPageViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
