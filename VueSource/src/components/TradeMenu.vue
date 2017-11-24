@@ -1,7 +1,6 @@
 <template>
   <div class="container" @mousedown="mousedown" @mouseup="mouseup">
     <header-view></header-view>
-
     <nav>
       <button class="btn1" @click="upward" v-if="!(tradeMenuSource==tradeMenu)">返回上一级</button>
       <button class="btn2" @click="exit">退出</button>
@@ -45,6 +44,7 @@
     mounted() {
       this.tradeMenuSource = TradeMenu;
       this.tradeMenu = this.tradeMenuSource;
+      this.$modal('已完成交易已完成交易已完成交易已完成交易已完成交易已完成交易');
     },
     methods: {
       exit(){

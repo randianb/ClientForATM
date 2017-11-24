@@ -25,6 +25,7 @@
           this.goNext();
         }
       ).catch(() => {
+        this.$router.push('/TradeMenu');
         console.log('指纹： error');
       });
     },

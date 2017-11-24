@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         Title="PreLoad" Height="700" Width="1200" WindowStyle="None" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid Background="DarkBlue">
-        <Label x:Name="label1" FontSize="40" Width="400" Height="66" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="396,214,396,412">
+        <Label x:Name="label1" FontSize="40" Width="600" Height="66" Foreground="White" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="396,214,396,412">
             请稍等····
         </Label>
         <ProgressBar Name="pg" Background="White" Height="20" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Margin="446,283,446,389" />

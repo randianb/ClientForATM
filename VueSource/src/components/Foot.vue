@@ -13,6 +13,9 @@
     data () {
       return {
       }
+    },
+    mounted(){
+      this.$modal('');
     }
   }
 </script>

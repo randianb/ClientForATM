@@ -39,6 +39,7 @@ namespace BankApp
                         DefaultEncoding = "UTF-8"
                     },
                 JsDialogHandler = new BrowserDialog(),
+                //MenuHandler = false,
             };
             webView.PreviewTextInput += (obj, args) =>
             {
@@ -84,23 +85,40 @@ namespace BankApp
         {
             public void toVsBus(string xml)
             {
-                ResolveJs(xml);
-            }
-
-            private void ResolveJs(string xml)
-            {
                 XmlDocument xd = new XmlDocument();
                 xd.LoadXml(xml);
                 XmlNode nd = xd.SelectSingleNode("/root/device");
-                string type = nd.InnerText;
-                Action<string> t = CallBack;
-                t("aa");
+                string dev = nd.InnerText;
+                //t(dev);
+                Task t = new Task(() =>
+                {
+                    CallBack(dev);
+                });
+                t.Start();
             }
 
-            public void CallBack(string a)
+            public void CallBack(string dev)
             {
-                Console.WriteLine(a);
-                webView.ExecuteScriptAsync("vueDevice.res('fingerprints')");
+                string ret = "";
+                switch (dev){
+                    case "fingerPrint":
+                        PreLoad.Device.FingerPrintLock();
+                        ret = PreLoad.Device.FingerPrintExec();
+                        PreLoad.Device.FingerPrintUnlock();
+                        break;
+                    case "IDCardReader":
+                        PreLoad.Device.IDCardLock();
+                        ret = PreLoad.Device.IDCardExec();
+                        PreLoad.Device.IDCardUnlock();
+                        break;
+                    case "inputNote":
+                        PreLoad.Device.CashDepositLock();
+                        ret = PreLoad.Device.CashDepositExec();
+                        PreLoad.Device.CashDepositUnlock();
+                        break;
+                }
+                //Console.WriteLine("vueDevice.res(\"" + ret + "\")");
+                webView.ExecuteScriptAsync("vueDevice.res(\"" + ret + "\")");
             }
         }
 

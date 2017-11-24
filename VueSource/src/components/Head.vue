@@ -45,6 +45,9 @@
     text-align: left;
     vertical-align: middle;
   }
+  div{
+    margin-left: 120px;
+  }
   img{
     display: inline-block;
     margin-top: 22px;

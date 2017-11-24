@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import putNote from '../../device/putNote'
+  import putNote from '../../device/inputNote'
 
   export default {
     components: {},
@@ -27,6 +27,7 @@
             this.goNext();
           }
         ).catch(() => {
+          this.$router.push('/TradeMenu');
           console.log('现金： error');
         });
       },

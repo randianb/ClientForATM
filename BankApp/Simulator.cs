@@ -50,10 +50,11 @@ namespace BankApp
             Log.log("锁定身份证阅读器");
         }
 
-        public void IDCardExec()
+        public string IDCardExec()
         {
-            Thread.Sleep(300);
-            Log.log("执行身份证阅读器");
+            Thread.Sleep(1300);
+            Log.log("读取身份证阅读器");
+            return "{idCard:{idCode:131313,gender:'male'},errCode:1,msg:'kk'}";
         }
 
         public void IDCardUnlock()
@@ -108,10 +109,11 @@ namespace BankApp
             Log.log("锁定指纹仪");
         }
 
-        public void FingerPrintExec()
+        public string FingerPrintExec()
         {
-            Thread.Sleep(300);
-            Log.log("执行指纹仪");
+            Thread.Sleep(2300);
+            Log.log("读取指纹仪");
+            return "{fingerPrints:{pic:'FIOWU3273RYHUIFDJ384272HJIWE3'},errCode:-1,msg:'error fp'}";
         }
 
         public void FingerPrintUnlock()
@@ -167,10 +169,11 @@ namespace BankApp
             Log.log("锁定现金存储模块");
         }
 
-        public void CashDepositExec()
+        public string CashDepositExec()
         {
             Thread.Sleep(300);
-            Log.log("执行现金存储模块");
+            Log.log("读取现金存储模块");
+            return "{cash:{amount:10000},errCode:0}";
         }
 
         public void CashDepositUnlock()

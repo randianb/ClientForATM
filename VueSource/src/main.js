@@ -3,7 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import modal from './plugin/modal'
 
+Vue.use(modal);
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
@@ -17,7 +19,7 @@ new Vue({
     dataContext: {errCode: 0},
     updateData: function (newData) {
       Object.assign(this.dataContext, newData);
-      console.log(this.dataContext);
+      // console.log(this.dataContext);
     }
   },
 });

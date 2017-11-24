@@ -44,7 +44,6 @@
       }
     },
     mounted(){
-      console.log(this.$root.dataContext);
       this.$root.dataHub.$on('goNext',()=>{
         this.goNext();
       });
@@ -64,7 +63,6 @@
       },
     },
     beforeDestroy(){
-      this.$root.dataHub.$off('data');
       this.$root.dataHub.$off('goNext');
     },
   }

@@ -56,9 +56,7 @@
     /*
      * 响应数据结构
      * errCode 错误均为负，0 正常，正数其他状态
-     * 错误时 example={errCode:-1,data:{msg:'error-message'}}
-     * 正确时 example={errCode:0,data:{idcode:131313,gender:'male'}}（身份证）
-     * 正确时 example={errCode:0,data:{pic:'FIOWU3273RYHUIFDJ384272HJIWE39'}}（指纹base64）
+     * 错误时 example={idcard:{idCode:131313,gender:'male'},errCode:-1,msg:'kk'}
      */
     this.res = function (resStr) {
       let res = {errCode: 0};
@@ -88,10 +86,10 @@
   //    硬件事件仿真
   var el = document.getElementsByClassName('fp');
   function a() {
-    vueDevice.res("{fingerprints:{pic:'FIOWU3273RYHUIFDJ384272HJIWE3'},errCode:0,msg:'error fp'}");
+    vueDevice.res("{fingerPrints:{pic:'FIOWU3273RYHUIFDJ384272HJIWE3'},errCode:0,msg:'error fp'}");
   }
   function b() {
-    vueDevice.res("{idcard:{idcode:131313,gender:'male'},errCode:1,msg:'kk'}");
+    vueDevice.res("{idCard:{idCode:131313,gender:'male'},errCode:1,msg:'kk'}");
   }
   function c() {
     vueDevice.res("{cash:{amount:10000},errCode:0}");

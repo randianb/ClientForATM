@@ -1,11 +1,8 @@
-/**
- * Created by Administrator on 2017/11/7.
- */
 export default {
   depositCash(v){
     let _this = this;
     return new Promise((resolve, reject) => {
-      vueDevice.req('IDCardreader');
+      vueDevice.req('inputNote');
       vueDevice.exec(function (data) {
         _this.refreshData(data,v);
         resolve(data);

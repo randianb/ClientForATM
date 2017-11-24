@@ -77,8 +77,9 @@
         let a = await IDCardReader.readData(this).then(() => {
             this.show = false;
           }
-        ).catch(() => {
-          console.log('id card： error');
+        ).catch((err) => {
+          this.$router.push('/TradeMenu');
+          console.log(err);
         });
       },
     },
