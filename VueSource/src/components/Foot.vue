@@ -15,7 +15,6 @@
       }
     },
     mounted(){
-      this.$modal('');
     }
   }
 </script>

@@ -19,7 +19,8 @@
         boo:false,
       }
     },
-    created(){
+    mounted(){
+      console.log('[ATM]:Navigated to /components/Ads.vue');
       this.play();
     },
     methods:{
@@ -38,19 +39,7 @@
       },
       touch(){
         this.$router.push('/TradeMenu');
-      },
-      async read () {
-//      this.csharp.toVsBus('');
-        var a11=3;
-        a11=await t.did().then((res)=>{console.log(res);})
-            .catch((err)=>{console.log(err);});
-//      var c=0;
-//      for (var i = 0; i < 300000; i++) {
-//        c++;
-//      }
-        console.log("in hello");
-//      console.log(this.csharp);
-        console.log(a11);
+        console.log('[ATM]:Navigated to /components/TradeMenu.vue');
       },
     }
   }

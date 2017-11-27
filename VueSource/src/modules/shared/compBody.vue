@@ -28,7 +28,12 @@
       }
     },
     props: ['compName'],
-    methods: {}
+    methods: {},
+    watch: {
+      compName(){
+        console.log('[ATM]:Navigated to ' +'/modules/(shared/)'+ this.compName+'.vue');
+      }
+    }
   }
 </script>
 

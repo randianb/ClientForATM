@@ -78,7 +78,14 @@
             this.show = false;
           }
         ).catch((err) => {
-          this.$router.push('/TradeMenu');
+          let _this=this;
+          this.$modal({
+            time:0,
+            msg:'读卡器错误',
+            yes_btn:function () {
+
+            }
+          });
           console.log(err);
         });
       },

@@ -44,7 +44,6 @@
     mounted() {
       this.tradeMenuSource = TradeMenu;
       this.tradeMenu = this.tradeMenuSource;
-      this.$modal('已完成交易已完成交易已完成交易已完成交易已完成交易已完成交易');
     },
     methods: {
       exit(){

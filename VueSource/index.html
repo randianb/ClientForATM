@@ -10,10 +10,9 @@
     margin: 0;
     padding: 0;
   }
-
   .fp {
-    /*display: inline-block;*/
-    display: none;
+    display: inline-block;
+    /*display: none;*/
   }
 </style>
 <body>
@@ -41,10 +40,10 @@
       let str = '<?xml version="1.0" encoding="utf-8"?><root><device>';
       str += name;
       str = str + '</device>';
-      if (params.length == 0) {
+      if (params.length != 0) {
       }
       str = str + '</root>';
-      csharp.toVsBus(str);
+//      csharp.toVsBus(str);
       console.log('下发数据');
       console.log(str);
     };

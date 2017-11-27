@@ -1,32 +1,84 @@
 <template>
   <div v-if="show" class="modal">
     <div class="box">
-      <img src="../../../static/trade/checkFail.png" alt="">
+      <span class="timer" v-if="showtimer">{{timer}}</span>
+      <img :src="imgPath" alt="">
       <div class="msg">{{msg}}</div>
-      <button @click="hide">确定</button>
+      <button :class="{LButton:Dbutton}" @click="yes">确定</button>
+      <button v-if="Dbutton" @click="no">取消</button>
     </div>
   </div>
 </template>
 
 <script>
+  import Timer from '../../plugin/timer'
+
   export default {
+    name: 'modal',
     data() {
+      let _this = this;
       return {
-        show: false,
-        msg:'',
+        img: '',
+        imgPath: '',
+        show: true,
+        msg: '',
+        Dbutton: true,
+        yes_fun: undefined,
+        no_fun: undefined,
+        time: 0,
+        showtimer: false,
+        startup: function () {
+          (function () {
+            if (_this.img == 'yes')
+              _this.imgPath = "../../../static/trade/checkPass.png";
+            if (_this.img == 'no')
+              _this.imgPath = "../../../static/trade/checkFail.png";
+            if (_this.img == 'info')
+              _this.imgPath = "../../../static/trade/disChecked.png";
+          })();
+          if (_this.time > 0) {
+            this.showtimer = true;
+            Timer.ini(this, function () {
+              _this.yes();
+            });
+          }
+          else this.showtimer = false;
+        }
       }
     },
     methods: {
-      hide(){
+      yes(){
         this.show = false;
+        this.yes_fun();
+      },
+      no(){
+        this.show = false;
+        this.no_fun();
       },
     },
-    computed: {},
+    computed: {
+      timer(){
+        return this.time + 's';
+      }
+    },
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .hide {
+    display: none;
+  }
+
+  .timer {
+    position: absolute;
+    top: 10px;
+    right: 60px;
+    display: inline-block;
+    font-size: 34px;
+    color: #E74A41;
+  }
+
   .modal {
     width: 100vw;
     height: 100vh;
@@ -35,8 +87,9 @@
     top: 0;
     left: 0;
   }
-  .box{
-    padding-top:20px ;
+
+  .box {
+    padding: 20px 20px 0 20px;
     text-align: center;
     font-size: 26px;
     border-radius: 6px;
@@ -45,31 +98,43 @@
     position: absolute;
     left: 0;
     right: 0;
-    top:0;
+    top: 0;
     bottom: 0;
-    margin: 0 auto;
-    width: 500px;
+    margin: auto;
+    width: 460px;
     height: 200px;
+    /*box-sizing: border-box;*/
   }
-  img{
+
+  img {
     display: block;
     width: 40px;
     height: 40px;
-    margin: 10px  auto;
+    margin: 10px auto;
     border-style: none;
   }
-  .msg{
+
+  .msg {
     text-align: center;
-    margin: 20px 0 10px;
+    padding-top: 10px;
+    margin: 0 auto;
     max-width: 400px;
   }
-  button{
+
+  button {
+    line-height: 30px;
     height: 36px;
     width: 110px;
     font-size: 22px;
     position: absolute;
-    bottom: 20px;
+    bottom: 30px;
     margin: 0;
-    right: 50px;
+    right: 70px;
+  }
+
+  .LButton {
+    background-color: white;
+    color: #E74A41;
+    left: 70px;
   }
 </style>
