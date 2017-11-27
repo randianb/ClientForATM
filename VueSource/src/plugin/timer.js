@@ -1,10 +1,12 @@
 export default {
-  ini: function (_this,func) {
+  // 倒计时时间（s）,超时函数,显示计时对象
+  ini: function (time, timeoutF, _this) {
     let t = setInterval(function () {
-      _this.time--;
-      if (_this.time < 0) {
+      time--;
+      if (_this) _this.time = time;
+      if (time <= 0) {
         clearInterval(t);
-        func();
+        timeoutF();
       }
     }, 1000);
   }

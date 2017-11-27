@@ -14,6 +14,5 @@ export default new Router({
     {path: '/TradeMenu', component: TradeMenu},
     {path: '/admin-menu', component: AdminMenu},
     {path: '/step-navigator/:name/:code', name: 'StepNavigator', component: StepNavigator},
-    // { path: '/Admin-page-navigator/:name/:code', component: AdminPageNavigator }
   ]
 })

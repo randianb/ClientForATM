@@ -4,8 +4,8 @@
       <span class="timer" v-if="showtimer">{{timer}}</span>
       <img :src="imgPath" alt="">
       <div class="msg">{{msg}}</div>
-      <button :class="{LButton:Dbutton}" @click="yes">确定</button>
-      <button v-if="Dbutton" @click="no">取消</button>
+      <button :class="{LButton:DButton}" @click="yes">确定</button>
+      <button v-if="DButton" @click="no">取消</button>
     </div>
   </div>
 </template>
@@ -22,7 +22,7 @@
         imgPath: '',
         show: true,
         msg: '',
-        Dbutton: true,
+        DButton: true,
         yes_fun: undefined,
         no_fun: undefined,
         time: 0,
@@ -36,11 +36,11 @@
             if (_this.img == 'info')
               _this.imgPath = "../../../static/trade/disChecked.png";
           })();
-          if (_this.time > 0) {
+          if (this.time > 0) {
             this.showtimer = true;
-            Timer.ini(this, function () {
+            Timer.ini(this.time ,function () {
               _this.yes();
-            });
+            },this);
           }
           else this.showtimer = false;
         }

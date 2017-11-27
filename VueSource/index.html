@@ -44,8 +44,8 @@
       }
       str = str + '</root>';
 //      csharp.toVsBus(str);
-      console.log('下发数据');
-      console.log(str);
+      console.log('[ATM]:Send Vs Data');
+      console.log(str.substring(38));
     };
     this.exec = function (suc, err) {
       _this.suc = suc;
@@ -88,7 +88,7 @@
     vueDevice.res("{fingerPrints:{pic:'FIOWU3273RYHUIFDJ384272HJIWE3'},errCode:0,msg:'error fp'}");
   }
   function b() {
-    vueDevice.res("{idCard:{idCode:131313,gender:'male'},errCode:1,msg:'kk'}");
+    vueDevice.res("{idCard:{idCode:131313,gender:'male'},errCode:-1,msg:'kk'}");
   }
   function c() {
     vueDevice.res("{cash:{amount:10000},errCode:0}");

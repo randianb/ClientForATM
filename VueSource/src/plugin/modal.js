@@ -1,6 +1,6 @@
 import modalO from './vue/modal'
 
-// modal 参数 modal(图标，信息正文，确定按钮函数，取消按钮函数，倒计时时间)
+// modal 参数 modal(图标类型，信息正文，确定按钮函数，取消按钮函数，倒计时时间)
 
 export default {
   install: function (Vue, option = {}) {
@@ -10,9 +10,8 @@ export default {
     Vue.prototype.$modal = function (obj) {
       document.getElementById('app').appendChild(modal.$el);
       let def = {
-        a: 'a',
-        msg: '',
         img: 'yes',
+        msg: '',
         no_btn: undefined,
         yes_btn: function () {
         },
@@ -22,7 +21,7 @@ export default {
       modal.$data.show = true;
       modal.$data.msg = def.msg;
       if (def.no_btn == undefined) {
-        modal.$data.Dbutton = false;
+        modal.$data.DButton = false;
       }
       if (def.msg == '')
         console.error('[plugin modal]：invalid message content');

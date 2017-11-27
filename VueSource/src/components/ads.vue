@@ -39,7 +39,6 @@
       },
       touch(){
         this.$router.push('/TradeMenu');
-        console.log('[ATM]:Navigated to /components/TradeMenu.vue');
       },
     }
   }

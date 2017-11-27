@@ -42,6 +42,7 @@
       }
     },
     mounted() {
+      console.log('[ATM]:Navigated to /components/TradeMenu.vue');
       this.tradeMenuSource = TradeMenu;
       this.tradeMenu = this.tradeMenuSource;
     },

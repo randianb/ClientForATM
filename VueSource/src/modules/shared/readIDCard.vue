@@ -80,11 +80,11 @@
         ).catch((err) => {
           let _this=this;
           this.$modal({
-            time:0,
+            time:3,
             msg:'读卡器错误',
             yes_btn:function () {
-
-            }
+//              _this.$router.push('/');
+            },
           });
           console.log(err);
         });
