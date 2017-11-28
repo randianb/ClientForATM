@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <div class="container" @mousemove="resetTimer" @click="resetTimer">
     <header-view></header-view>
-
     <div class="content">
+      <div class="timer">{{time}} s</div>
       <aside>
         <div class="list">
           <div class="item" :class="{todo:(step<index)}" v-for="(item ,index) in steps">
@@ -21,7 +21,7 @@
       </section>
     </div>
 
-    <!--<footer-view></footer-view>-->
+    <footer-view></footer-view>
   </div>
 </template>
 
@@ -29,6 +29,7 @@
   import Head from './Head'
   import Foot from './Foot'
   import CompBody from '../modules/shared/compBody'
+  import Timer from '../plugin/timer'
 
   export default {
     name:'StepNavigator',
@@ -39,17 +40,25 @@
     },
     data () {
       return {
+        time:60,
         steps:[{name:"",modules:""}],
         step:0,
       }
     },
     mounted(){
+      let _this=this;
+      Timer.Ini(60,function () {
+        _this.$router.push('/TradeMenu');
+      },this);
       this.$root.dataHub.$on('goNext',()=>{
         this.goNext();
       });
       eval("this.steps="+(/object=(.[^;]*)(;|$)/.exec(document.cookie))[1]);
     },
     methods:{
+      resetTimer(){
+        Timer.reset();
+      },
       ret(){
         this.$router.push('/TradeMenu');
       },
@@ -70,6 +79,13 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .timer{
+    position: absolute;
+    right: -40px;
+    top:-64px;
+    color: white;
+    font-size: 36px;
+  }
   .list > :last-child .div{
     display: none ;
   }

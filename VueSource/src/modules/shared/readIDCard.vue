@@ -83,9 +83,9 @@
             time:3,
             msg:'读卡器错误',
             yes_btn:function () {
-//              _this.$router.push('/');
+              _this.$router.push('/');
             },
-          });
+          },this);
           console.log(err);
         });
       },

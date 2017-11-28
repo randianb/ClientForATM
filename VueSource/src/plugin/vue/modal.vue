@@ -16,8 +16,10 @@
   export default {
     name: 'modal',
     data() {
-      let _this = this;
+      let _this;
+      _this=this;
       return {
+        ff:'d',
         img: '',
         imgPath: '',
         show: true,
@@ -36,11 +38,11 @@
             if (_this.img == 'info')
               _this.imgPath = "../../../static/trade/disChecked.png";
           })();
-          if (this.time > 0) {
-            this.showtimer = true;
-            Timer.ini(this.time ,function () {
+          if (_this.time > 0) {
+            _this.showtimer = true;
+            Timer.Ini(_this.time ,function () {
               _this.yes();
-            },this);
+            },_this);
           }
           else this.showtimer = false;
         }
@@ -50,10 +52,12 @@
       yes(){
         this.show = false;
         this.yes_fun();
+//        this.$destroy();
       },
       no(){
         this.show = false;
         this.no_fun();
+//        this.$destroy();
       },
     },
     computed: {

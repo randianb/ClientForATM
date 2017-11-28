@@ -10,6 +10,7 @@
     margin: 0;
     padding: 0;
   }
+
   .fp {
     display: inline-block;
     /*display: none;*/
@@ -57,6 +58,7 @@
      * errCode 错误均为负，0 正常，正数其他状态
      * 错误时 example={idcard:{idCode:131313,gender:'male'},errCode:-1,msg:'kk'}
      */
+
     this.res = function (resStr) {
       let res = {errCode: 0};
       eval('res=' + resStr);

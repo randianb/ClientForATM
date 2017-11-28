@@ -1,11 +1,12 @@
 <template>
-  <div class="container" @mousedown="mousedown" @mouseup="mouseup">
+  <div class="container" @mousedown="mousedown" @mouseup="mouseup" @mousemove="resetTimer">
     <header-view></header-view>
     <nav>
       <button class="btn1" @click="upward" v-if="!(tradeMenuSource==tradeMenu)">返回上一级</button>
       <button class="btn2" @click="exit">退出</button>
     </nav>
     <div class="content">
+      <div class="timer">{{time}} s</div>
       <transition-group :name="menu">
         <article :key="index" v-for="(i,index) in pageList" v-if="index==page">
           <div @click="menuJump(item)" class="ele" v-for="item in itemList">
@@ -24,6 +25,7 @@
   import TradeMenu from './TradeMenuData.json'
   import Head from './Head'
   import Foot from './Foot'
+  import Timer from '../plugin/timer'
 
   export default {
     components: {
@@ -39,21 +41,31 @@
         capacity: 8,
         volume: 0,
         menu: '',
+        time: 60,
       }
     },
     mounted() {
+      let _this = this;
+      Timer.Ini(60, function () {
+        _this.exit();
+      }, this);
       console.log('[ATM]:Navigated to /components/TradeMenu.vue');
       this.tradeMenuSource = TradeMenu;
       this.tradeMenu = this.tradeMenuSource;
     },
     methods: {
+      resetTimer(){
+        Timer.reset();
+      },
       exit(){
         this.$router.push('/');
       },
       mousedown(e) {
         this.xAxis = e.screenX;
+        this.resetTimer();
       },
       mouseup(e) {
+        this.resetTimer();
         if (20 < this.xAxis - e.screenX) {
           if (this.page < this.volume) {
             this.menu = 'menuleft';
@@ -81,7 +93,6 @@
             },
           });
         }
-        console.log();
       },
       upward() {
         this.tradeMenu = this.tradeMenuSource;
@@ -106,6 +117,9 @@
         return list;
       }
     },
+    beforeDestroy(){
+      Timer.stop();
+    }
   }
 </script>
 
@@ -121,6 +135,14 @@
     background-color: #f5f9ed;
     width: 100vw;
     height: 900px;
+  }
+
+  .timer {
+    position: absolute;
+    right: -40px;
+    top: -154px;
+    color: white;
+    font-size: 36px;
   }
 
   button {

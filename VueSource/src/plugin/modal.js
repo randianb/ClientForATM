@@ -4,10 +4,9 @@ import modalO from './vue/modal'
 
 export default {
   install: function (Vue, option = {}) {
-    let div = Vue.extend(modalO);
-    let modal = new div().$mount();
-    this.show = false;
-    Vue.prototype.$modal = function (obj) {
+    Vue.prototype.$modal = function (obj,v) {
+      let div = Vue.extend(modalO);
+      let modal = new div().$mount();
       document.getElementById('app').appendChild(modal.$el);
       let def = {
         img: 'yes',
