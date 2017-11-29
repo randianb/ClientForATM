@@ -76,16 +76,17 @@
       async read(){
         let a = await IDCardReader.readData(this).then(() => {
             this.show = false;
+            this.$root.$data.updateData(a);
           }
         ).catch((err) => {
-          let _this=this;
+          let _this = this;
           this.$modal({
-            time:3,
-            msg:'读卡器错误',
-            yes_btn:function () {
+            time: 30,
+            msg: '读卡器错误',
+            yes_btn: function () {
               _this.$router.push('/');
             },
-          },this);
+          }, this);
           console.log(err);
         });
       },

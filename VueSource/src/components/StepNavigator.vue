@@ -64,7 +64,6 @@
       },
       goNext(){
         this.step++;
-        console.log(this.step);
         if(this.step>=this.steps.length){
           this.$router.push('/TradeMenu')
           this.step=0;

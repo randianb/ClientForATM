@@ -12,8 +12,8 @@
   }
 
   .fp {
-    display: inline-block;
-    /*display: none;*/
+    /*display: inline-block;*/
+    display: none;
   }
 </style>
 <body>
@@ -29,10 +29,6 @@
 <div class="fp">
   设备响应<br>凭条
 </div>
-<div id="app"></div>
-<!-- built files will be auto injected -->
-</body>
-
 <script>
   var csharp;
   function VD() {
@@ -42,11 +38,17 @@
       str += name;
       str = str + '</device>';
       if (params.length != 0) {
+        str += '<params>';
+        for (let i = 0; i < params.length; i+=2) {
+          str+='<'+params[i]+'>';
+          str+=params[i+1];
+          str+='</'+params[i]+'>';
+        }
+        str += '</params>';
       }
       str = str + '</root>';
 //      csharp.toVsBus(str);
-      console.log('[ATM]:Send Vs Data');
-      console.log(str.substring(38));
+      console.log('[ATM]:Send Vs Data: ' + str.substring(38));
     };
     this.exec = function (suc, err) {
       _this.suc = suc;
@@ -77,8 +79,6 @@
           _this.err(res.msg);
         }
       }
-//      _this.suc = null;
-//      _this.err = null;
     }
   }
   const vueDevice = new VD();
@@ -90,7 +90,7 @@
     vueDevice.res("{fingerPrints:{pic:'FIOWU3273RYHUIFDJ384272HJIWE3'},errCode:0,msg:'error fp'}");
   }
   function b() {
-    vueDevice.res("{idCard:{idCode:131313,gender:'male'},errCode:-1,msg:'kk'}");
+    vueDevice.res("{idCard:{idCode:131313,gender:'male'},errCode:1,msg:'kk'}");
   }
   function c() {
     vueDevice.res("{cash:{amount:10000},errCode:0}");
@@ -104,4 +104,9 @@
   el[3].addEventListener('click', d);
 
 </script>
+
+<div id="app"></div>
+<!-- built files will be auto injected -->
+
+</body>
 </html>

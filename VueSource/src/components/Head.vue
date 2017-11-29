@@ -20,14 +20,13 @@
         if(this.counter==0)
           this.time=new Date().getSeconds();
         this.counter++;
-//        console.log(this.time);
         if(this.counter>=4){
           this.counter=0;
           let newtime=new Date().getSeconds();
           if(newtime<this.time)
             newtime+=60;
           if(newtime-this.time<3){
-            alert('admin');
+            this.$router.push('/Admin')
           }
         }
       },

@@ -1,9 +1,11 @@
 <template>
   <footer>
-    <img src="../../static/footerbg.png" alt="">
-    <div class="ad">网址：http://www.bjrcb.com
+    <img src="../../static/footerbg.png" alt=""/>
+    <div class="ad">
+      网址：http://www.bjrcb.com
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      热线：4006696198</div>
+      热线：4006696198
+    </div>
   </footer>
 </template>
 
@@ -28,12 +30,13 @@
     width: 100%;
   }
   img{
+    display: block;
     height: 110px;
     width: 100%;
   }
   .ad{
     position: absolute;
-    bottom: 25px;
+    bottom: 14px;
     color: white;
     width: 100%;
     font-size: 14px;
