@@ -1,7 +1,7 @@
 <template>
   <header>
     <div @click="admin">
-      <img src="../../static/logo.jpg"  alt="">
+      <img src="../static/logo.jpg"  alt="">
     </div>
   </header>
 </template>

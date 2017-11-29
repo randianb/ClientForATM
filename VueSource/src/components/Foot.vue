@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <img src="../../static/footerbg.png" alt=""/>
+    <img src="../static/footerbg.png" alt=""/>
     <div class="ad">
       网址：http://www.bjrcb.com
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

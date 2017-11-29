@@ -84,7 +84,7 @@
             time: 30,
             msg: '读卡器错误',
             yes_btn: function () {
-              _this.$router.push('/');
+              _this.$router.push('/TradeMenu');
             },
           }, this);
           console.log(err);

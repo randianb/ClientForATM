@@ -45,7 +45,7 @@ namespace BankApp
             XmlDocument xd = new XmlDocument();
             try
             {
-                xd.Load(@"E:\github\ClientForATM\config\AppConfig.xml");
+                xd.Load(Log.prefix+"\\config\\AppConfig.xml");
                 XmlNodeList opendev = xd.SelectNodes("/config/device/open");
                 foreach (XmlNode xn in opendev)
                 {
@@ -73,7 +73,7 @@ namespace BankApp
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
+                DevExit(e.Message.ToString());
             }
         }
 

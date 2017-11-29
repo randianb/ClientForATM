@@ -8,11 +8,13 @@ namespace BankApp
 {
     static class Log
     {
+        public static string prefix = "E:\\github\\ClientForATM";
+        //public static string prefix = ".";
         private static FileStream fs;
         private static StreamWriter s;
         public static void open()
         {
-            string path = "E:\\github\\ClientForATM\\Log\\" +
+            string path = prefix + "\\Log\\" +
                 DateTime.Now.ToString("yyyyMMdd") +
                 ".txt";
             fs = new FileStream(path, FileMode.Append);

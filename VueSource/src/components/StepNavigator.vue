@@ -11,7 +11,7 @@
             <span class="name">{{item.name}}</span>
           </div>
         </div>
-        <button @click="ret"><img src="../../static/trade/home.png"> &nbsp;返回</button>
+        <button @click="ret"><img src="../static/trade/home.png"> &nbsp;返回</button>
       </aside>
       <section>
         <div class="title">{{this.$route.params.name}}</div>

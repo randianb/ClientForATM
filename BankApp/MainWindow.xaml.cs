@@ -19,6 +19,7 @@ namespace BankApp
     {
         public delegate void Exit();
         public Exit exit;
+        public static Exit ext;
 
         public static CefSharp.Wpf.ChromiumWebBrowser webView;
 
@@ -26,6 +27,7 @@ namespace BankApp
         {
             InitializeComponent();
             LoadBrowser();
+            ext += close;
         }
 
         private void LoadBrowser()
@@ -116,10 +118,18 @@ namespace BankApp
                         ret = PreLoad.Device.CashDepositExec();
                         PreLoad.Device.CashDepositUnlock();
                         break;
+                    case "shutdown":
+                        ext();
+                        break;
                 }
                 //Console.WriteLine("vueDevice.res(\"" + ret + "\")");
                 webView.ExecuteScriptAsync("vueDevice.res(\"" + ret + "\")");
             }
+        }
+
+        private void close()
+        {
+            Dispatcher.Invoke(() => { Close(); }); 
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

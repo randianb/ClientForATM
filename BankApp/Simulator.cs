@@ -54,7 +54,7 @@ namespace BankApp
         {
             Thread.Sleep(1300);
             Log.log("读取身份证阅读器");
-            return "{idCard:{idCode:131313,gender:'male'},errCode:1,msg:'kk'}";
+            return "{idCard:{idCode:131313,gender:'male'},errCode:-1,msg:'kk'}";
         }
 
         public void IDCardUnlock()

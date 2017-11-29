@@ -39,15 +39,15 @@
       str = str + '</device>';
       if (params.length != 0) {
         str += '<params>';
-        for (let i = 0; i < params.length; i+=2) {
-          str+='<'+params[i]+'>';
-          str+=params[i+1];
-          str+='</'+params[i]+'>';
+        for (let i = 0; i < params.length; i += 2) {
+          str += '<' + params[i] + '>';
+          str += params[i + 1];
+          str += '</' + params[i] + '>';
         }
         str += '</params>';
       }
       str = str + '</root>';
-//      csharp.toVsBus(str);
+      csharp.toVsBus(str);
       console.log('[ATM]:Send Vs Data: ' + str.substring(38));
     };
     this.exec = function (suc, err) {

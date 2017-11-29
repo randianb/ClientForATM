@@ -1,13 +1,14 @@
 <template>
   <div class="ads">
     <transition-group name="ad">
-      <img class="ad-leave" v-for="(item,index) in loc" :key="index" @click="touch" v-if="index==mark" :src="item" alt=""/>
+      <img class="ad-leave" v-for="(item,index) in loc" :key="index" @click="touch"
+           v-if="index==mark" src="item" alt=""/>
     </transition-group>
   </div>
 </template>
 
 <script>
-  import adList from '../../static/list.json'
+  import adList from '../static/list.json'
 
   export default {
     name: 'ads',
@@ -21,6 +22,7 @@
     },
     mounted(){
       console.log('[ATM]:Navigated to /components/Ads.vue');
+      console.log(adList[0]);
       this.play();
     },
     methods:{
