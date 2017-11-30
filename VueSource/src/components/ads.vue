@@ -53,14 +53,9 @@
     overflow: hidden;
     height: 100vh;
     width: 100vw;
-    /*height: 400px;*/
-    /*width: 800px;*/
-    /*margin-left: 300px;*/
   }
 
   img {
-    /*height: 400px;*/
-    /*width: 800px;*/
     margin: 0;
     display: block;
     width: 100%;

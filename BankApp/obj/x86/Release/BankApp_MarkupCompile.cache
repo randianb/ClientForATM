@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-E:\BankAppBJKT\BankApp\obj\x86\Release\
+E:\github\ClientForATM\BankApp\obj\x86\Release\
 BankApp
 none
 false
 TRACE
-E:\BankAppBJKT\BankApp\App.xaml
-41160983035
+E:\github\ClientForATM\BankApp\App.xaml
+2116715880
 
-8186938408
-15-1367998863
-MainWindow.xaml;MaskLoading.xaml;start.xaml;WebPageViewer.xaml;
+91661795919
+16503657286
+MainWindow.xaml;PreLoad.xaml;
 
 False
 

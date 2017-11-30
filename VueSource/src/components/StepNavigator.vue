@@ -96,8 +96,7 @@
     color: #896e6e;
     background-color: #f5f9ed;
     width: 100vw;
-    height: 900px;
-    /*height: 100vh;*/
+    height: 100vh;
   }
   .content{
     height: 700px;

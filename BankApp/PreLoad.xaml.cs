@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Xml;
 using System.Security.Cryptography;
+using System.Diagnostics;
 
 namespace BankApp
 {
@@ -20,6 +21,7 @@ namespace BankApp
 
         private ArrayList openDevice = new ArrayList();
         private ArrayList closeDevice = new ArrayList();
+        private static Process p = new Process();
 
         public static Simulator Device=new Simulator();
         public static int zoomL;
@@ -34,10 +36,40 @@ namespace BankApp
                 //Thread.Sleep(1000);
                 ReadConfig();
                 LoadDev();
+                openServer();
             });
             t.Start();
             Log.open();
             Log.log("欢迎使用金振达自助终端");
+        }
+        
+        private void openServer()
+        {
+            try
+            {
+                string _doscmd = "start WebServer\\MyWebServer.exe";
+
+                p.StartInfo.FileName = "cmd.exe";
+                p.StartInfo.UseShellExecute = false;
+                p.StartInfo.RedirectStandardInput = true;
+                p.StartInfo.RedirectStandardOutput = true;
+                p.StartInfo.RedirectStandardError = true;
+                p.StartInfo.CreateNoWindow = true;
+                p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                p.Start();
+
+                //源码调试 注释以下两行
+                p.StandardInput.WriteLine("cd /d%~dp0");
+                p.StandardInput.WriteLine(_doscmd.ToString());
+
+                p.StandardInput.WriteLine("exit");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+                Log.log(e.ToString());
+            }
+            
         }
 
         private void ReadConfig()

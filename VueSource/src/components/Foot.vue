@@ -42,7 +42,7 @@
     bottom: 14px;
     color: white;
     width: 100%;
-    font-size: 14px;
+    font-size: 20px;
   }
 
   h1, h2 {

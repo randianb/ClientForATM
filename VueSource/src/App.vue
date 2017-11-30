@@ -42,6 +42,9 @@
     text-align: center;
     color: #2c3e50;
     overflow: hidden;
+    /*width:80vw;*/
+    height: 100vh;
+    position: relative;
   }
   .slider-enter-active {
     position: absolute;

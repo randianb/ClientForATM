@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="WebBrowser" Height="718" Width="1200" WindowStyle="None" Left="100" Top="0" Closing="Window_Closing">
+        Title="WebBrowser" Height="718" Width="1200" WindowStyle="None" Left="100" Top="0" Closing="Window_Closing" Topmost="True">
     <Grid>
         <DockPanel>
             <Grid x:Name="MainGrid">

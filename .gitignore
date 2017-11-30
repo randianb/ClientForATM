@@ -1,5 +1,8 @@
 packages
 BankApp/bin
+Setup/Debug
+Setup/packs
+Setup/Release
 WebPage
 # Editor directories and files
 .idea

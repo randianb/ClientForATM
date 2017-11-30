@@ -134,7 +134,8 @@
   .container {
     background-color: #f5f9ed;
     width: 100vw;
-    height: 900px;
+    /*height: 900px;*/
+    height: 100vh;
   }
 
   .timer {

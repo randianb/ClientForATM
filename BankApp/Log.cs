@@ -8,8 +8,8 @@ namespace BankApp
 {
     static class Log
     {
-        public static string prefix = "E:\\github\\ClientForATM";
-        //public static string prefix = ".";
+        //public static string prefix = "E:\\github\\ClientForATM";
+        public static string prefix = ".";
         private static FileStream fs;
         private static StreamWriter s;
         public static void open()
