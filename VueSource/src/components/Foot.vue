@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <img src="../static/footerbg.png" alt=""/>
+    <img :src="path" alt=""/>
     <div class="ad">
       网址：http://www.bjrcb.com
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -14,6 +14,7 @@
     name: 'hell',
     data () {
       return {
+        path: '../../static/footerbg.png',
       }
     },
     mounted(){
@@ -23,24 +24,27 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  footer{
+  footer {
     text-align: center;
     position: absolute;
     bottom: 0;
     width: 100%;
   }
-  img{
+
+  img {
     display: block;
     height: 110px;
     width: 100%;
   }
-  .ad{
+
+  .ad {
     position: absolute;
     bottom: 14px;
     color: white;
     width: 100%;
     font-size: 14px;
   }
+
   h1, h2 {
     font-weight: normal;
     cursor: pointer;

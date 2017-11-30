@@ -1,12 +1,12 @@
 [
   {
     "tradeName": "账户管理",
-    "iconPath": "../static/trademenu/HandyServices.png",
+    "iconPath": "../../static/trademenu/HandyServices.png",
     "isEnabled": true,
     "children": [
       {
         "tradeName": "开户",
-        "iconPath": "../static/trademenu/HandyServices.png",
+        "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
         "flow": [
           {
@@ -29,7 +29,7 @@
       },
       {
         "tradeName": "借记卡领卡",
-        "iconPath": "../static/trademenu/HandyServices.png",
+        "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
         "flow":[
           {
@@ -49,7 +49,7 @@
       },
       {
         "tradeName": "按证件号查询持卡人卡号",
-        "iconPath": "../static/trademenu/HandyServices.png",
+        "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
         "flow": [
           "readIDCard",
@@ -60,7 +60,7 @@
       },
       {
         "tradeName": "基本账户查询",
-        "iconPath": "../static/trademenu/HandyServices.png",
+        "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
         "flow": [
           "readIDCard",
@@ -71,7 +71,7 @@
       },
       {
         "tradeName": "借记卡密码重置",
-        "iconPath": "../static/trademenu/HandyServices.png",
+        "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
         "flow": [
           "readIDCard",
@@ -82,7 +82,7 @@
       },
       {
         "tradeName": "补登折",
-        "iconPath": "../static/trademenu/HandyServices.png",
+        "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
         "flow": [
           "readIDCard",
@@ -93,7 +93,7 @@
       },
       {
         "tradeName": "存折补磁",
-        "iconPath": "../static/trademenu/HandyServices.png",
+        "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
         "flow": [
           "readIDCard",
@@ -106,12 +106,12 @@
   },
   {
     "tradeName": "缴费打印",
-    "iconPath": "../static/trademenu/search.png",
+    "iconPath": "../../static/trademenu/search.png",
     "isEnabled": true,
     "children": [
       {
         "tradeName": "  活期交易明细查询打印",
-        "iconPath": "../static/trademenu/HandyServices.png",
+        "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
         "flow": [
           "readIDCard",
@@ -124,12 +124,12 @@
   },
   {
     "tradeName": "转账类",
-    "iconPath": "../static/trademenu/recharge.png",
+    "iconPath": "../../static/trademenu/recharge.png",
     "isEnabled": true,
     "children": [
       {
         "tradeName": "  活期交易明细查询打印",
-        "iconPath": "../static/trademenu/HandyServices.png",
+        "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
         "flow": [
           "readIDCard",
@@ -142,12 +142,12 @@
   },
   {
     "tradeName": "短信通知",
-    "iconPath": "../static/trademenu/EleBank.png",
+    "iconPath": "../../static/trademenu/EleBank.png",
     "isEnabled": true,
     "children": [
       {
         "tradeName": "  活期交易明细查询打印",
-        "iconPath": "../static/trademenu/HandyServices.png",
+        "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
         "flow": [
           "readIDCard",
@@ -160,12 +160,12 @@
   },
   {
     "tradeName": "电子银行",
-    "iconPath": "../static/trademenu/PersonalFinance.png",
+    "iconPath": "../../static/trademenu/PersonalFinance.png",
     "isEnabled": true,
     "children": [
       {
         "tradeName": "  活期交易明细查询打印",
-        "iconPath": "../static/trademenu/HandyServices.png",
+        "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
         "flow": [
           "readIDCard",
@@ -178,12 +178,12 @@
   },
   {
     "tradeName": "循环贷款卡",
-    "iconPath": "../static/trademenu/MyFinances.png",
+    "iconPath": "../../static/trademenu/MyFinances.png",
     "isEnabled": true,
     "children": [
       {
         "tradeName": "  活期交易明细查询打印",
-        "iconPath": "../static/trademenu/HandyServices.png",
+        "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
         "flow": [
           "readIDCard",
@@ -196,12 +196,12 @@
   },
   {
     "tradeName": "公务卡",
-    "iconPath": "../static/trademenu/BuffetCard.png",
+    "iconPath": "../../static/trademenu/BuffetCard.png",
     "isEnabled": true,
     "children": [
       {
         "tradeName": "  活期交易明细查询打印",
-        "iconPath": "../static/trademenu/HandyServices.png",
+        "iconPath": "../../static/trademenu/HandyServices.png",
         "isEnabled": true,
         "flow": [
           "readIDCard",
@@ -214,7 +214,7 @@
   },
   {
     "tradeName": "借记卡操作",
-    "iconPath": "../static/trademenu/CardActivation.png",
+    "iconPath": "../../static/trademenu/CardActivation.png",
     "isEnabled": true,
     "children": [
       {
@@ -232,7 +232,7 @@
   },
   {
     "tradeName": "缴费打印7",
-    "iconPath": "../static/trademenu/HandyServices.png",
+    "iconPath": "../../static/trademenu/HandyServices.png",
     "isEnabled": true,
     "children": [
       {
