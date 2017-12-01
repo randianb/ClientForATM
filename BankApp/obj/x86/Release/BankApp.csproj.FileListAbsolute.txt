@@ -42,3 +42,5 @@ E:\github\ClientForATM\BankApp\obj\x86\Release\BankApp.csproj.GenerateResource.C
 E:\github\ClientForATM\BankApp\obj\x86\Release\BankApp.exe
 E:\github\ClientForATM\BankApp\obj\x86\Release\BankApp.pdb
 E:\github\ClientForATM\BankApp\obj\x86\Release\BankApp.csprojResolveAssemblyReference.cache
+E:\github\ClientForATM\BankApp\bin\x86\Release\CefSharp.dll
+E:\github\ClientForATM\BankApp\bin\x86\Release\CefSharp.Wpf.dll

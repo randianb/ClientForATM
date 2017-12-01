@@ -25,6 +25,8 @@ namespace BankApp
 
         public static Simulator Device=new Simulator();
         public static int zoomL;
+        public static bool topMost;
+        public static bool normalWindow;
         public delegate void GoMain();
         public GoMain goMain;
 
@@ -47,27 +49,12 @@ namespace BankApp
         {
             try
             {
-                string _doscmd = "start WebServer\\MyWebServer.exe";
-
-                p.StartInfo.FileName = "cmd.exe";
-                p.StartInfo.UseShellExecute = false;
-                p.StartInfo.RedirectStandardInput = true;
-                p.StartInfo.RedirectStandardOutput = true;
-                p.StartInfo.RedirectStandardError = true;
-                p.StartInfo.CreateNoWindow = true;
-                p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                p.StartInfo = new ProcessStartInfo("WebServer\\MyWebServer.exe");
                 p.Start();
-
-                //源码调试 注释以下两行
-                p.StandardInput.WriteLine("cd /d%~dp0");
-                p.StandardInput.WriteLine(_doscmd.ToString());
-
-                p.StandardInput.WriteLine("exit");
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.ToString());
-                Log.log(e.ToString());
+                DevExit(e.ToString());
             }
             
         }
@@ -84,6 +71,8 @@ namespace BankApp
                     openDevice.Add(xn.InnerText.Trim());
                 }
 
+                topMost = Convert.ToBoolean(xd.SelectSingleNode("/config/UI/topMost").InnerText.Trim());
+                normalWindow = Convert.ToBoolean(xd.SelectSingleNode("/config/UI/normalWindow").InnerText.Trim());
                 zoomL = Convert.ToInt32(xd.SelectSingleNode("/config/UI/zoomLevel").InnerText.Trim());
                 //授权校验
                 string result = EncryptDES(
@@ -188,6 +177,8 @@ namespace BankApp
 
         private void UnLoadDev()
         {
+            try { p.Kill(); }
+            catch (Exception e){}
             Show();
             Task t = new Task(() => {
                 UnLoadDevice();
@@ -262,10 +253,11 @@ namespace BankApp
         {
             Log.log("系统退出 " + err);
             Log.close();
-            Dispatcher.Invoke(()=> {
+            Dispatcher.Invoke(() =>
+            {
                 Application.Current.Shutdown();
             });
-        }
+        } 
 
         private static string EncryptDES(string encryptString, string encryptKey)
         {

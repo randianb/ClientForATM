@@ -81,12 +81,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_57D516E8B4C7415697E4C3F52D7810BA"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_5CF7CC9B4FD24AC8A9A762EDECC49919"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -137,36 +131,6 @@
         {
         "MsmKey" = "8:_7A7E2E9A9E2EA90E9A838AC8AB10FDE8"
         "OwnerKey" = "8:_F86D53B7E2C3C1417BA1C24835E8E9F6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7E6F89BF1B3657EDF4D0B5C919158D59"
-        "OwnerKey" = "8:_F86D53B7E2C3C1417BA1C24835E8E9F6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7E6F89BF1B3657EDF4D0B5C919158D59"
-        "OwnerKey" = "8:_D4261133D02A41099CAA810F4D9F3E10"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7E6F89BF1B3657EDF4D0B5C919158D59"
-        "OwnerKey" = "8:_EC3BC60A503429028E229F623B997BC9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7E6F89BF1B3657EDF4D0B5C919158D59"
-        "OwnerKey" = "8:_A38A8BDD15F64944B180DC0AE50C4BCC"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7E6F89BF1B3657EDF4D0B5C919158D59"
-        "OwnerKey" = "8:_7A7E2E9A9E2EA90E9A838AC8AB10FDE8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -279,6 +243,42 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_F45F9862DE2F4BDD8A46A6D1F6CD6754"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F5973BD47EA0B9FA5E9CDA45CF825590"
+        "OwnerKey" = "8:_7A7E2E9A9E2EA90E9A838AC8AB10FDE8"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F5973BD47EA0B9FA5E9CDA45CF825590"
+        "OwnerKey" = "8:_D4261133D02A41099CAA810F4D9F3E10"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F5973BD47EA0B9FA5E9CDA45CF825590"
+        "OwnerKey" = "8:_EC3BC60A503429028E229F623B997BC9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F5973BD47EA0B9FA5E9CDA45CF825590"
+        "OwnerKey" = "8:_F86D53B7E2C3C1417BA1C24835E8E9F6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F5973BD47EA0B9FA5E9CDA45CF825590"
+        "OwnerKey" = "8:_A38A8BDD15F64944B180DC0AE50C4BCC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_F86D53B7E2C3C1417BA1C24835E8E9F6"
         "OwnerKey" = "8:_A38A8BDD15F64944B180DC0AE50C4BCC"
         "MsmSig" = "8:_UNDEFINED"
@@ -299,12 +299,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_A38A8BDD15F64944B180DC0AE50C4BCC"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4B6A64B2F591479691B1442C12A69ED8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -334,7 +328,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7E6F89BF1B3657EDF4D0B5C919158D59"
+        "OwnerKey" = "8:_F5973BD47EA0B9FA5E9CDA45CF825590"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4B6A64B2F591479691B1442C12A69ED8"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -387,6 +387,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -647,26 +663,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_57D516E8B4C7415697E4C3F52D7810BA"
-            {
-            "SourcePath" = "8:E:\\msiexec.exe"
-            "TargetName" = "8:卸载.exe"
-            "Tag" = "8:"
-            "Folder" = "8:_CB8AACD8DE37438DB7727E271DF78C05"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5CF7CC9B4FD24AC8A9A762EDECC49919"
             {
             "SourcePath" = "8:..\\BankApp\\bin\\x86\\Release\\cef_100_percent.pak"
@@ -814,44 +810,8 @@
             "AssemblyAsmDisplayName" = "8:CefSharp.Core, Version=57.0.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_7A7E2E9A9E2EA90E9A838AC8AB10FDE8"
-                    {
-                    "Name" = "8:CefSharp.Core.DLL"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:CefSharp.Core.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_CB8AACD8DE37438DB7727E271DF78C05"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7E6F89BF1B3657EDF4D0B5C919158D59"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CefSharp, Version=57.0.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_7E6F89BF1B3657EDF4D0B5C919158D59"
-                    {
-                    "Name" = "8:CefSharp.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:CefSharp.DLL"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_CB8AACD8DE37438DB7727E271DF78C05"
@@ -1036,11 +996,6 @@
             "AssemblyAsmDisplayName" = "8:BankApp, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_A38A8BDD15F64944B180DC0AE50C4BCC"
-                    {
-                    "Name" = "8:BankApp.exe"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:..\\BankApp\\bin\\x86\\Release\\BankApp.exe"
             "TargetName" = "8:"
@@ -1127,11 +1082,6 @@
             "AssemblyAsmDisplayName" = "8:CefSharp.BrowserSubprocess, Version=57.0.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_D4261133D02A41099CAA810F4D9F3E10"
-                    {
-                    "Name" = "8:CefSharp.BrowserSubprocess.exe"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:..\\BankApp\\bin\\x86\\Release\\CefSharp.BrowserSubprocess.exe"
             "TargetName" = "8:"
@@ -1198,11 +1148,6 @@
             "AssemblyAsmDisplayName" = "8:CefSharp.BrowserSubprocess.Core, Version=57.0.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_EC3BC60A503429028E229F623B997BC9"
-                    {
-                    "Name" = "8:CefSharp.BrowserSubprocess.Core.DLL"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:CefSharp.BrowserSubprocess.Core.DLL"
             "TargetName" = "8:"
@@ -1262,6 +1207,52 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F45F9862DE2F4BDD8A46A6D1F6CD6754"
+            {
+            "SourcePath" = "8:msiexec.exe"
+            "TargetName" = "8:msiexec.exe"
+            "Tag" = "8:"
+            "Folder" = "8:_CB8AACD8DE37438DB7727E271DF78C05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F5973BD47EA0B9FA5E9CDA45CF825590"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:CefSharp, Version=57.0.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                }
+            "SourcePath" = "8:CefSharp.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_CB8AACD8DE37438DB7727E271DF78C05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F86D53B7E2C3C1417BA1C24835E8E9F6"
             {
             "AssemblyRegister" = "3:1"
@@ -1269,11 +1260,6 @@
             "AssemblyAsmDisplayName" = "8:CefSharp.Wpf, Version=57.0.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
-                    "_F86D53B7E2C3C1417BA1C24835E8E9F6"
-                    {
-                    "Name" = "8:CefSharp.Wpf.DLL"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:CefSharp.Wpf.DLL"
             "TargetName" = "8:"
@@ -1445,7 +1431,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:BJKT"
         "ProductCode" = "8:{C4BDBB9C-0443-4386-8FEF-AD6B457E4BBA}"
-        "PackageCode" = "8:{6100E0F3-9887-47E6-A616-4272E75C02CA}"
+        "PackageCode" = "8:{EC508688-0ADF-4E4F-9A09-558558997421}"
         "UpgradeCode" = "8:{7A32541F-C988-4360-8ECB-52BF7CB81374}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1593,6 +1579,20 @@
             "Icon" = "8:_71AAA40010CE493E9C8F785E72B84BC7"
             "Feature" = "8:"
             }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_581F2F9C04D742D7B1BCA301C09DCBE3"
+            {
+            "Name" = "8:卸载.exe"
+            "Arguments" = "8:/x [ProductCode]"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_F45F9862DE2F4BDD8A46A6D1F6CD6754"
+            "Folder" = "8:_CB8AACD8DE37438DB7727E271DF78C05"
+            "WorkingFolder" = "8:_CB8AACD8DE37438DB7727E271DF78C05"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8B400C5C9E0F40D5B09BBDDB580A201F"
             {
             "Name" = "8:卸载"
@@ -1601,7 +1601,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_57D516E8B4C7415697E4C3F52D7810BA"
+            "Target" = "8:_F45F9862DE2F4BDD8A46A6D1F6CD6754"
             "Folder" = "8:_CF6AC6E83AAF4DEAB036E29A7CCFAB6A"
             "WorkingFolder" = "8:_CB8AACD8DE37438DB7727E271DF78C05"
             "Icon" = "8:_71AAA40010CE493E9C8F785E72B84BC7"

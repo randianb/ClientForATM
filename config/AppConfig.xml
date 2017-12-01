@@ -8,10 +8,12 @@
         <open>CashDeposit</open>
     </device>
     <UI>
-        <!--窗口属性-->
-        <window>true</window>
+        <!--窗口化属性-->
+        <normalWindow>true</normalWindow>
         <!--缩放-->
         <zoomLevel>-2</zoomLevel>
+        <!--窗口保持最上-->
+        <topMost>false</topMost>
     </UI>
     <license>
         <time>

@@ -28,6 +28,9 @@ namespace BankApp
             InitializeComponent();
             LoadBrowser();
             ext += close;
+            Topmost = PreLoad.topMost;
+            if (!PreLoad.normalWindow)
+                WindowState = WindowState.Maximized;
         }
 
         private void LoadBrowser()
@@ -80,6 +83,7 @@ namespace BankApp
         {
             Dispatcher.Invoke(()=> {
                 webView.ZoomLevel = PreLoad.zoomL;
+                
             });
         }
 
