@@ -123,6 +123,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_7A3606E5DF7741E0B9ECC8871CD27AD4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_7A7E2E9A9E2EA90E9A838AC8AB10FDE8"
         "OwnerKey" = "8:_A38A8BDD15F64944B180DC0AE50C4BCC"
         "MsmSig" = "8:_UNDEFINED"
@@ -131,6 +137,12 @@
         {
         "MsmKey" = "8:_7A7E2E9A9E2EA90E9A838AC8AB10FDE8"
         "OwnerKey" = "8:_F86D53B7E2C3C1417BA1C24835E8E9F6"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7B3AAA28CAF9404DB1F38374BE169A05"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -298,7 +310,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A38A8BDD15F64944B180DC0AE50C4BCC"
+        "OwnerKey" = "8:_4B6A64B2F591479691B1442C12A69ED8"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -311,6 +323,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_EC3BC60A503429028E229F623B997BC9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A38A8BDD15F64944B180DC0AE50C4BCC"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -329,12 +347,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F5973BD47EA0B9FA5E9CDA45CF825590"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4B6A64B2F591479691B1442C12A69ED8"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -803,6 +815,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7A3606E5DF7741E0B9ECC8871CD27AD4"
+            {
+            "SourcePath" = "8:安装必读.txt"
+            "TargetName" = "8:安装必读.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_CB8AACD8DE37438DB7727E271DF78C05"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7A7E2E9A9E2EA90E9A838AC8AB10FDE8"
             {
             "AssemblyRegister" = "3:1"
@@ -810,6 +842,11 @@
             "AssemblyAsmDisplayName" = "8:CefSharp.Core, Version=57.0.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_7A7E2E9A9E2EA90E9A838AC8AB10FDE8"
+                    {
+                    "Name" = "8:CefSharp.Core.DLL"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:CefSharp.Core.DLL"
             "TargetName" = "8:"
@@ -827,6 +864,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7B3AAA28CAF9404DB1F38374BE169A05"
+            {
+            "SourcePath" = "8:安装必读.txt"
+            "TargetName" = "8:安装必读.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_CF6AC6E83AAF4DEAB036E29A7CCFAB6A"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7F46494832DE4BB0BEAB9333CF7472F3"
@@ -996,6 +1053,11 @@
             "AssemblyAsmDisplayName" = "8:BankApp, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_A38A8BDD15F64944B180DC0AE50C4BCC"
+                    {
+                    "Name" = "8:BankApp.exe"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:..\\BankApp\\bin\\x86\\Release\\BankApp.exe"
             "TargetName" = "8:"
@@ -1082,6 +1144,11 @@
             "AssemblyAsmDisplayName" = "8:CefSharp.BrowserSubprocess, Version=57.0.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_D4261133D02A41099CAA810F4D9F3E10"
+                    {
+                    "Name" = "8:CefSharp.BrowserSubprocess.exe"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:..\\BankApp\\bin\\x86\\Release\\CefSharp.BrowserSubprocess.exe"
             "TargetName" = "8:"
@@ -1148,6 +1215,11 @@
             "AssemblyAsmDisplayName" = "8:CefSharp.BrowserSubprocess.Core, Version=57.0.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_EC3BC60A503429028E229F623B997BC9"
+                    {
+                    "Name" = "8:CefSharp.BrowserSubprocess.Core.DLL"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:CefSharp.BrowserSubprocess.Core.DLL"
             "TargetName" = "8:"
@@ -1234,6 +1306,11 @@
             "AssemblyAsmDisplayName" = "8:CefSharp, Version=57.0.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_F5973BD47EA0B9FA5E9CDA45CF825590"
+                    {
+                    "Name" = "8:CefSharp.DLL"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:CefSharp.DLL"
             "TargetName" = "8:"
@@ -1260,6 +1337,11 @@
             "AssemblyAsmDisplayName" = "8:CefSharp.Wpf, Version=57.0.0.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=x86"
                 "ScatterAssemblies"
                 {
+                    "_F86D53B7E2C3C1417BA1C24835E8E9F6"
+                    {
+                    "Name" = "8:CefSharp.Wpf.DLL"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:CefSharp.Wpf.DLL"
             "TargetName" = "8:"
@@ -1431,7 +1513,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:BJKT"
         "ProductCode" = "8:{C4BDBB9C-0443-4386-8FEF-AD6B457E4BBA}"
-        "PackageCode" = "8:{EC508688-0ADF-4E4F-9A09-558558997421}"
+        "PackageCode" = "8:{DD941D72-1EA8-4711-A912-FAAD3E022FA6}"
         "UpgradeCode" = "8:{7A32541F-C988-4360-8ECB-52BF7CB81374}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
