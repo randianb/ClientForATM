@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace BankApp
 {
@@ -85,6 +83,16 @@ namespace BankApp
 
         #region finger prints reader block
 
+        [DllImport("TesoLive.dll")]
+        public static extern int TcCreateHDL(int port = 0, int protocol = 0, int index = 3, int speed = 0);
+        [DllImport("TesoLive.dll")]
+        public static extern int TcDoTemplate(int port, StringBuilder buf, ref int len, StringBuilder err);
+        [DllImport("TesoLive.dll")]
+        public static extern int TcDoFeature(int handle,ref StringBuilder o);
+        [DllImport("TesoLive.dll")]
+        public static extern int TcDeleteHDL(int handle);
+
+
         public void FingerPrintStartUp()
         {
             Thread.Sleep(300);
@@ -113,6 +121,13 @@ namespace BankApp
         {
             Thread.Sleep(2300);
             Log.log("读取指纹仪");
+            StringBuilder buf = new StringBuilder("");
+            StringBuilder err = new StringBuilder("");
+            int handle = TcCreateHDL();
+            StringBuilder b = new StringBuilder("");
+            int ret = TcDoFeature(handle,ref b);
+            TcDeleteHDL(handle);
+            Console.WriteLine(ret);
             return "{fingerPrints:{pic:'FIOWU3273RYHUIFDJ384272HJIWE3'},errCode:-1,msg:'error fp'}";
         }
 
@@ -137,7 +152,6 @@ namespace BankApp
         public void FingerPrintCleanup()
         {
             Thread.Sleep(300);
-
             Log.log("清除指纹仪");
         }
 

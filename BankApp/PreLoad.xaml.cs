@@ -37,8 +37,8 @@ namespace BankApp
             Task t = new Task(() => {
                 //Thread.Sleep(1000);
                 ReadConfig();
-                LoadDev();
                 openServer();
+                LoadDev();
             });
             t.Start();
             Log.open();
@@ -177,9 +177,10 @@ namespace BankApp
 
         private void UnLoadDev()
         {
+            Dispatcher.Invoke(() => { Show(); });
             try { p.Kill(); }
             catch (Exception e){}
-            Show();
+            
             Task t = new Task(() => {
                 UnLoadDevice();
             });
