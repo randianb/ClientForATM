@@ -32,30 +32,33 @@
   import Timer from '../plugin/timer'
 
   export default {
-    name:'StepNavigator',
-    components:{
+    name: 'StepNavigator',
+    components: {
       'compBody': CompBody,
-      'header-view':Head,
-      'footer-view':Foot,
+      'header-view': Head,
+      'footer-view': Foot,
     },
     data () {
       return {
-        time:60,
-        steps:[{name:"",modules:""}],
-        step:0,
+        time: 60,
+        steps: [{name: "", modules: ""}],
+        step: 0,
       }
     },
     mounted(){
-      let _this=this;
-      Timer.Ini(60,function () {
+      let _this = this;
+      Timer.Ini(60, function () {
         _this.$router.push('/TradeMenu');
-      },this);
-      this.$root.dataHub.$on('goNext',()=>{
+      }, this);
+      this.$root.dataHub.$on('goNext', () => {
         this.goNext();
       });
-      eval("this.steps="+(/object=(.[^;]*)(;|$)/.exec(document.cookie))[1]);
+      this.$root.dataHub.$on('goBack', () => {
+        this.goBack();
+      });
+      eval("this.steps=" + (/object=(.[^;]*)(;|$)/.exec(document.cookie))[1]);
     },
-    methods:{
+    methods: {
       resetTimer(){
         Timer.reset();
       },
@@ -64,48 +67,61 @@
       },
       goNext(){
         this.step++;
-        if(this.step>=this.steps.length){
+        if (this.step >= this.steps.length) {
           this.$router.push('/TradeMenu')
-          this.step=0;
+          this.step = 0;
         }
       },
+      goBack(){
+        this.step--;
+        if (this.step < 0) {
+          this.$router.push('/TradeMenu')
+          this.step = 0;
+        }
+      }
     },
     beforeDestroy(){
       this.$root.dataHub.$off('goNext');
+      this.$root.dataHub.$off('goBack');
     },
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .timer{
+  .timer {
     position: absolute;
     right: -40px;
-    top:-64px;
+    top: -64px;
     color: white;
     font-size: 36px;
   }
-  .list > :last-child .div{
-    display: none ;
+
+  .list > :last-child .div {
+    display: none;
   }
-  .clearfix::after{
-    content:"";
+
+  .clearfix::after {
+    content: "";
     clear: both;
   }
-  .container{
+
+  .container {
     color: #896e6e;
     background-color: #f5f9ed;
     width: 100vw;
     height: 100vh;
   }
-  .content{
+
+  .content {
     height: 700px;
     text-align: left;
     width: 1300px;
     margin: 0 auto;
     position: relative;
   }
-  aside{
+
+  aside {
     box-sizing: border-box;
     height: 100%;
     display: inline-block;
@@ -115,34 +131,39 @@
     text-align: left;
     position: relative;
   }
-  section{
+
+  section {
     width: 980px;
     display: inline-block;
     height: 700px;
     vertical-align: top;
   }
-  section .title{
+
+  section .title {
     text-align: left;
     font-size: 24px;
     line-height: 60px;
   }
-  section .page-body{
+
+  section .page-body {
     background-color: white;
     border: 1px solid #dcd2c0;
     border-radius: 8px;
     height: 640px;
   }
 
-  .item{
+  .item {
     height: 55px;
     font-size: 24px;
     position: relative;
   }
-  .item span{
+
+  .item span {
     line-height: 34px;
     display: inline-block;
   }
-  .item .num{
+
+  .item .num {
     width: 34px;
     height: 34px;
     border: 3px solid #e74a41;
@@ -152,32 +173,38 @@
     color: white;
     margin-right: 10px;
   }
-  .item .name{
+
+  .item .name {
     position: absolute;
-    top:0;
-    color:#e74a41;
+    top: 0;
+    color: #e74a41;
     font-weight: bold;
   }
-  .item .div{
+
+  .item .div {
     border: solid #e74a41;
     border-width: 15px 0 0px 4px;
     position: absolute;
-    top:40px;
-    left:18px;
+    top: 40px;
+    left: 18px;
   }
-  .todo .num{
+
+  .todo .num {
     background-color: #e2e2e2;
     color: #896e6e;
     border-color: #e2e2e2;
   }
-  .todo .name{
+
+  .todo .name {
     font-weight: normal;
     color: #896e6e;
   }
-  .todo .div{
+
+  .todo .div {
     border-color: #d0d0d0;
   }
-  button{
+
+  button {
     width: 200px;
     height: 50px;
     font-size: 24px;
@@ -190,12 +217,14 @@
     right: 0;
     bottom: 0px;
   }
-  button img{
+
+  button img {
     height: 24px;
     width: 24px;
     position: relative;
-    top:4px
+    top: 4px
   }
+
   h1, h2 {
     font-weight: normal;
     cursor: pointer;

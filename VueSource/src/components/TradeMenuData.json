@@ -29,19 +29,39 @@
       },
       {
         "tradeName": "借记卡领卡",
-        "iconPath": "../../static/trademenu/HandyServices.png",
+        "iconPath": "../../static/trademenu/BuffetCard.png",
         "isEnabled": true,
         "flow":[
           {
-            "name": "请插入身份证1",
+            "name": "请插入身份证",
             "modules": "readIDCard"
           },
           {
-            "name": "请输入指纹1",
-            "modules": "fingerPrints"
+            "name": "客户信息录入",
+            "modules": "fingerPrint"
           },
           {
-            "name": "请放入钞票1",
+            "name": "卡产品选择",
+            "modules": "putNote"
+          },
+          {
+            "name": "设置密码",
+            "modules": "putNote"
+          },
+          {
+            "name": "签约",
+            "modules": "putNote"
+          },
+          {
+            "name": "影像采集",
+            "modules": "putNote"
+          },
+          {
+            "name": "授权",
+            "modules": "putNote"
+          },
+          {
+            "name": "打印凭条",
             "modules": "putNote"
           }
         ],

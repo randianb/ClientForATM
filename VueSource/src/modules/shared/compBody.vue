@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <transition mode="out-in" name="page">
-      <component :is="compName"></component>
+      <component :is="compName1"></component>
     </transition>
   </div>
 </template>
@@ -12,6 +12,7 @@
   import fingerPrint from './fingerPrint'
   import inputNote from './inputNote'
   import printReceipt from './printReceipt'
+  import inputCustomerInfo from '../create-debit-card/inputCustomerInfo'
 
   export default {
     components: {
@@ -19,12 +20,14 @@
       fingerPrint,
       inputNote,
       printReceipt,
+      inputCustomerInfo,
     },
     data () {
       return {
         msg: 'default',
         second: '',
-        flag: true
+        flag: true,
+        compName1:'inputCustomerInfo',
       }
     },
     props: ['compName'],

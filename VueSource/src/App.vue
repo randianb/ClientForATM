@@ -75,6 +75,6 @@
     position: absolute;
     top:0;
     transform: translateX(100vw);
-    opacity: 1;
+    opacity: 0;
   }
 </style>
