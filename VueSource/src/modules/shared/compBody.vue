@@ -13,6 +13,8 @@
   import inputNote from './inputNote'
   import printReceipt from './printReceipt'
   import inputCustomerInfo from '../create-debit-card/inputCustomerInfo'
+  import chooseCardType from '../create-debit-card/chooseCardType'
+  import setPassword from '../create-debit-card/setPassword'
 
   export default {
     components: {
@@ -21,20 +23,22 @@
       inputNote,
       printReceipt,
       inputCustomerInfo,
+      chooseCardType,
+      setPassword,
     },
     data () {
       return {
         msg: 'default',
         second: '',
         flag: true,
-        compName1:'inputCustomerInfo',
+        compName1: 'setPassword',
       }
     },
     props: ['compName'],
     methods: {},
     watch: {
       compName(){
-        console.log('[ATM]:Navigated to ' +'/modules/(shared/)'+ this.compName+'.vue');
+        console.log('[ATM]:Navigated to ' + '/modules/(shared/)' + this.compName + '.vue');
       }
     }
   }

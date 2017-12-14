@@ -47,7 +47,7 @@
     },
     mounted(){
       let _this = this;
-      Timer.Ini(60, function () {
+      Timer.Ini(600, function () {
         _this.$router.push('/TradeMenu');
       }, this);
       this.$root.dataHub.$on('goNext', () => {
@@ -108,7 +108,7 @@
 
   .container {
     color: #896e6e;
-    background-color: #f5f9ed;
+    background-color: #f9f5ed;
     width: 100vw;
     height: 100vh;
   }

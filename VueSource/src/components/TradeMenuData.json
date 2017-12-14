@@ -38,11 +38,11 @@
           },
           {
             "name": "客户信息录入",
-            "modules": "fingerPrint"
+            "modules": "inputCustomerInfo"
           },
           {
             "name": "卡产品选择",
-            "modules": "putNote"
+            "modules": "chooseCardType"
           },
           {
             "name": "设置密码",

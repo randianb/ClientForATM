@@ -45,6 +45,7 @@
       }
     },
     mounted() {
+      document.cookie='';
       let _this = this;
       Timer.Ini(60, function () {
         _this.exit();
@@ -132,7 +133,7 @@
   }
 
   .container {
-    background-color: #f5f9ed;
+    background-color: #f9f5ed;
     width: 100vw;
     /*height: 900px;*/
     height: 100vh;

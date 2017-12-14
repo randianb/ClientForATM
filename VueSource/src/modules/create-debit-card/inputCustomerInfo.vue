@@ -1,110 +1,87 @@
 <template>
   <div class="InputCustomerInfo">
-    <tr>
-      <td>
-        <h2>填写客户必要信息</h2>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="custom-info">
-          <div>
-            <div class="filed">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</div>
-            <div class="filed">{{IdName}}</div>
-          </div>
-          <div>
-            <div class="filed">身&nbsp;份&nbsp;证&nbsp;号:</div>
-            <div class="filed">{{IdNo}}</div>
-          </div>
+    <div class="title">填写客户必要信息</div>
+    <div class="line"></div>
+    <div class="option">
+      <div>
+        <div class="filed">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名:</div>
+        <div class="filed">{{IdName}}</div>
+      </div>
+      <div>
+        <div class="filed">身&nbsp;份&nbsp;证&nbsp;号:</div>
+        <div class="filed">{{IdNo}}</div>
+      </div>
+      <div class="filed-size">
+        <div class="filed">
+          <span style="color:red">*</span>手&nbsp;&nbsp;&nbsp;机&nbsp;&nbsp;号:
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="custom-info-2">
-          <div class="filed-size">
-            <div class="filed">
-              <span style="color:red">*</span>手&nbsp;&nbsp;机&nbsp;&nbsp;号:
-            </div>
-            <input class="filed-name" v-model="Tel" placeholder="手机号" style="width: 235px" disabled="true"></input>
-          </div>
-          <div class="filed-size">
-            <div class="filed">
-              <span style="color:red">*</span>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业:
-            </div>
-            <select style="display:inline-block" v-model="occu" :maxLines="maxLines">
-              <option v-for="item in occuItems" :key="item" :label="item.Text" :value="item.Value"></option>
-            </select>
-            <span v-if="showOccu" style="color: red">职业为必选项</span>
-          </div>
-          <div class="filed-size">
-
-            <div class="filed">
-              最&nbsp;高&nbsp;学&nbsp;历:
-            </div>
-            <select style="display:inline-block" v-model="educ" :maxLines="maxLines">
-              <option v-for="item in educItems" :key="item" :label="item.Text" :value="item.Value"></option>
-            </select>
-          </div>
-          <div class="filed-size">
-            <div class="filed">
-              婚&nbsp;姻&nbsp;状&nbsp;况:
-            </div>
-            <select style="display:inline-block" v-model="marr" :maxLines="maxLines">
-              <option v-for="item in marrItems" :key="item" :label="item.Text" :value="item.Value"></option>
-            </select>
-          </div>
-          <div class="filed-size">
-            <div class="filed"> 电&nbsp;子&nbsp;邮&nbsp;箱:</div>
-            <input class="filed-name email" v-model="email" placeholder="邮箱帐号" style="width: 235px"
-                   v-keyboard="'normal'"></input>
-            <span v-if="show" style="color: red">邮箱格式错误,请更改邮箱</span>
-          </div>
-          <div class="address-div">
-            <div class="filed-address"> 居&nbsp;住&nbsp;地&nbsp;址:&nbsp;</div>
-            <textarea disabled class="filed-name address" v-model="CtcAdr" v-keyboard="'text'"></textarea>
-          </div>
+        <input class="filed-name" v-model="Tel" placeholder="手机号" style="width: 235px"></input>
+      </div>
+      <div class="filed-size">
+        <div class="filed">
+          <span style="color:red">*</span>职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;业:
         </div>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <div class="next_div">
-          <button @click="goBack" style="display:none">上一步</button>
-          <button class="next_button" :fill="true" @click="goNext">下一步</button>
+        <select v-model="occu">
+          <option selected style="display: none" value="">请选择</option>
+          <option v-for="item in occuItems" :label="item.text" :value="item.value"></option>
+        </select>
+        <span v-if="showOccu" style="color: red">职业为必选项</span>
+      </div>
+      <div class="filed-size">
+        <div class="filed">
+          最&nbsp;高&nbsp;学&nbsp;历:
         </div>
-      </td>
-    </tr>
+        <select v-model="educ">
+          <option selected style="display: none" value="">请选择</option>
+          <option v-for="item in educItems" :value="item.value">
+            {{item.value}}
+            {{item.text}}
+          </option>
+        </select>
+      </div>
+      <div class="filed-size">
+        <div class="filed">
+          婚&nbsp;姻&nbsp;状&nbsp;况:
+        </div>
+        <select v-model="marr">
+          <option selected style="display: none" value="">请选择</option>
+          <option v-for="item in marrItems" :label="item.text" :value="item.value"></option>
+        </select>
+      </div>
+      <div class="filed-size">
+        <div class="filed"> 电&nbsp;子&nbsp;邮&nbsp;箱:</div>
+        <input class="filed-name email" v-model="email" placeholder="邮箱帐号" style="width: 235px">
+        <span v-if="show" style="color: red">邮箱格式错误,请更改邮箱</span>
+      </div>
+      <div class="address-div">
+        <div class="filed-address"> 居&nbsp;住&nbsp;地&nbsp;址:&nbsp;</div>
+        <textarea disabled class="filed-name address" v-model="CtcAdr"></textarea>
+      </div>
+      <div class="btns">
+        <button @click="goBack" style="display:none">上一步</button>
+        <button class="Rbtn" @click="goNext">下一步</button>
+      </div>
+    </div>
   </div>
 </template>
 
-
 <script>
-  let metadata = {
-    name: 'InputCustomerInfo.vue',
-    description: '填写客户信息',
-    outlets: {
-      确定: 'OK',
-      取消: 'Cancel'
-    }
-  }
-
   export default {
     data() {
       return {
-        Tel: '',
-        IdName: '',
-        IdNo: '',
+        Tel: '13655555555',
+        IdName: '张三',
+        IdNo: '1311029128379874823',
         showOccu: false,
         occu: '',
         educ: '',
-        email: '',
-        CtcAdr: '',
-        maxLines: 5,
+        email: 'jsaiofjew@126.com',
+        CtcAdr: '江苏盐城市五道口',
         show: false,
-        occuItems: '',
-        educItems: '',
-        marrItems: '',
+        occuItems: [{text: '国家机关，党群组织', value: 0}, {text: '专业技术人员', value: 1},
+          {text: '办事员或有关人员', value: 2}, {text: '商业从业人员', value: 3}],
+        educItems: [{text: '中专', value: 0}, {text: '大专', value: 1}, {text: '本科及以上', value: 2},],
+        marrItems: [{text: '已婚', value: 1}, {text: '未婚', value: 0}],
         marr: '',
         value: '选项1',
       };
@@ -124,34 +101,31 @@
 </script>
 
 <style scoped>
-  .InputCustomerInfo {
-    height: 640px;
-    position: relative;
-  }
-
-  .InputCustomerInfo h2 {
+  .title {
     font-size: 30px;
-    color: #896e6e;
-    width: 900px;
-    height: 72px;
+    height: 40px;
+    padding-top: 40px;
     text-align: center;
-    margin: 0 auto;
-    line-height: 72px;
-    border-bottom: 1px solid #dcd2c0;
   }
 
-  .custom-info {
-    width: 800px;
+  .line {
+    height: 0px;
+    border-top: 1px solid #dcd2c0;
+    width: 90%;
+    margin: 30px auto 0;
+  }
+
+  option :hover {
+    background-color: #e0e0e0;
+  }
+
+  .option {
+    height: 560px;
+    overflow: hidden;
     margin-left: 100px;
     margin-top: 30px;
+    margin-bottom: 10px;
     line-height: 35px;
-  }
-
-  .custom-info-2 {
-    width: 800px;
-    margin-left: 100px;
-    margin-top: 6px;
-
   }
 
   .filed {
@@ -171,6 +145,13 @@
 
   .filed-size {
     height: 50px;
+  }
+
+  .filed-size select {
+    display: inline-block;
+    width: 235px;
+    height: 38px;
+    font-size: 22px;
   }
 
   .email {
@@ -197,13 +178,13 @@
     color: #896e6e;
   }
 
-  .next_div {
-    width: 520px;
+  .btns {
+    width: 700px;
     padding: 0px;
-    margin-top: 30px;
+    margin: 0 auto;
   }
 
-  .next_button {
+  .Rbtn {
     float: right;
   }
 </style>
