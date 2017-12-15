@@ -15,6 +15,7 @@
   import inputCustomerInfo from '../create-debit-card/inputCustomerInfo'
   import chooseCardType from '../create-debit-card/chooseCardType'
   import setPassword from '../create-debit-card/setPassword'
+  import photoCatch from '../create-debit-card/photoCatch'
 
   export default {
     components: {
@@ -25,13 +26,14 @@
       inputCustomerInfo,
       chooseCardType,
       setPassword,
+      photoCatch
     },
     data () {
       return {
         msg: 'default',
         second: '',
         flag: true,
-        compName1: 'setPassword',
+        compName1: 'photoCatch',
       }
     },
     props: ['compName'],

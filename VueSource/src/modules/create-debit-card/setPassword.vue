@@ -2,35 +2,51 @@
   <div id="SetPassWord">
     <div class="title">设置密码</div>
     <div class="line"></div>
-    <div class="inputFirst">
-      <div class="inputFirstHint" span="14" offset="6" justify="left">请输入银行卡密码（6位数字）</div>
-    </div>
-    <div class="passWordFirst">
-      <div span="14" offset="6" justify="left">
-        <input type="password"  ref="pswdOne"/>
+    <div class="option">
+      <div class="inputFirst">
+        <div class="inputFirstHint">请输入银行卡密码（6位数字）</div>
       </div>
-    </div>
-    <div class="inputSecond">
-      <div class="inputFirstHint" span="10" offset="6" justify="left">
-        请再次输入银行卡密码（6位数字）
+      <div class="passWordFirst">
+        <input @keyup="get" readonly="readonly"
+               type="password" ref="pwdOne"/>
+        <div>
+          <div :class="{dot:fpwd[0]}"></div>
+          <div :class="{dot:fpwd[1]}"></div>
+          <div :class="{dot:fpwd[2]}"></div>
+          <div :class="{dot:fpwd[3]}"></div>
+          <div :class="{dot:fpwd[4]}"></div>
+          <div :class="{dot:fpwd[5]}"></div>
+        </div>
       </div>
-    </div>
-    <div class="passWordSecond">
-      <div span="14" offset="6" justify="left">
-        <input type="password" ref="pswdTwo"/>
+      <div class="inputSecond">
+        <div class="inputFirstHint">
+          请再次输入银行卡密码（6位数字）
+        </div>
       </div>
-    </div>
-    <div class="errorHint">
-      <div v-show="different" span="14" offset="6" justify="left"><span>
-      <img src="/static/Trade/warn.png" alt=""></span>
-        <span class="errHint">两次输入的密码不一致，请重新输入！</span></div>
-    </div>
-    <div>
-      <div span="12">
+      <div class="passWordSecond">
+        <input @keyup="get2" readonly="readonly" type="password" ref="pwdTwo"/>
+        <div>
+          <div :class="{dot:spwd[0]}"></div>
+          <div :class="{dot:spwd[1]}"></div>
+          <div :class="{dot:spwd[2]}"></div>
+          <div :class="{dot:spwd[3]}"></div>
+          <div :class="{dot:spwd[4]}"></div>
+          <div :class="{dot:spwd[5]}"></div>
+        </div>
+      </div>
+      <div class="errorHint">
+        <div v-show="different">
+          <span>
+            <img src="/static/trade/warn.png">
+          </span>
+          <span class="errHint">
+            两次输入的密码不一致，请重新输入！
+          </span>
+        </div>
+      </div>
+      <div class="btns">
         <button @click="clearAll">重新输入</button>
-      </div>
-      <div span="12">
-        <button :fill="true" @click="goNext" :disable="!different">下一步</button>
+        <button class="Rbtn" @click="goNext" :disable="!different">下一步</button>
       </div>
     </div>
   </div>
@@ -57,10 +73,49 @@
         pinBlock: '',
         pinBlockAgain: '',
         keyCount: 0,
-        keyCountAgain: 0
+        keyCountAgain: 0,
+        fpwd: [],
+        spwd: [],
       };
     },
-    methods: {},
+    mounted(){
+      this.$refs.pwdOne.focus();
+    },
+    methods: {
+      get(e){
+        if (e.keyCode >= 48 && e.keyCode < 58) {
+          this.fpwd.push(String.fromCharCode(e.keyCode));
+        }
+        if (this.fpwd.length >= 6) {
+          this.fpwd = this.fpwd.slice(0, 6);
+          this.$refs.pwdTwo.focus();
+        }
+      },
+      get2(e){
+        if (e.keyCode >= 48 && e.keyCode < 58) {
+          this.spwd.push(String.fromCharCode(e.keyCode));
+        }
+        if (this.spwd.length >= 6) {
+          this.spwd = this.spwd.slice(0, 6);
+          if (JSON.stringify(this.fpwd) != JSON.stringify(this.spwd)) {
+            this.different = true;
+          }
+        }
+      },
+      clearAll(){
+        this.fpwd = [];
+        this.spwd = [];
+        this.different = false;
+        this.$refs.pwdOne.focus();
+      },
+      goNext(){
+
+        this.$root.dataHub.$emit('goNext');
+      },
+      goBack(){
+        this.$root.dataHub.$emit('goBack');
+      }
+    },
     created() {
     }
   };
@@ -81,23 +136,97 @@
     margin: 30px auto 0;
   }
 
-  #set-pass-word {
-    width: 100%;
-    height: 100%;
-    background: white;
-  }
-
-  .stepHintRow {
-    border-bottom: 1px solid #dcd2c0;
-    width: 900px;
+  .btns {
+    text-align: left;
+    width: 700px;
+    padding: 0px;
     margin: 0 auto;
   }
 
-  .stepHint {
-    font-size: 30px;
-    color: #896e6e;
-    margin-top: 20px;
-    margin-bottom: 11px;
+  .Rbtn {
+    float: right;
+  }
+
+  input {
+    outline-style: none;
+    position: relative;
+    background-color: transparent;
+    line-height: 30px;
+    border: 2px solid #e74a41;
+    width: 214px;
+    border-radius: 10px;
+    height: 30px;
+    letter-spacing: 20px;
+    display: inline-block;
+    z-index: 3;
+  }
+
+  .dot::after {
+    content: '';
+    display: block;
+    position: relative;
+    background-color: black;
+    border-radius: 50%;
+    width: 4px;
+    height: 4px;
+    left: 14px;
+    top: 14px;
+  }
+
+  .passWordFirst {
+    position: relative;
+    z-index: 1;
+  }
+
+  .passWordFirst > div {
+    position: absolute;
+    top: 3px;
+    left: 382px;
+    z-index: 2;
+  }
+
+  .passWordFirst div div {
+    display: block;
+    height: 32px;
+    border-right: 2px solid #e74a41;
+    float: left;
+    width: 34px;
+  }
+
+  .passWordFirst div :last-child {
+    border-right: 0;
+  }
+
+  .passWordSecond {
+    position: relative;
+    z-index: 1;
+  }
+
+  .passWordSecond > div {
+    position: absolute;
+    top: 3px;
+    left: 382px;
+    z-index: 2;
+  }
+
+  .passWordSecond div div {
+    display: block;
+    height: 31px;
+    border-right: 2px solid #e74a41;
+    float: left;
+    width: 34px;
+  }
+
+  .passWordSecond div :last-child {
+    border-right: 0;
+  }
+
+  .option {
+    height: 560px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    line-height: 35px;
+    text-align: center;
   }
 
   .inputFirstHint {

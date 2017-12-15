@@ -46,7 +46,7 @@
           },
           {
             "name": "设置密码",
-            "modules": "putNote"
+            "modules": "setPassword"
           },
           {
             "name": "签约",

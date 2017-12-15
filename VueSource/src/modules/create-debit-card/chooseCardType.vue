@@ -11,19 +11,22 @@
         </div>
       </div>
     </div>
-    <div class="read">
-      <input style="zoom: 180%;position: relative;top:3px" type="checkbox" id="checkbox" v-model="readChecked">
-      <label for="checkbox">我已详细阅读并同意</label>
-    </div>
-    <div class="detail">
+    <div style="text-align: center">
+      <div class="read">
+        <input style="zoom: 180%;position: relative;top:3px" type="checkbox" id="checkbox" v-model="readChecked">
+        <label for="checkbox">我已详细阅读并同意</label>
+      </div>
+      <div class="detail">
       <span @click="showDetail1">
         <a style="text-decoration:underline;">《开户须知》</a>
       </span>
-      <span @click="showDetail2">
+        <span @click="showDetail2">
         <a style="text-decoration:underline;">《青海省农村信用社个人结算账户管理协议书》</a>
       </span>
-      <!--<span @click="showDetail3"><a>《规则3规则3规则3规则3》</a></span>-->
+        <!--<span @click="showDetail3"><a>《规则3规则3规则3规则3》</a></span>-->
+      </div>
     </div>
+
 
     <div v-if="Detail1" class="detailRule">
       <div class="detail-wrapper">
@@ -116,16 +119,16 @@
     },
     methods: {
       confirm1(){
-        this.Detail1=false;
+        this.Detail1 = false;
       },
       confirm2(){
-        this.Detail2=false;
+        this.Detail2 = false;
       },
       showDetail1(){
-        this.Detail1=true;
+        this.Detail1 = true;
       },
       showDetail2(){
-        this.Detail2=true;
+        this.Detail2 = true;
       },
       goNext(){
         this.$root.dataHub.$emit('goNext');
@@ -156,13 +159,12 @@
     border-bottom: 1px solid #dcd2c0;
   }
 
-  .singleImg{
+  .singleImg {
     display: inline-block;
   }
 
   .read {
     margin-top: 4px;
-    margin-left: 60px;
     display: inline-block;
   }
 
