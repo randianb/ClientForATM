@@ -1,11 +1,11 @@
 <template>
-  <div class="photoCatch">
-    <div class="title">影像采集</div>
+  <div class="fingerPrint">
+    <div class="title">请核对金额并取走您的钞票</div>
     <div class="line"></div>
     <div class="option">
-      <canvas width="300px" height="300px" ref="nikon"></canvas>
+      <div>账户：{{account}}</div>
+      <div>金额：{{amount}}</div>
       <div class="btns">
-        <button @click="">重新获取</button>
         <button class="Rbtn" @click="goNext">下一步</button>
       </div>
     </div>
@@ -15,15 +15,12 @@
 <script>
   export default {
     data() {
-      return {};
+      return {
+        amount:0,
+        account:'111',
+      };
     },
     mounted() {
-      var ctx = this.$refs.nikon.getContext('2d');
-      var img = new Image();
-      img.src = '../../../static/trade/picture.png';
-      img.onload = function () {
-        ctx.drawImage(img, 0, 0, 262, 262, 0, 0, 300, 300);
-      }
     },
     methods: {
       goNext(){
@@ -53,32 +50,26 @@
   }
 
   .option {
+    padding-top: 100px;
     height: 530px;
-    /*overflow: hidden;*/
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 250px;
+    margin-right: 250px;
     line-height: 35px;
-    text-align: center;
+    text-align: left;
+    font-size: 20px;
+    position: relative;
   }
 
-  .filed-size select {
-    display: inline-block;
-    width: 235px;
-    height: 38px;
-    font-size: 22px;
-  }
-
-  canvas {
-    height: 300px;
-    width: 300px;
-    margin-top: 30px;
-    display: inline-block;
-  }
-
-  .btns {
+  .option > div {
     margin-top: 40px;
+  }
+
+  .option .btns {
     padding: 0px;
     text-align: left;
+    position: absolute;
+    bottom: 200px;
+    right: -100px;
   }
 
   .Rbtn {

@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <transition mode="out-in" name="page">
-      <component :is="compName1"></component>
+      <component :is="compName"></component>
     </transition>
   </div>
 </template>
@@ -16,6 +16,11 @@
   import chooseCardType from '../create-debit-card/chooseCardType'
   import setPassword from '../create-debit-card/setPassword'
   import photoCatch from '../create-debit-card/photoCatch'
+  import signContract from '../create-debit-card/signContract'
+  import authLoading from './authLoading'
+  import enterCardNoAmount from '../personal-card-passbook-deposit/enterCardNoAmount'
+  import barCode from './barCode'
+  import takeCash from '../personal-card-passbook-withdraw/takeCash'
 
   export default {
     components: {
@@ -26,14 +31,19 @@
       inputCustomerInfo,
       chooseCardType,
       setPassword,
-      photoCatch
+      photoCatch,
+      signContract,
+      authLoading,
+      enterCardNoAmount,
+      barCode,
+      takeCash,
     },
     data () {
       return {
         msg: 'default',
         second: '',
         flag: true,
-        compName1: 'photoCatch',
+        compName1: 'takeCash',
       }
     },
     props: ['compName'],

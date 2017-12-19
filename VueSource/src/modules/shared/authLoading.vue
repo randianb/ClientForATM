@@ -1,13 +1,9 @@
 <template>
-  <div class="photoCatch">
-    <div class="title">影像采集</div>
+  <div class="authLoading">
+    <div class="title">授权</div>
     <div class="line"></div>
     <div class="option">
-      <canvas width="300px" height="300px" ref="nikon"></canvas>
-      <div class="btns">
-        <button @click="">重新获取</button>
-        <button class="Rbtn" @click="goNext">下一步</button>
-      </div>
+      正在授权，请稍候·····
     </div>
   </div>
 </template>
@@ -15,15 +11,15 @@
 <script>
   export default {
     data() {
-      return {};
+      return {
+
+      };
     },
     mounted() {
-      var ctx = this.$refs.nikon.getContext('2d');
-      var img = new Image();
-      img.src = '../../../static/trade/picture.png';
-      img.onload = function () {
-        ctx.drawImage(img, 0, 0, 262, 262, 0, 0, 300, 300);
-      }
+      var _this=this;
+      setTimeout(function () {
+        _this.goNext();
+      },2000);
     },
     methods: {
       goNext(){
@@ -54,25 +50,12 @@
 
   .option {
     height: 530px;
-    /*overflow: hidden;*/
     margin-left: 100px;
     margin-right: 100px;
+    margin-top: 200px;
     line-height: 35px;
     text-align: center;
-  }
-
-  .filed-size select {
-    display: inline-block;
-    width: 235px;
-    height: 38px;
-    font-size: 22px;
-  }
-
-  canvas {
-    height: 300px;
-    width: 300px;
-    margin-top: 30px;
-    display: inline-block;
+    font-size: 40px;
   }
 
   .btns {

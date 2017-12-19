@@ -3,9 +3,12 @@
     <div class="title">影像采集</div>
     <div class="line"></div>
     <div class="option">
-      <canvas width="300px" height="300px" ref="nikon"></canvas>
+      <div><input type="checkbox" id="cphone"/><label for="cphone">手机银行</label></div>
+      <div><input type="checkbox" id="phone"/><label for="phone">电话银行</label></div>
+      <div><input type="checkbox" id="nopwd"/><label for="nopwd">无磁无密</label></div>
+      <div><input type="checkbox" id="d"/><label for="d">无密转账</label></div>
       <div class="btns">
-        <button @click="">重新获取</button>
+        <button @click="goNext">跳过</button>
         <button class="Rbtn" @click="goNext">下一步</button>
       </div>
     </div>
@@ -15,15 +18,11 @@
 <script>
   export default {
     data() {
-      return {};
+      return {
+
+      };
     },
     mounted() {
-      var ctx = this.$refs.nikon.getContext('2d');
-      var img = new Image();
-      img.src = '../../../static/trade/picture.png';
-      img.onload = function () {
-        ctx.drawImage(img, 0, 0, 262, 262, 0, 0, 300, 300);
-      }
     },
     methods: {
       goNext(){
@@ -59,20 +58,6 @@
     margin-right: 100px;
     line-height: 35px;
     text-align: center;
-  }
-
-  .filed-size select {
-    display: inline-block;
-    width: 235px;
-    height: 38px;
-    font-size: 22px;
-  }
-
-  canvas {
-    height: 300px;
-    width: 300px;
-    margin-top: 30px;
-    display: inline-block;
   }
 
   .btns {

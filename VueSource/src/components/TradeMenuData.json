@@ -50,19 +50,19 @@
           },
           {
             "name": "签约",
-            "modules": "putNote"
+            "modules": "signContract"
           },
           {
             "name": "影像采集",
-            "modules": "putNote"
+            "modules": "photoCatch"
           },
           {
             "name": "授权",
-            "modules": "putNote"
+            "modules": "authLoading"
           },
           {
             "name": "打印凭条",
-            "modules": "putNote"
+            "modules": "printReceipt"
           }
         ],
         "code": 1002
@@ -148,15 +148,62 @@
     "isEnabled": true,
     "children": [
       {
-        "tradeName": "  活期交易明细查询打印",
-        "iconPath": "../../static/trademenu/HandyServices.png",
+        "tradeName": "卡卡、卡折转帐",
+        "iconPath": "../../static/trademenu/CardActivation.png",
         "isEnabled": true,
         "flow": [
-          "readIDCard",
-          "fingerPrints",
-          "putNote"
+          {
+            "name": "请插入身份证",
+            "modules": "readIDCard"
+          },{
+            "name": "请插入身份证",
+            "modules": "readIDCard"
+          },{
+            "name": "请放入现金",
+            "modules": "inputNote"
+          }
         ],
-        "code": 2001
+        "code": 3001
+      }, {
+        "tradeName": "对私无卡、折现金存款",
+        "iconPath": "../../static/trademenu/EleBank.png",
+        "isEnabled": true,
+        "flow": [
+          {
+            "name": "基本信息输入",
+            "modules": "enterCardNoAmount"
+          },{
+            "name": "请插入身份证",
+            "modules": "readIDCard"
+          },{
+            "name": "请放入现金",
+            "modules": "inputNote"
+          },{
+            "name": "授权",
+            "modules": "authLoading"
+          },{
+            "name": "打印凭条",
+            "modules": "printReceipt"
+          }
+        ],
+        "code": 3002
+      }, {
+        "tradeName": "对私无卡、折现金取款",
+        "iconPath": "../../static/trademenu/EleBank.png",
+        "isEnabled": true,
+        "flow": [
+          {
+            "name": "扫码二维码",
+            "modules": "barCode"
+          },{
+            "name": "信息确认取款",
+            "modules": "takeCash"
+          },{
+            "name": "打印凭条",
+            "modules": "printReceipt"
+          }
+        ],
+        "code": 3003
       }
     ]
   },
